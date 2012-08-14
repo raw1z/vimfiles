@@ -7,3 +7,7 @@ else
   set lines=999 columns=999
 endif
 
+if has("gui_macvim")
+  macmenu &File.New\ Tab key=<nop>
+  map <D-t> :CtrlP<CR>
+endif
