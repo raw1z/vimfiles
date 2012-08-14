@@ -1,5 +1,5 @@
-set guioptions=rLb
-set guifont=Ubuntu\ Mono\ For\ Powerline:h14
+set guioptions-=lrbT
+set guifont=Droid\ Sans\ Mono\ Dotted\ For\ Powerline:h16
 
 if has("win32")
   au GUIEnter * simalt ~n

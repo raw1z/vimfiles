@@ -18,8 +18,6 @@ set ruler
 set showcmd
 set laststatus=2
 
-set guioptions=rLb
-set guifont=Ubuntu\ Mono\ For\ Powerline:h14
 syntax enable
 set background=dark
 colorscheme solarized
