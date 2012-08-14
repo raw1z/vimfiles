@@ -74,3 +74,6 @@ if has("autocmd")
   filetype on
   autocmd FileType cs setlocal ts=4 sts=4 sw=4 et
 endif
+
+" remap for macbook pro french keyboard
+map <C-l> <C-]>
