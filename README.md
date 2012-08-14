@@ -1,7 +1,7 @@
 Installation
 ------------
 
-  git clone git://github.com/raw1z/dotvim.git ~/.vim
+  git clone https://github.com/raw1z/dotfiles.git
 
 Create symlinks
 ---------------
