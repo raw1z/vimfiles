@@ -66,9 +66,6 @@ set t_Co=256
 " tagbar configuration
 nmap <F8> :TagbarToggle<CR>
 
-" ack configuration
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
 " c# specific configuration
 if has("autocmd")
   filetype on
@@ -77,3 +74,6 @@ endif
 
 " remap for macbook pro french keyboard
 map <C-l> <C-]>
+
+" ack configuration
+let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=node_modules"
