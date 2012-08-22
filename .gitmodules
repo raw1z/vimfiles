@@ -67,3 +67,6 @@
 [submodule "bundle/vim-jade"]
 	path = bundle/vim-jade
 	url = https://github.com/digitaltoad/vim-jade.git
+[submodule "bundle/vim-tmux"]
+	path = bundle/vim-tmux
+	url = https://github.com/peterhoeg/vim-tmux.git
