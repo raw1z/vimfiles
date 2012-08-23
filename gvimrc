@@ -1,8 +1,10 @@
 set guifont=monofur\ for\ Powerline:h16
 
 if has("win32")
+  set guioptions=rlb
   au GUIEnter * simalt ~n
 else
+  set guioptions-=lrbT
   set lines=999 columns=999
 endif
 
