@@ -73,7 +73,10 @@ if has("autocmd")
 endif
 
 " remap for macbook pro french keyboard
-map <C-l> <C-]>
+map <C-L> <C-]>
+inoremap kj <Esc>
+cmap <C-P> <Up>
+cmap <C-N> <Down>
 
 " ack configuration
 let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=node_modules"
