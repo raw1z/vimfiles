@@ -70,3 +70,9 @@
 [submodule "bundle/vim-tmux"]
 	path = bundle/vim-tmux
 	url = https://github.com/peterhoeg/vim-tmux.git
+[submodule "bundle/prolog"]
+	path = bundle/prolog
+	url = https://github.com/adimit/prolog.vim.git
+[submodule "bundle/vim-transpose"]
+	path = bundle/vim-transpose
+	url = https://github.com/salsifis/vim-transpose.git
