@@ -1,14 +1,20 @@
-set guifont=monofur\ for\ Powerline:h16
+set guifont=monofur\ for\ Powerline:h18
+
+:set guioptions-=T  " remove toolbar
+:set guioptions-=r  " remove right-hand scroll bar
+:set guioptions-=M  " remove the menu bar
 
 if has("win32")
-  set guioptions=rlb
   au GUIEnter * simalt ~n
 else
-  set guioptions-=lrbT
   set lines=999 columns=999
 endif
 
 if has("gui_macvim")
+  " enter fullscreen
+  set fu
+
+  " use Cmd+T to toggle ctrlp.vim window
   macmenu &File.New\ Tab key=<nop>
   map <D-t> :CtrlP<CR>
 endif
