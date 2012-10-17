@@ -80,3 +80,7 @@ cmap <C-N> <Down>
 
 " ack configuration
 let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=node_modules"
+
+" nerdtree keymap
+map <leader>q :NERDTreeToggle<CR>
+
