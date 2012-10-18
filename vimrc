@@ -1,5 +1,8 @@
 set nocompatible
 
+" change the leader key mapping to an easier reachable one
+let mapleader="ç"
+
 call pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -83,4 +86,3 @@ let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=node_modules"
 
 " nerdtree keymap
 map <leader>q :NERDTreeToggle<CR>
-
