@@ -85,3 +85,9 @@
 [submodule "bundle\\vim-irblack"]
 	path = bundle/vim-irblack
 	url = https://github.com/wgibbs/vim-irblack.git
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular.git

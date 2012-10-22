@@ -86,3 +86,31 @@ let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir=node_modules"
 
 " nerdtree keymap
 map <leader>q :NERDTreeToggle<CR>
+
+" autoclean fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" jump up to the commit object for the current tree by pressing C.
+autocmd User fugitive
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
+
+" set easier keymaps for [ and ] suitable for french keyboards
+map )) ]
+map (( [
+
+" call the tabularize command each time the pipe caracter is typed
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+ 
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
