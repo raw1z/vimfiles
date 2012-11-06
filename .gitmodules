@@ -91,3 +91,9 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/vim-mustache"]
+	path = bundle/vim-mustache
+	url = https://github.com/juvenn/mustache.vim.git
+[submodule "bundle/vb.net"]
+	path = bundle/vb.net
+	url = https://github.com/vim-scripts/VB.NET-Syntax.git
