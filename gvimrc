@@ -1,4 +1,4 @@
-set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
+set guifont=Source\ Code\ Pro\ for\ Powerline:h16
 
 :set guioptions-=T  " remove toolbar
 :set guioptions-=r  " remove right-hand scroll bar
