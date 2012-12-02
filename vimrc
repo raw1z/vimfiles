@@ -1,3 +1,5 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
 set nocompatible
 
 " change the leader key mapping to an easier reachable one
