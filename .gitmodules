@@ -97,3 +97,6 @@
 [submodule "bundle/vb.net"]
 	path = bundle/vb.net
 	url = https://github.com/vim-scripts/VB.NET-Syntax.git
+[submodule "bundle/vim-less"]
+	path = bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
