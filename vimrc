@@ -8,7 +8,7 @@ syntax on
 filetype plugin indent on
 
 set nu
-set wrap
+set nowrap
 set tabstop=2 shiftwidth=2 expandtab autoindent
 set incsearch
 set hlsearch
