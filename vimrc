@@ -98,9 +98,11 @@ autocmd User fugitive
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
 
-" set easier keymaps for [ and ] suitable for french keyboards
-map )) ]
-map (( [
+" set easier keymaps for [, {, } and ] suitable for french keyboards
+map <leader>) }
+map <leader>( {
+map <leader>)) ]
+map <leader>(( [
 
 " call the tabularize command each time the pipe caracter is typed
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
