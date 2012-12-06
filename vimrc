@@ -142,3 +142,7 @@ if has("autocmd")
   endif
 endif
 
+" keyboard map for editing the vim/gvimrc configuration file
+nmap <leader>v :split $MYVIMRC<CR>
+nmap <leader>gv :split $MYGVIMRC<CR>
+
