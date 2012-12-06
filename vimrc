@@ -125,3 +125,20 @@ endfunction
 " keyboard mapping for gundo
 nnoremap <F5> :GundoToggle<CR>
 
+" Source the vimrc/gvimrc file after saving it
+if has("autocmd")
+  if has("win32")
+    autocmd! bufwritepost _vimrc source $MYVIMRC
+    autocmd! bufwritepost _vimrc call Pl#Load()
+
+    autocmd! bufwritepost _gvimrc source $MYGVIMRC
+    autocmd! bufwritepost _gvimrc call Pl#Load()
+  else
+    autocmd! bufwritepost .vimrc source $MYVIMRC
+    autocmd! bufwritepost .vimrc call Pl#Load()
+
+    autocmd! bufwritepost .gvimrc source $MYGVIMRC
+    autocmd! bufwritepost .gvimrc call Pl#Load()
+  endif
+endif
+
