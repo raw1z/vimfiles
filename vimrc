@@ -119,5 +119,5 @@ function! s:align()
 endfunction
 
 " keyboard mapping for gundo
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
 
