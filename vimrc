@@ -5,7 +5,11 @@ set nocompatible
 " change the leader key mapping to an easier reachable one
 let mapleader="ç"
 
-call pathogen#infect()
+" load all the extensions
+if !exists("g:loaded_pathogen")
+  call pathogen#infect()
+endif
+
 syntax on
 filetype plugin indent on
 
