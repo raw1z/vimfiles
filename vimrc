@@ -6,9 +6,7 @@ set nocompatible
 let mapleader="ç"
 
 " load all the extensions
-if !exists("g:loaded_pathogen")
-  call pathogen#infect()
-endif
+call pathogen#infect()
 
 syntax on
 filetype plugin indent on
