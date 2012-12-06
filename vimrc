@@ -60,7 +60,7 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " rake.vim additions
-map <leader>a :A<CR>
+map <leader>a :AS<CR>
 
 " powerline configuration
 let g:Powerline_symbols = 'fancy'
