@@ -18,14 +18,14 @@ set ignorecase smartcase
 set scrolloff=2
 
 syntax on
-set history=50
+set history=200
 set ruler
 set showcmd
 set laststatus=2
 
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme jellybeans
 
 filetype plugin indent on
 set encoding=utf-8
