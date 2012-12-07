@@ -144,3 +144,6 @@ endif
 nmap <leader>v :split $MYVIMRC<CR>
 nmap <leader>gv :split $MYGVIMRC<CR>
 
+" keyboard map for toggling wrap mode
+nmap <leader>w :set wrap! linebreak nolist<CR>
+
