@@ -150,3 +150,5 @@ nmap <leader>w :set wrap! linebreak nolist<CR>
 " keyboard map for opening the git status window
 nmap <leader>g :Gstatus<CR>
 
+" allow folder specific configuration
+set exrc secure
