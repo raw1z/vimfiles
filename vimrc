@@ -147,3 +147,6 @@ nmap <leader>gv :split $MYGVIMRC<CR>
 " keyboard map for toggling wrap mode
 nmap <leader>w :set wrap! linebreak nolist<CR>
 
+" keyboard map for opening the git status window
+nmap <leader>g :Gstatus<CR>
+
