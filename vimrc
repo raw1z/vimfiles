@@ -127,16 +127,20 @@ nnoremap <leader>u :GundoToggle<CR>
 if has("autocmd")
   if has("win32")
     autocmd! bufwritepost _vimrc source $MYVIMRC
-    autocmd! bufwritepost _vimrc call Pl#Load()
+    autocmd  bufwritepost _vimrc call Pl#Load()
+    autocmd  bufwritepost _vimrc echo "reloaded _vimrc"
 
-    autocmd! bufwritepost _gvimrc source $MYGVIMRC
-    autocmd! bufwritepost _gvimrc call Pl#Load()
+    autocmd  bufwritepost _gvimrc source $MYGVIMRC
+    autocmd  bufwritepost _gvimrc call Pl#Load()
+    autocmd  bufwritepost _gvimrc echo "reloaded _gvimrc"
   else
     autocmd! bufwritepost .vimrc source $MYVIMRC
-    autocmd! bufwritepost .vimrc call Pl#Load()
+    autocmd  bufwritepost .vimrc call Pl#Load()
+    autocmd  bufwritepost .vimrc echo "reloaded .vimrc"
 
-    autocmd! bufwritepost .gvimrc source $MYGVIMRC
-    autocmd! bufwritepost .gvimrc call Pl#Load()
+    autocmd  bufwritepost .gvimrc source $MYGVIMRC
+    autocmd  bufwritepost .gvimrc call Pl#Load()
+    autocmd  bufwritepost .gvimrc echo "reloaded .gvimrc"
   endif
 endif
 
