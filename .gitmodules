@@ -115,3 +115,6 @@
 [submodule "bundle/linediff"]
 	path = bundle/linediff
 	url = https://github.com/AndrewRadev/linediff.vim.git
+[submodule "bundle/vim-railscasts"]
+	path = bundle/vim-railscasts
+	url = https://github.com/jgdavey/vim-railscasts.git
