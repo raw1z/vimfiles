@@ -156,3 +156,13 @@ nmap <leader>g :Gstatus<CR>
 
 " allow folder specific configuration
 set exrc secure
+
+" on windows, consider all the files with an extension
+" ending with 'proj' as an xml file
+if has("win32")
+  augroup filetypedetect
+    au BufNewFile,BufRead *.*proj set syntax=xml
+    au BufNewFile,BufRead *.vb set syntax=vbnet
+  augroup END
+endif
+
