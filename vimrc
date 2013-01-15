@@ -166,3 +166,12 @@ if has("win32")
   augroup END
 endif
 
+" allow to open a folder in a new tab
+" and set it as the tab's working folder
+function! s:TabGo(path)
+  execute ':tabnew ' a:path
+  execute ':lcd ' a:path
+endfunction
+
+command! -nargs=1 -complete=dir TabGo call s:TabGo(<q-args>)
+
