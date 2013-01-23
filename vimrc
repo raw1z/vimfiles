@@ -129,19 +129,19 @@ if has("autocmd")
   if has("win32")
     autocmd! bufwritepost _vimrc source $MYVIMRC
     autocmd  bufwritepost _vimrc call Pl#Load()
-    autocmd  bufwritepost _vimrc echo "reloaded _vimrc"
+    autocmd  bufwritepost _vimrc echo "_vimrc reloaded"
 
     autocmd  bufwritepost _gvimrc source $MYGVIMRC
     autocmd  bufwritepost _gvimrc call Pl#Load()
-    autocmd  bufwritepost _gvimrc echo "reloaded _gvimrc"
+    autocmd  bufwritepost _gvimrc echo "_gvimrc reloaded"
   else
     autocmd! bufwritepost .vimrc source $MYVIMRC
     autocmd  bufwritepost .vimrc call Pl#Load()
-    autocmd  bufwritepost .vimrc echo "reloaded .vimrc"
+    autocmd  bufwritepost .vimrc echo ".vimrc reloaded"
 
     autocmd  bufwritepost .gvimrc source $MYGVIMRC
     autocmd  bufwritepost .gvimrc call Pl#Load()
-    autocmd  bufwritepost .gvimrc echo "reloaded .gvimrc"
+    autocmd  bufwritepost .gvimrc echo ".gvimrc reloaded "
   endif
 endif
 
@@ -156,7 +156,7 @@ nmap <leader>w :set wrap! linebreak nolist<CR>
 nmap <leader>g :Gstatus<CR>
 
 " allow folder specific configuration
-set exrc secure
+set exrc
 
 " on windows, consider all the files with an extension
 " ending with 'proj' as an xml file
@@ -181,3 +181,20 @@ map <leader>t g<C-]>
 map <leader>tp :pop<CR>
 map <leader>tb :!ctags --recurse<CR>
 
+" remove read only attribute
+function! g:RemoveFilesReadOnlyAttribute(files)
+  if has("win32")
+    let s:cmd = "silent ! attrib -R ".a:files
+  else
+    let s:cmd = "silent !chmod u+w ".a:files
+  end
+
+  execute s:cmd
+endfunction
+
+function! RemoveCurrentFileReadOnly()
+  let filename = expand("%")
+  call g:RemoveFilesReadOnlyAttribute(filename)
+endfunction
+
+nmap <leader>y  :call RemoveCurrentFileReadOnly()<CR>
