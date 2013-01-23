@@ -176,3 +176,8 @@ endfunction
 
 command! -nargs=1 -complete=dir TabGo call s:TabGo(<q-args>)
 
+" tag navigation keybord maps
+map <leader>t g<C-]>
+map <leader>tp :pop<CR>
+map <leader>tb :!ctags --recurse<CR>
+
