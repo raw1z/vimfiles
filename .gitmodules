@@ -118,3 +118,6 @@
 [submodule "bundle/vim-railscasts"]
 	path = bundle/vim-railscasts
 	url = https://github.com/jgdavey/vim-railscasts.git
+[submodule "bundle/vim-mac-classic-theme"]
+	path = bundle/vim-mac-classic-theme
+	url = https://github.com/nelstrom/vim-mac-classic-theme.git
