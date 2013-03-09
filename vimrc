@@ -26,7 +26,7 @@ set showcmd
 set laststatus=2
 
 syntax enable
-set background=dark
+set background=light
 colorscheme jellybeans
 
 filetype plugin indent on
@@ -198,3 +198,8 @@ function! RemoveCurrentFileReadOnly()
 endfunction
 
 nmap <leader>y  :call RemoveCurrentFileReadOnly()<CR>
+
+" use ctrl-n instead of ctrl-w (more touch typist friendly)
+nmap <C-n> <C-w>
+nmap <C-n><C-n> <C-w><C-w>
+
