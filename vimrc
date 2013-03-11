@@ -27,7 +27,7 @@ set laststatus=2
 
 syntax enable
 set background=light
-colorscheme jellybeans
+colorscheme solarized
 
 filetype plugin indent on
 set encoding=utf-8
@@ -199,7 +199,7 @@ endfunction
 
 nmap <leader>y  :call RemoveCurrentFileReadOnly()<CR>
 
-" use ctrl-n instead of ctrl-w (more touch typist friendly)
-nmap <C-n> <C-w>
-nmap <C-n><C-n> <C-w><C-w>
+" use ctrl-h instead of ctrl-w (more touch typist friendly)
+nmap <C-h> <C-w>
+nmap <C-h><C-h> <C-w><C-w>
 
