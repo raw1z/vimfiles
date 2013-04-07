@@ -87,7 +87,7 @@ cmap <C-N> <Down>
 
 " ack configuration
 let g:ackprg="ack --smart-case --recurse -H --nocolor --nogroup --column --ignore-dir=node_modules"
-let g:ackprg=g:ackprg." --type-add TYPE=.sass,.haml,.coffee"
+let g:ackprg=g:ackprg." --type-add EXT=.sass,.haml,.coffee"
 
 " nerdtree keymap
 map <leader>q :NERDTreeToggle<CR>
