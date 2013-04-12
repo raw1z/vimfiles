@@ -34,6 +34,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set nobackup
 set autoread
+set foldmethod=marker
 
 " keyboard shortcuts for buffer navigation
 nnoremap <silent> [b :bprevious<CR>
@@ -134,6 +135,9 @@ if has("autocmd")
     autocmd  bufwritepost _gvimrc source $MYGVIMRC
     autocmd  bufwritepost _gvimrc call Pl#Load()
     autocmd  bufwritepost _gvimrc echo "_gvimrc reloaded"
+
+    autocmd  bufwritepost _exrc source %:p
+    autocmd  bufwritepost _exrc echo "_exrc reloaded"
   else
     autocmd! bufwritepost .vimrc source $MYVIMRC
     autocmd  bufwritepost .vimrc call Pl#Load()
@@ -142,6 +146,9 @@ if has("autocmd")
     autocmd  bufwritepost .gvimrc source $MYGVIMRC
     autocmd  bufwritepost .gvimrc call Pl#Load()
     autocmd  bufwritepost .gvimrc echo ".gvimrc reloaded "
+
+    autocmd  bufwritepost .exrc source %:p
+    autocmd  bufwritepost .exrc echo "_exrc reloaded"
   endif
 endif
 
@@ -163,7 +170,7 @@ set exrc
 if has("win32")
   augroup filetypedetect
     au BufNewFile,BufRead *.*proj set syntax=xml
-    au BufNewFile,BufRead *.vb set syntax=vbnet
+    au BufNewFile,BufRead *.vb set syntax=vbnet ft=vbnet ts=4 sts=4 sw=4 et
   augroup END
 endif
 
@@ -179,7 +186,7 @@ command! -nargs=1 -complete=dir TabGo call s:TabGo(<q-args>)
 " tag navigation keybord maps
 map <leader>t g<C-]>
 map <leader>tp :pop<CR>
-map <leader>tb :!ctags --recurse<CR>
+map <leader>tb :silent !ctags --recurse<CR>
 
 " remove read only attribute
 function! g:RemoveFilesReadOnlyAttribute(files)
@@ -202,4 +209,12 @@ nmap <leader>y  :call RemoveCurrentFileReadOnly()<CR>
 " use ctrl-h instead of ctrl-w (more touch typist friendly)
 nmap <C-h> <C-w>
 nmap <C-h><C-h> <C-w><C-w>
+
+" cd into a directory and source given file
+function! ChangeDirectoryAndSource(path, filename)
+  execute('lcd '.a:path)
+  execute('NERDTreeCWD')
+  execute('source'.a:filename)
+endfunction
+command! -nargs=1 Xcd call ChangeDirectoryAndSource(<q-args>, "_exrc")
 
