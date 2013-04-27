@@ -299,3 +299,8 @@ nmap <silent> <leader>wvs :vs<CR>
 " easy save and quit
 nmap <silent> <leader>s :update<CR>
 nmap <silent> <leader>x :x<CR>
+
+" load the customizations
+if filereadable(expand("~/.vimrc.custom"))
+  source ~/.vimrc.custom
+endif

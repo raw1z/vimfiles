@@ -1,5 +1,3 @@
-set guifont=Source\ Code\ Pro\ for\ Powerline:h16
-
 :set guioptions-=T  " remove toolbar
 :set guioptions-=r  " remove right-hand scroll bar
 :set guioptions-=m  " remove the menu bar
@@ -17,4 +15,9 @@ if has("gui_macvim")
   " use Cmd+T to toggle ctrlp.vim window
   macmenu &File.New\ Tab key=<nop>
   map <D-t> :CtrlP<CR>
+endif
+
+" load the customizations
+if filereadable(expand("~/.gvimrc.custom"))
+  source ~/.gvimrc.custom
 endif
