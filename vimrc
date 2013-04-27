@@ -20,20 +20,21 @@ set ignorecase smartcase
 set scrolloff=2
 
 syntax on
-set history=200
+set history=500
 set ruler
 set showcmd
 set laststatus=2
-
-syntax enable
-set background=light
-colorscheme solarized
 
 filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set nobackup
+set noswapfile
 set autoread
+set foldmethod=marker
+
+" disable search highlights
+nmap <silent> <leader>/ :nohl<CR>
 
 " keyboard shortcuts for buffer navigation
 nnoremap <silent> [b :bprevious<CR>
@@ -89,7 +90,7 @@ cmap <C-N> <Down>
 let g:ackprg="ack --smart-case --recurse -H --nocolor --nogroup --column --ignore-dir=node_modules"
 let g:ackprg=g:ackprg." --type-add EXT=.sass,.haml,.coffee"
 
-" nerdtree keymap
+" nerdtree configuration
 map <leader>q :NERDTreeToggle<CR>
 
 " autoclean fugitive buffers
@@ -124,25 +125,28 @@ endfunction
 " keyboard mapping for gundo
 nnoremap <leader>u :GundoToggle<CR>
 
-" Source the vimrc/gvimrc file after saving it
+" Source the vimrc/gvimrc/exrc file after saving it
 if has("autocmd")
-  if has("win32")
-    autocmd! bufwritepost _vimrc source $MYVIMRC
-    autocmd  bufwritepost _vimrc call Pl#Load()
-    autocmd  bufwritepost _vimrc echo "_vimrc reloaded"
+  augroup ConfigChangeDetect
+    autocmd! bufwritepost [_.]vimrc source $MYVIMRC
+    autocmd  bufwritepost [_.]vimrc call Pl#Load()
+    autocmd  bufwritepost [_.]vimrc echo ".vimrc reloaded"
 
-    autocmd  bufwritepost _gvimrc source $MYGVIMRC
-    autocmd  bufwritepost _gvimrc call Pl#Load()
-    autocmd  bufwritepost _gvimrc echo "_gvimrc reloaded"
-  else
-    autocmd! bufwritepost .vimrc source $MYVIMRC
-    autocmd  bufwritepost .vimrc call Pl#Load()
-    autocmd  bufwritepost .vimrc echo ".vimrc reloaded"
+    autocmd! bufwritepost [_.]vimrc.custom source $MYVIMRC
+    autocmd  bufwritepost [_.]vimrc.custom call Pl#Load()
+    autocmd  bufwritepost [_.]vimrc.custom echo ".vimrc reloaded"
 
-    autocmd  bufwritepost .gvimrc source $MYGVIMRC
-    autocmd  bufwritepost .gvimrc call Pl#Load()
-    autocmd  bufwritepost .gvimrc echo ".gvimrc reloaded "
-  endif
+    autocmd  bufwritepost [_.]gvimrc source $MYGVIMRC
+    autocmd  bufwritepost [_.]gvimrc call Pl#Load()
+    autocmd  bufwritepost [_.]gvimrc echo ".gvimrc reloaded "
+
+    autocmd  bufwritepost [_.]gvimrc.custom source $MYGVIMRC
+    autocmd  bufwritepost [_.]gvimrc.custom call Pl#Load()
+    autocmd  bufwritepost [_.]gvimrc.custom echo ".gvimrc reloaded "
+
+    autocmd  bufwritepost [_.]exrc source %:p
+    autocmd  bufwritepost [_.]exrc echo "_exrc reloaded"
+  augroup END
 endif
 
 " keyboard map for editing the vim/gvimrc configuration file
@@ -163,7 +167,7 @@ set exrc
 if has("win32")
   augroup filetypedetect
     au BufNewFile,BufRead *.*proj set syntax=xml
-    au BufNewFile,BufRead *.vb set syntax=vbnet
+    au BufNewFile,BufRead *.vb set syntax=vbnet ft=vbnet ts=4 sts=4 sw=4 et
   augroup END
 endif
 
@@ -179,7 +183,7 @@ command! -nargs=1 -complete=dir TabGo call s:TabGo(<q-args>)
 " tag navigation keybord maps
 map <leader>t g<C-]>
 map <leader>tp :pop<CR>
-map <leader>tb :!ctags --recurse<CR>
+map <leader>tb :silent !ctags --recurse<CR>
 
 " remove read only attribute
 function! g:RemoveFilesReadOnlyAttribute(files)
@@ -199,7 +203,99 @@ endfunction
 
 nmap <leader>y  :call RemoveCurrentFileReadOnly()<CR>
 
-" use ctrl-h instead of ctrl-w (more touch typist friendly)
-nmap <C-h> <C-w>
-nmap <C-h><C-h> <C-w><C-w>
+" cd into a directory and source given file
+function! ChangeDirectoryAndSource(path, filename)
+  execute('lcd '.a:path)
+  execute('NERDTreeCWD')
+  execute('source'.a:filename)
+endfunction
+command! -nargs=1 Xcd call ChangeDirectoryAndSource(<q-args>, "_exrc")
 
+" allow to run an extenal command an display its output in
+" a preview window
+function! g:RunCommandAndPreviewOutput(shellCommand)
+  execute('pclose')
+  let env = {}
+  function env.get(temp_file)
+    silent execute 'pedit '.a:temp_file
+    wincmd P
+    setlocal buftype=nofile
+    setlocal noswapfile
+    setlocal syntax=none
+    setlocal bufhidden=delete
+    silent execute '%s///ge'
+    execute '0'
+    setlocal nomodifiable
+    map <buffer> q :q<CR>
+  endfunction
+  call asynccommand#run(a:shellCommand, asynccommand#tab_restore(env))
+endfunction
+
+" fast quicklist interactions
+function! OpenQuickListAndWrap() 
+  execute("copen")
+  execute ("set wrap")
+endfunction
+
+nmap <leader>co :call OpenQuickListAndWrap()<CR>
+nmap <leader>cq :ccl<CR>
+nmap <leader>cc :cc<CR>
+
+" diff mode keymap
+function! MyDiffput(visualModeEnabled)
+  if a:visualModeEnabled == 0
+    exe ':diffput'
+  else
+    exe ":'<,'>diffput"
+  endif
+
+  exe ':diffupdate'
+  call feedkeys(']c')
+endfunction
+
+function! MyDiffget(visualModeEnabled)
+  if a:visualModeEnabled == 0
+    exe ':diffget'
+  else
+    exe ":'<,'>diffget"
+  endif
+
+  exe ':diffupdate'
+  call feedkeys(']c')
+endfunction
+
+function! EnableDiffKeyMaps()
+  if &diff
+    nmap <buffer> <leader>dj ]c
+    nmap <buffer> <leader>dk [c
+    nmap <buffer> <silent> <leader>dp :call MyDiffput(0)<CR>
+    nmap <buffer> <silent> <leader>dg :call MyDiffget(0)<CR>
+    nmap <buffer> <silent> <leader>du :diffupdate<CR>
+    vmap <buffer> <silent> <leader>dp :call MyDiffput(1)<CR>
+    vmap <buffer> <silent> <leader>dg :call MyDiffget(1)<CR>
+  endif
+endfunction
+
+augroup DiffModeMaps
+  autocmd! FilterWritePre * call EnableDiffKeyMaps()
+augroup END
+
+" easily moves between opened windows
+nmap <leader>wj <C-w><C-j>
+nmap <leader>wk <C-w><C-k>
+nmap <leader>wh <C-w><C-h>
+nmap <leader>wl <C-w><C-l>
+nmap <silent> <leader>wo :only<CR>
+
+" easily resize and split windows
+nmap <leader>w+ <C-w>+
+nmap <leader>w- <C-w>-
+nmap <leader>w> <C-w>>
+nmap <leader>w< <C-w><
+nmap <leader>w= <C-w>=
+nmap <silent> <leader>wsp :sp<CR>
+nmap <silent> <leader>wvs :vs<CR>
+
+" easy save and quit
+nmap <silent> <leader>s :update<CR>
+nmap <silent> <leader>x :x<CR>
