@@ -154,3 +154,6 @@
 [submodule "bundle/vim-csharp"]
 	path = bundle/vim-csharp
 	url = https://github.com/raw1z/vim-csharp.git
+[submodule "bundle/vim-powershell"]
+	path = bundle/vim-powershell
+	url = https://github.com/vim-scripts/Windows-PowerShell-Syntax-Plugin.git
