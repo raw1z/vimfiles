@@ -307,3 +307,7 @@ nmap <silent> <leader>x :x<CR>
 if filereadable(expand("~/.vimrc.custom"))
   source ~/.vimrc.custom
 endif
+
+" UltiSnips configuration
+let g:UltiSnipsEditSplit = "horizontal"
+
