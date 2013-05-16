@@ -151,9 +151,10 @@ endif
 
 " keyboard map for editing the vim/gvimrc configuration file
 nmap <leader>v :split $MYVIMRC<CR>
-nmap <leader>vc :split ~/.vimrc.custom<CR>
+nmap <leader>vc :split $VIM/.vimrc.custom<CR>
 nmap <leader>gv :split $MYGVIMRC<CR>
-nmap <leader>gvc :split ~/.gvimrc.custom<CR>
+nmap <leader>gvc :split $VIM/.gvimrc.custom<CR>
+nmap <leader>ev :split _exrc<CR>
 
 " keyboard map for toggling wrap mode
 nmap <leader>W :set wrap! linebreak nolist<CR>
@@ -288,6 +289,7 @@ nmap <leader>wk <C-w><C-k>
 nmap <leader>wh <C-w><C-h>
 nmap <leader>wl <C-w><C-l>
 nmap <silent> <leader>wo :only<CR>
+nmap <silent> <space> :only<CR>
 
 " easily resize and split windows
 nmap <leader>w+ <C-w>+
@@ -295,7 +297,7 @@ nmap <leader>w- <C-w>-
 nmap <leader>w> <C-w>>
 nmap <leader>w< <C-w><
 nmap <leader>w= <C-w>=
-nmap <space> <C-w><C-w>
+nmap <tab> <C-w><C-w>
 nmap <silent> <leader>wsp :sp<CR>
 nmap <silent> <leader>wvs :vs<CR>
 
@@ -303,11 +305,11 @@ nmap <silent> <leader>wvs :vs<CR>
 nmap <silent> <leader>s :update<CR>
 nmap <silent> <leader>x :x<CR>
 
+" UltiSnips configuration
+let g:UltiSnipsEditSplit = "horizontal"
+
 " load the customizations
 if filereadable(expand("~/.vimrc.custom"))
   source ~/.vimrc.custom
 endif
-
-" UltiSnips configuration
-let g:UltiSnipsEditSplit = "horizontal"
 
