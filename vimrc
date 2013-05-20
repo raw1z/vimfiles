@@ -4,6 +4,7 @@ set nocompatible
 
 " change the leader key mapping to an easier reachable one
 let mapleader="ç"
+let $VIM_CUSTOM_DIR=$VIM
 
 " load all the extensions
 call pathogen#infect()
@@ -151,9 +152,9 @@ endif
 
 " keyboard map for editing the vim/gvimrc configuration file
 nmap <leader>v :split $MYVIMRC<CR>
-nmap <leader>vc :split $VIM/.vimrc.custom<CR>
+nmap <leader>vc :split $VIM_CUSTOM_DIR/.vimrc.custom<CR>
 nmap <leader>gv :split $MYGVIMRC<CR>
-nmap <leader>gvc :split $VIM/.gvimrc.custom<CR>
+nmap <leader>gvc :split $VIM_CUSTOM_DIR/.gvimrc.custom<CR>
 nmap <leader>ev :split _exrc<CR>
 
 " keyboard map for toggling wrap mode
@@ -309,7 +310,7 @@ nmap <silent> <leader>x :x<CR>
 let g:UltiSnipsEditSplit = "horizontal"
 
 " load the customizations
-if filereadable(expand("~/.vimrc.custom"))
-  source ~/.vimrc.custom
+if filereadable(expand($VIM_CUSTOM_DIR."/.vimrc.custom"))
+  source $VIM_CUSTOM_DIR/.vimrc.custom
 endif
 
