@@ -298,7 +298,7 @@ nmap <leader>w- <C-w>-
 nmap <leader>w> <C-w>>
 nmap <leader>w< <C-w><
 nmap <leader>w= <C-w>=
-nmap <tab> <C-w><C-w>
+nmap <space><space> <C-w><C-w>
 nmap <silent> <leader>wsp :sp<CR>
 nmap <silent> <leader>wvs :vs<CR>
 
