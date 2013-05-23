@@ -18,6 +18,7 @@ if has("gui_macvim")
 endif
 
 " load the customizations
-if filereadable(expand("~/.gvimrc.custom"))
-  source ~/.gvimrc.custom
+if filereadable(expand($VIM_CUSTOM_DIR."/.gvimrc.custom"))
+  source $VIM_CUSTOM_DIR/.gvimrc.custom
 endif
+
