@@ -159,6 +159,11 @@ nmap <leader>ev :split _exrc<CR>
 
 " keyboard map for toggling wrap mode
 nmap <leader>W :set wrap! linebreak nolist<CR>
+nmap <leader><space> :set wrap! linebreak nolist<CR>
+
+" mapping to make movements operate on 1 screen line in wrap mode
+:map j gj
+:map k gk
 
 " keyboard map for opening the git status window
 nmap <leader>g :Gstatus<CR>
@@ -233,6 +238,11 @@ function! g:RunCommandAndPreviewOutput(shellCommand)
     map <buffer> q :q<CR>
   endfunction
   call asynccommand#run(a:shellCommand, asynccommand#tab_restore(env))
+endfunction
+
+function! g:trigger(title, shellCommand)
+  call g:RunCommandAndPreviewOutput(a:shellCommand)
+  echo a:title
 endfunction
 
 " fast quicklist interactions
