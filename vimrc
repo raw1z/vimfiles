@@ -300,7 +300,7 @@ nmap <leader>wk <C-w><C-k>
 nmap <leader>wh <C-w><C-h>
 nmap <leader>wl <C-w><C-l>
 nmap <silent> <leader>wo :only<CR>
-nmap <silent> <space> :only<CR>
+nmap <silent> <C-space> :only<CR>
 
 " easily resize and split windows
 nmap <leader>w+ <C-w>+
