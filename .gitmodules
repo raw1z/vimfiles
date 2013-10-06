@@ -157,9 +157,6 @@
 [submodule "bundle/vim-powershell"]
 	path = bundle/vim-powershell
 	url = https://github.com/raw1z/Windows-PowerShell-Syntax-Plugin.git
-[submodule "bundle/vim-emblem"]
-	path = bundle/vim-emblem
-	url = https://github.com/heartsentwined/vim-emblem.git
-[submodule "bundle/vim-elixir"]
-	path = bundle/vim-elixir
-	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule "bundle/nuvola"]
+	path = bundle/nuvola
+	url = https://github.com/vim-scripts/nuvola.vim.git
