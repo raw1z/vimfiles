@@ -89,7 +89,7 @@ cmap <C-N> <Down>
 
 " ack configuration
 let g:ackprg="ack --smart-case --recurse -H --nocolor --nogroup --column --ignore-dir=node_modules"
-let g:ackprg=g:ackprg." --type-add EXT=.sass,.haml,.coffee,.feature"
+let g:ackprg=g:ackprg." --type-add EXT=.sass,.haml,.coffee,.feature,.sql"
 
 " nerdtree configuration
 map <leader>q :NERDTreeToggle<CR>
@@ -300,7 +300,7 @@ nmap <leader>wk <C-w><C-k>
 nmap <leader>wh <C-w><C-h>
 nmap <leader>wl <C-w><C-l>
 nmap <silent> <leader>wo :only<CR>
-nmap <silent> <space> :only<CR>
+nmap <silent> <C-space> :only<CR>
 
 " easily resize and split windows
 nmap <leader>w+ <C-w>+
