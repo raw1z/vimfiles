@@ -163,3 +163,9 @@
 [submodule "bundle/molokai"]
 	path = bundle/molokai
 	url = https://github.com/tomasr/molokai.git
+[submodule "bundle/vim-elixir"]
+	path = bundle/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule "bundle/vim-emblem"]
+	path = bundle/vim-emblem
+	url = https://github.com/heartsentwined/vim-emblem.git
