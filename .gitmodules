@@ -160,3 +160,6 @@
 [submodule "bundle/nuvola"]
 	path = bundle/nuvola
 	url = https://github.com/vim-scripts/nuvola.vim.git
+[submodule "bundle/molokai"]
+	path = bundle/molokai
+	url = https://github.com/tomasr/molokai.git
