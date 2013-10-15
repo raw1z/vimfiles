@@ -1,0 +1,42 @@
+snippet def "defines a new function with a multiline block" !b
+def ${1:name}(${2:params}) do
+  $3
+end
+endsnippet
+
+snippet defl "defines a new function" !b
+def ${1:name}(${2:params}), do: $3
+endsnippet
+
+snippet defp "defines a private method with a multiline block" !b
+defp ${1:name}(${2:params}) do
+end
+endsnippet
+
+snippet defpl "defines a new private function" !b
+defp ${1:name}(${2:params}), do: $3
+endsnippet
+
+snippet mod "defines a new module" !b
+defmodule ${1:name} do
+  $2
+end
+endsnippet
+
+snippet ht "inserts a [head | tail]" !i
+[head | tail]
+endsnippet
+
+snippet test "add a test case" !b
+test "${1:description}" do
+  $2
+end
+endsnippet
+
+snippet server "incorporate the GenServer behaviour" !b
+use GenServer.Behaviour
+endsnippet
+
+snippet fsm "incorporate the GenFSM behaviour" !b
+use GenFSM.Behaviour
+endsnippet
