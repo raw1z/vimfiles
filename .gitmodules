@@ -169,3 +169,6 @@
 [submodule "bundle/vim-emblem"]
 	path = bundle/vim-emblem
 	url = https://github.com/heartsentwined/vim-emblem.git
+[submodule "bundle/cypher"]
+	path = bundle/cypher
+	url = https://github.com/simpsonjulian/cypher-vim-syntax.git
