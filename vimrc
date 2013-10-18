@@ -153,9 +153,9 @@ endif
 " keyboard map for editing the vim/gvimrc configuration file
 nmap <leader>v :split $MYVIMRC<CR>
 nmap <leader>vc :split $VIM_CUSTOM_DIR/.vimrc.custom<CR>
-nmap <leader>gv :split $MYGVIMRC<CR>
-nmap <leader>gvc :split $VIM_CUSTOM_DIR/.gvimrc.custom<CR>
-nmap <leader>ev :split _exrc<CR>
+nmap <leader>vg :split $MYGVIMRC<CR>
+nmap <leader>vgc :split $VIM_CUSTOM_DIR/.gvimrc.custom<CR>
+nmap <leader>ve :split _exrc<CR>
 
 " keyboard map for toggling wrap mode
 nmap <leader>W :set wrap! linebreak nolist<CR>
