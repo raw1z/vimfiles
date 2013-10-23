@@ -104,10 +104,10 @@ autocmd User fugitive
   \ endif
 
 " set easier keymaps for [, {, } and ] suitable for french keyboards
-map <leader>) }
-map <leader>( {
-map <leader>)) ]
-map <leader>(( [
+map <leader>) ]
+map <leader>( [
+map <leader>)) }
+map <leader>(( {
 
 " call the tabularize command each time the pipe caracter is typed
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -323,4 +323,8 @@ let g:UltiSnipsEditSplit = "horizontal"
 if filereadable(expand($VIM_CUSTOM_DIR."/.vimrc.custom"))
   source $VIM_CUSTOM_DIR/.vimrc.custom
 endif
+
+" Easily GREP current word in current file.
+command! GREP :execute 'vimgrep '.expand('<cword>').' '.expand('%') | :copen | :cc
+nmap <C-f> :GREP<CR>
 
