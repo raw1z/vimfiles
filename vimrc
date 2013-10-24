@@ -324,9 +324,48 @@ if filereadable(expand($VIM_CUSTOM_DIR."/.vimrc.custom"))
   source $VIM_CUSTOM_DIR/.vimrc.custom
 endif
 
-" Easily GREP current word in current file.
-command! Grep :execute 'vimgrep /'.@/.'/gj '.expand('%') | :copen | :cc
-command! GGrep :execute ':ccl | :cgete [] | silent bufdo AckAdd "'.@/.'" '.expand('%') | :copen | :cc
+" Grep
+function! Grep(search)
+  let command = 'vimgrep /'.a:search.'/gj '.expand('%')
+  execute(command)
+  copen
+  cc
+endfunction
+
+function! GrepLastSearch()
+  call Grep(@/)
+endfunction
+
+function! GrepCurrentWord()
+  let @/ = expand('<cword>')
+  call GrepLastSearch()
+endfunction
+
+function! GlobalGrep(search)
+  ccl
+  cgete []
+  let command = 'silent bufdo vimgrepadd /'.a:search.'/gj %'
+  execute(command)
+  copen
+  cc
+endfunction
+
+function! GlobalGrepLastSearch()
+  call GlobalGrep(@/)
+endfunction
+
+function! GlobalGrepCurrentWord()
+  let @/ = expand('<cword>')
+  call GlobalGrepLastSearch()
+endfunction
+
+command! Grep :call GrepLastSearch()
+command! Grepw :call GrepCurrentWord()
+command! GGrep :call GlobalGrepLastSearch()
+command! GGrepw :call GlobalGrepCurrentWord()
+
 nmap <leader>n :Grep<CR>
+nmap <leader>f :Grepw<CR>
 nmap <leader>N :GGrep<CR>
+nmap <leader>F :GGrepw<CR>
 
