@@ -325,6 +325,8 @@ if filereadable(expand($VIM_CUSTOM_DIR."/.vimrc.custom"))
 endif
 
 " Easily GREP current word in current file.
-command! GREP :execute 'vimgrep '.expand('<cword>').' '.expand('%') | :copen | :cc
-nmap <C-f> :GREP<CR>
+command! Grep :execute 'vimgrep /'.@/.'/gj '.expand('%') | :copen | :cc
+command! GGrep :execute ':ccl | :cgete [] | silent bufdo AckAdd "'.@/.'" '.expand('%') | :copen | :cc
+nmap <leader>n :Grep<CR>
+nmap <leader>N :GGrep<CR>
 
