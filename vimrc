@@ -369,3 +369,47 @@ nmap <leader>f :Grepw<CR>
 nmap <leader>N :GGrep<CR>
 nmap <leader>F :GGrepw<CR>
 
+" XML to YAML
+function! s:ConfigureYamlPreviewBuffer()
+  setlocal buftype=nofile
+  setlocal noswapfile
+  setlocal syntax=yaml
+  setlocal bufhidden=delete
+  setlocal nomodifiable
+  map <buffer> q :q<CR>
+endfunction
+
+function! s:GetCurrentBufferContentAsFile()
+  let xmlTempFile = tempname()
+  call writefile(getline(1,'$'), xmlTempFile)
+  return xmlTempFile
+endfunction
+
+function! Xml2Yaml()
+  let currentBufferFile = s:GetCurrentBufferContentAsFile()
+  let shellCommand = 'xml2yaml '.currentBufferFile
+  vnew
+  exe 'read !'.shellCommand
+  call s:ConfigureYamlPreviewBuffer()
+  execute ('0goto')
+endfunction
+
+function! Xml2YamlDiff(comparedFile)
+  let currentBufferFile = s:GetCurrentBufferContentAsFile()
+  let shellCommand = 'xml2yaml '.currentBufferFile
+  new
+  exe 'read !'.shellCommand
+  call s:ConfigureYamlPreviewBuffer()
+  diffthis
+  only
+
+  let shellCommand = 'xml2yaml '.a:comparedFile
+  vnew
+  exe 'read !'.shellCommand
+  call s:ConfigureYamlPreviewBuffer()
+  diffthis
+  execute ('0goto')
+endfunction
+
+command! Xml2Yaml :call Xml2Yaml()
+command! -nargs=1 Xml2YamlDiff call Xml2YamlDiff(<q-args>)
