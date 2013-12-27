@@ -369,3 +369,7 @@ nmap <leader>f :Grepw<CR>
 nmap <leader>N :GGrep<CR>
 nmap <leader>F :GGrepw<CR>
 
+" easymotion highlighting
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+
