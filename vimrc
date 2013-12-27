@@ -26,7 +26,6 @@ set ruler
 set showcmd
 set laststatus=2
 
-filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set nobackup
@@ -77,7 +76,6 @@ nmap <F8> :TagbarToggle<CR>
 
 " c# specific configuration
 if has("autocmd")
-  filetype on
   autocmd FileType cs setlocal ts=4 sts=4 sw=4 et
 endif
 
@@ -372,4 +370,52 @@ nmap <leader>F :GGrepw<CR>
 " easymotion highlighting
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
+
+" XML to YAML
+function! s:ConfigureYamlPreviewBuffer()
+  execute ':0'
+  execute ':delete'
+  setlocal buftype=nofile
+  setlocal noswapfile
+  setlocal syntax=yaml
+  setlocal bufhidden=delete
+  setlocal nomodifiable
+  map <buffer> q :q<CR>
+endfunction
+
+function! s:GetCurrentBufferContentAsFile()
+  let xmlTempFile = tempname()
+  call writefile(getline(1,'$'), xmlTempFile)
+  return xmlTempFile
+endfunction
+
+function! Xml2Yaml()
+  let currentBufferFile = s:GetCurrentBufferContentAsFile()
+  let shellCommand = 'xml2yaml '.currentBufferFile
+  vnew
+  exe 'read !'.shellCommand
+  call s:ConfigureYamlPreviewBuffer()
+endfunction
+
+function! Xml2YamlDiff(comparedFile)
+  let currentBufferFile = s:GetCurrentBufferContentAsFile()
+  let shellCommand = 'xml2yaml '.currentBufferFile
+  new
+  exe 'read !'.shellCommand
+  call s:ConfigureYamlPreviewBuffer()
+  diffthis
+  only
+
+  let shellCommand = 'xml2yaml '.a:comparedFile
+  vnew
+  exe 'read !'.shellCommand
+  call s:ConfigureYamlPreviewBuffer()
+  diffthis
+  execute ('0goto')
+endfunction
+
+command! Xml2Yaml :call Xml2Yaml()
+command! -nargs=1 Xml2YamlDiff call Xml2YamlDiff(<q-args>)
+autocmd FileType xml map <buffer> <leader>r :Xml2Yaml<CR>
+autocmd FileType xml map <buffer> <leader>R :Xml2YamlDiff 
 
