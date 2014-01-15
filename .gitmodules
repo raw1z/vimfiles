@@ -178,3 +178,6 @@
 [submodule "bundle/dash"]
 	path = bundle/dash
 	url = https://github.com/rizzatti/dash.vim.git
+[submodule "bundle/neobundle.vim"]
+	path = bundle/neobundle.vim
+	url = https://github.com/Shougo/neobundle.vim.git
