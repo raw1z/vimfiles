@@ -74,11 +74,6 @@ set t_Co=256
 " tagbar configuration
 nmap <F8> :TagbarToggle<CR>
 
-" c# specific configuration
-if has("autocmd")
-  autocmd FileType cs setlocal ts=4 sts=4 sw=4 et
-endif
-
 " remap for macbook pro french keyboard
 map <C-L> <C-]>
 inoremap kj <Esc>
@@ -169,12 +164,15 @@ nmap <leader>g :Gstatus<CR>
 " allow folder specific configuration
 set exrc
 
-" on windows, consider all the files with an extension
-" ending with 'proj' as an xml file
+" on windows
+" consider all the files with an extension ending with 'proj' or 'xaml' as an xml file
+" use 4 spaces for vb/cs files
 if has("win32")
   augroup filetypedetect
-    au BufNewFile,BufRead *.*proj set syntax=xml
+    au BufNewFile,BufRead *.*proj set ft=xml
+    au BufNewFile,BufRead *.xaml set ft=xml ts=4 sts=4 sw=4 et
     au BufNewFile,BufRead *.vb set syntax=vbnet ft=vbnet ts=4 sts=4 sw=4 et
+    au BufNewFile,BufRead *.cs set ts=4 sts=4 sw=4 et
   augroup END
 endif
 
