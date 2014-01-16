@@ -1,29 +1,165 @@
+" detect OS {{{
+let s:is_windows = has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_macvim = has('gui_macvim')
+"}}}
+
 " NeoBundle Configuration {{{
 
 if has('vim_starting')
   set nocompatible               " Be iMproved
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=$VIM/vimfiles/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#rc(expand('$VIM/vimfiles/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Recommended to install
+"}}}
+
+" Bundles {{{
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
+      \     'windows' : 'nmake -f make_msvc.mak nodebug=1',
       \     'cygwin' : 'make -f make_cygwin.mak',
       \     'mac' : 'make -f make_mac.mak',
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
 
-
+NeoBundle 'AndrewRadev/linediff.vim'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'adimit/prolog.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'cschlueter/vim-wombat'
+NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'heartsentwined/vim-emblem'
+NeoBundle 'jgdavey/vim-railscasts'
+NeoBundle 'juvenn/mustache.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'michaeljsmith/vim-indent-object'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'nelstrom/vim-mac-classic-theme'
+NeoBundle 'peterhoeg/vim-tmux'
+NeoBundle 'pydave/AsyncCommand'
+NeoBundle 'raw1z/Windows-PowerShell-Syntax-Plugin'
+NeoBundle 'raw1z/vim-colorschemes'
+NeoBundle 'raw1z/vim-csharp'
+NeoBundle 'rizzatti/dash.vim'
+NeoBundle 'rizzatti/funcoo.vim'
+NeoBundle 'rodjek/vim-puppet'
+NeoBundle 'salsifis/vim-transpose'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'simpsonjulian/cypher-vim-syntax'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'skalnik/vim-vroom'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-pathogen'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-rake'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-scripts/UltiSnips'
+NeoBundle 'vim-scripts/VB.NET-Syntax'
+NeoBundle 'vim-scripts/ZoomWin'
+NeoBundle 'vim-scripts/nuvola.vim'
+NeoBundle 'vim-scripts/vimwiki'
+NeoBundle 'wavded/vim-stylus'
+NeoBundle 'wgibbs/vim-irblack'
+NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/unite.vim'
 
 filetype plugin indent on     " Required!
 
+" }}}
+
+" Unite Configuration {{{
+let bundle = neobundle#get('unite.vim')
+function! bundle.hooks.on_source(bundle)
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  call unite#filters#sorter_default#use(['sorter_rank'])
+  call unite#set_profile('files', 'smartcase', 1)
+  call unite#custom#source('line,outline','matchers','matcher_fuzzy')
+endfunction
+
+let g:unite_data_directory=$VIM.'/.vim/.cache/unite'
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
+let g:unite_source_rec_max_cache_files=5000
+let g:unite_prompt='» '
+
+if executable('ag')
+  let g:unite_source_grep_command='ag'
+  let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+  let g:unite_source_grep_recursive_opt=''
+elseif executable('ack')
+  let g:unite_source_grep_command='ack'
+  let g:unite_source_grep_default_opts='--no-heading --no-color -a -C4'
+  let g:unite_source_grep_recursive_opt=''
+endif
+
+function! s:unite_settings()
+  nmap <buffer> Q <plug>(unite_exit)
+  nmap <buffer> <esc> <plug>(unite_exit)
+  imap <buffer> <esc> <plug>(unite_exit)
+endfunction
+autocmd FileType unite call s:unite_settings()
+
+nmap <space> [unite]
+nnoremap [unite] <nop>
+
+if s:is_windows
+  nnoremap <silent> [unite]p :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec buffer file_mru bookmark<cr><c-u>
+  nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec<cr><c-u>
+else
+  nnoremap <silent> [unite]p :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr><c-u>
+  nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+endif
+
+nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
+nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
+nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
+nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
+nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
+
+  NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':'colorscheme'}} "{{{
+    nnoremap <silent> [unite]c :<C-u>Unite -winheight=10 -auto-preview -buffer-name=colorschemes colorscheme<cr>
+  "}}}
+  NeoBundleLazy 'tsukkee/unite-tag', {'autoload':{'unite_sources':['tag','tag/file']}} "{{{
+    nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tag tag tag/file<cr>
+  "}}}
+  NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}} "{{{
+    nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
+  "}}}
+  NeoBundleLazy 'Shougo/unite-help', {'autoload':{'unite_sources':'help'}} "{{{
+    nnoremap <silent> [unite]h :<C-u>Unite -auto-resize -buffer-name=help help<cr>
+  "}}}
+  NeoBundleLazy 'Shougo/junkfile.vim', {'autoload':{'commands':'JunkfileOpen','unite_sources':['junkfile','junkfile/new']}} "{{{
+    let g:junkfile#directory=expand($VIM."/.vim/.cache/junk")
+    nnoremap <silent> [unite]j :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
+  "}}}
 " }}}
 
 " Personal Configuration {{{
@@ -254,7 +390,8 @@ function! g:RunCommandAndPreviewOutput(shellCommand)
     setlocal noswapfile
     setlocal syntax=none
     setlocal bufhidden=delete
-    silent execute '%s///ge'
+    silent execute '%s/
+//ge'
     execute '0'
     setlocal nomodifiable
     map <buffer> q :q<CR>
