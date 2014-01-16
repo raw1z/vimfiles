@@ -22,7 +22,6 @@ prolog.vim
 supertab
 tabular
 tagbar
-unite-airline_themes
 unite-colorscheme
 unite-help
 unite-outline
@@ -35,7 +34,6 @@ vim-colorschemes
 vim-commentary
 vim-csharp
 vim-dispatch
-vim-easymotion
 vim-elixir
 vim-emblem
 vim-endwise
