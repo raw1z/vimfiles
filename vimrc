@@ -1,6 +1,32 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+" NeoBundle Configuration {{{
 
-set nocompatible
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Recommended to install
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+
+
+filetype plugin indent on     " Required!
+
+" }}}
+
+" Personal Configuration {{{
 
 " change the leader key mapping to an easier reachable one
 let mapleader="ç"
@@ -58,9 +84,9 @@ noremap <Right> <Nop>
 
 " ctrlp configuration
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules$',
-  \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\|\.sw[a-z]$',
-  \ }
+      \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules$',
+      \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\|\.sw[a-z]$',
+      \ }
 
 " rake.vim additions
 map <leader>a :AS<CR>
@@ -92,9 +118,9 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " jump up to the commit object for the current tree by pressing C.
 autocmd User fugitive
-  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-  \   nnoremap <buffer> .. :edit %:h<CR> |
-  \ endif
+      \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+      \   nnoremap <buffer> .. :edit %:h<CR> |
+      \ endif
 
 " set easier keymaps for [, {, } and ] suitable for french keyboards
 map <leader>) ]
@@ -104,7 +130,7 @@ map <leader>(( {
 
 " call the tabularize command each time the pipe caracter is typed
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
- 
+
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -417,3 +443,4 @@ command! -nargs=1 Xml2YamlDiff call Xml2YamlDiff(<q-args>)
 autocmd FileType xml map <buffer> <leader>r :Xml2Yaml<CR>
 autocmd FileType xml map <buffer> <leader>R :Xml2YamlDiff 
 
+"}}}

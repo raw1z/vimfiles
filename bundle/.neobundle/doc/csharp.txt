@@ -1,0 +1,70 @@
+*csharp.txt*	For Vim version 7.3	v1.0
+
+Author: Rawane Zossou <dev@raw1z.fr>
+Licence: Same terms as Vim itself (see |license|)
+
+INTRODUCTION                                    *csharp*
+
+This plugin offers various useful tools for c# development:
+  
+  - Compilation
+  - Debugging
+  - Online doc
+
+I borrowed many idea from this blog:
+http://www.kevinberridge.com/2008/09/visual-studio-development.html
+
+Note: This plugin depends on the following vim plugins:
+
+  - vim-dispatch: https://github.com/tpope/vim-dispatch.git
+  - asyncCommand: https://github.com/pydave/AsyncCommand.git
+
+COMPILATION COMMANDS                                        *csharp-build-commands*
+
+                                                            *csharp-:CsharpBuild*
+:CsharpBuild          Build the solution found in the current working folder
+                      using the default configuration set in the solution file
+
+                                                            *csharp-:CsharpRebuild*
+:CsharpRebuild        Rebuild the solution found in the current working folder
+                      using the default configuration set in the solution file
+
+                                                            *csharp-:CsharpReleaseBuild*
+:CsharpReleaseBuild   Build the solution found in the current working folder
+                      in release
+
+                                                            *csharp-:CsharpReleaseRebuild*
+:CsharpReleaseRebuild Rebuild the solution found in the current working folder
+                      in release
+
+The following keymaps are defined too:
+
+<leader>b  :CsharpBuild
+<leader>br :CsharpRebuild
+<leader>B  :CsharpReleaseRebuild
+
+DEBUGGING COMMANDS                                        *csharp-debugging-commands*
+
+                                                            *csharp-:CsharpDebugHere*
+:CsharpDebugHere      add the following command above the current line:
+
+                        System.Diagnostics.Debugger.Launch();
+
+                                                            *csharp-:CsharpDebugBreakHere*
+:CsharpDebugHere      add the following command above the current line:
+
+                        System.Diagnostics.Debugger.Break();
+
+The following keymaps are defined too:
+
+<leader>d :CsharpDebugHere
+<leader>D :CsharpDebugBreakHere
+
+ONLINE DOC COMMANDS                                        *csharp-onlinedoc-commands*
+
+                                                            *csharp-:CsharpOnlineDoc*
+:CsharpOnlineDoc      search for the word under the cursor on the msdn website
+
+The <F1> key is mapped to |:CsharpOnlineDoc| and can be used in nomarl and
+insert mode. 
+
