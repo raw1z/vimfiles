@@ -71,7 +71,6 @@ NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-pathogen'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-rake'
 NeoBundle 'tpope/vim-repeat'
@@ -169,8 +168,6 @@ let mapleader="ç"
 let $VIM_CUSTOM_DIR=$VIM
 
 " load all the extensions
-call pathogen#infect()
-
 syntax on
 filetype plugin indent on
 
@@ -285,19 +282,15 @@ nnoremap <leader>u :GundoToggle<CR>
 if has("autocmd")
   augroup ConfigChangeDetect
     autocmd! bufwritepost [_.]vimrc source $MYVIMRC
-    autocmd  bufwritepost [_.]vimrc call Pl#Load()
     autocmd  bufwritepost [_.]vimrc echo ".vimrc reloaded"
 
     autocmd! bufwritepost [_.]vimrc.custom source $MYVIMRC
-    autocmd  bufwritepost [_.]vimrc.custom call Pl#Load()
     autocmd  bufwritepost [_.]vimrc.custom echo ".vimrc reloaded"
 
     autocmd  bufwritepost [_.]gvimrc source $MYGVIMRC
-    autocmd  bufwritepost [_.]gvimrc call Pl#Load()
     autocmd  bufwritepost [_.]gvimrc echo ".gvimrc reloaded "
 
     autocmd  bufwritepost [_.]gvimrc.custom source $MYGVIMRC
-    autocmd  bufwritepost [_.]gvimrc.custom call Pl#Load()
     autocmd  bufwritepost [_.]gvimrc.custom echo ".gvimrc reloaded "
 
     autocmd  bufwritepost [_.]exrc source %:p
