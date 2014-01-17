@@ -8,10 +8,18 @@ let s:is_macvim = has('gui_macvim')
 
 if has('vim_starting')
   set nocompatible               " Be iMproved
-  set runtimepath+=$VIM/vimfiles/bundle/neobundle.vim/
+  if (s:is_windows)
+    set runtimepath+=$VIM/vimfiles/bundle/neobundle.vim/
+  else
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+  endif
 endif
 
-call neobundle#rc(expand('$VIM/vimfiles/bundle/'))
+if (s:is_windows)
+  call neobundle#rc(expand('$VIM/vimfiles/bundle/'))
+else
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -102,7 +110,12 @@ function! bundle.hooks.on_source(bundle)
   call unite#custom#source('line,outline','matchers','matcher_fuzzy')
 endfunction
 
-let g:unite_data_directory=$VIM.'/.vim/.cache/unite'
+if (s:is_windows)
+  let g:unite_data_directory=$VIM.'/.vim/.cache/unite'
+else
+  let g:unite_data_directory='~/.vim/.cache/unite'
+end
+
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable=1
 let g:unite_source_rec_max_cache_files=5000
@@ -156,7 +169,11 @@ nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
     nnoremap <silent> [unite]h :<C-u>Unite -auto-resize -buffer-name=help help<cr>
   "}}}
   NeoBundleLazy 'Shougo/junkfile.vim', {'autoload':{'commands':'JunkfileOpen','unite_sources':['junkfile','junkfile/new']}} "{{{
-    let g:junkfile#directory=expand($VIM."/.vim/.cache/junk")
+    if (s:is_windows)
+      let g:junkfile#directory=expand($VIM."/.vim/.cache/junk")
+    else
+      let g:junkfile#directory=expand("~/.vim/.cache/junk")
+    end
     nnoremap <silent> [unite]j :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
   "}}}
 " }}}
