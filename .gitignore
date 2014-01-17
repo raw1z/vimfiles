@@ -3,6 +3,7 @@
 *.bak
 .cache/*
 bundle/.neobundle/*
+bundle/auto-pairs/*
 bundle/AsyncCommand/*
 bundle/NrrwRgn/*
 bundle/UltiSnips/*
