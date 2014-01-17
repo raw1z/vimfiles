@@ -1,6 +1,8 @@
 .netrwhist
 *.sw[a-z]
 *.bak
+.cache/*
+bundle/.neobundle/*
 bundle/AsyncCommand/*
 bundle/NrrwRgn/*
 bundle/UltiSnips/*
