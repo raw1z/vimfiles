@@ -143,6 +143,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/nuvola.vim'
 NeoBundle 'wgibbs/vim-irblack'
 NeoBundle 'baskerville/bubblegum'
+NeoBundle 'Pychimp/vim-luna'
 "}}}
 
 filetype plugin indent on     " Required!
