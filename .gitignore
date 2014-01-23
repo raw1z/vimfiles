@@ -3,6 +3,13 @@
 *.bak
 .cache/*
 bundle/.neobundle/*
+bundle/bubblegum/*
+bundle/clang_complete/*
+bundle/csv.vim/*
+bundle/powerline/*
+bundle/vim-airline/*
+bundle/vim-gitgutter/*
+bundle/vital.vim/*
 bundle/AsyncCommand/*
 bundle/NrrwRgn/*
 bundle/UltiSnips/*

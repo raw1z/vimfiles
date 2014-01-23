@@ -37,65 +37,113 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 NeoBundle 'AndrewRadev/linediff.vim'
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'adimit/prolog.vim'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'chrisbra/NrrwRgn'
-NeoBundle 'cschlueter/vim-wombat'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'heartsentwined/vim-emblem'
-NeoBundle 'jgdavey/vim-railscasts'
-NeoBundle 'juvenn/mustache.vim'
-NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'mileszs/ack.vim'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'nelstrom/vim-mac-classic-theme'
-NeoBundle 'peterhoeg/vim-tmux'
-NeoBundle 'pydave/AsyncCommand'
-NeoBundle 'raw1z/Windows-PowerShell-Syntax-Plugin'
-NeoBundle 'raw1z/vim-colorschemes'
-NeoBundle 'raw1z/vim-csharp'
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'rizzatti/funcoo.vim'
-NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'salsifis/vim-transpose'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'simpsonjulian/cypher-vim-syntax'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'skalnik/vim-vroom'
-NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-rake'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tsaleh/vim-matchit'
-NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'vim-scripts/UltiSnips'
-NeoBundle 'vim-scripts/VB.NET-Syntax'
 NeoBundle 'vim-scripts/ZoomWin'
-NeoBundle 'vim-scripts/nuvola.vim'
 NeoBundle 'vim-scripts/vimwiki'
-NeoBundle 'wavded/vim-stylus'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundleLazy 'pydave/AsyncCommand'
+
+" languages {{{
+NeoBundleLazy 'adimit/prolog.vim'
+autocmd FileType prolog NeoBundleSource prolog.vim
+
+NeoBundleLazy 'digitaltoad/vim-jade'
+autocmd FileType jade NeoBundleSource vim-jade
+
+NeoBundleLazy 'elixir-lang/vim-elixir'
+autocmd FileType elixir NeoBundleSource vim-elixir
+
+NeoBundleLazy 'groenewege/vim-less'
+autocmd FileType less NeoBundleSource vim-less
+
+NeoBundleLazy 'heartsentwined/vim-emblem'
+autocmd FileType emblem NeoBundleSource vim-emblem
+
+NeoBundleLazy 'juvenn/mustache.vim'
+autocmd FileType,Syntax html,mustache NeoBundleSource mustache.vim
+
+NeoBundleLazy 'kchmck/vim-coffee-script'
+autocmd FileType coffee NeoBundleSource vim-coffee-script
+
+NeoBundleLazy 'peterhoeg/vim-tmux'
+autocmd FileType tmux NeoBundleSource vim-tmux
+
+NeoBundleLazy 'raw1z/vim-csharp'
+autocmd FileType csharp NeoBundleSource vim-csharp
+
+NeoBundleLazy 'rodjek/vim-puppet'
+autocmd FileType puppet NeoBundleSource vim-puppet
+
+NeoBundleLazy 'simpsonjulian/cypher-vim-syntax'
+autocmd FileType cypher NeoBundleSource cypher-vim-syntax
+
+NeoBundleLazy 'tpope/vim-haml'
+autocmd FileType haml,sass,scss NeoBundleSource vim-haml
+
+NeoBundleLazy 'tpope/vim-markdown'
+autocmd FileType markdown NeoBundleSource vim-markdown
+
+NeoBundleLazy 'vim-ruby/vim-ruby'
+autocmd FileType ruby NeoBundleSource vim-ruby
+
+NeoBundleLazy 'vim-scripts/VB.NET-Syntax'
+autocmd FileType vbnet NeoBundleSource VB.NET-Syntax
+
+NeoBundleLazy 'wavded/vim-stylus'
+autocmd FileType stylus NeoBundleSource vim-stylus
+
+NeoBundleLazy 'raw1z/Windows-PowerShell-Syntax-Plugin'
+autocmd FileType ps1 NeoBundleSource Windows-PowerShell-Syntax-Plugin
+
+NeoBundleLazy 'Rip-Rip/clang_complete'
+autocmd FileType c,cpp,m NeoBundleSource clang_complete
+
+NeoBundleLazy 'chrisbra/csv.vim'
+autocmd FileType csv NeoBundleSource csv.vim
+
+"}}}
+
+" Colorschemes {{{
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'jgdavey/vim-railscasts'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'nelstrom/vim-mac-classic-theme'
+NeoBundle 'raw1z/vim-colorschemes'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/nuvola.vim'
 NeoBundle 'wgibbs/vim-irblack'
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'baskerville/bubblegum'
+"}}}
 
 filetype plugin indent on     " Required!
 
@@ -116,7 +164,7 @@ else
   let g:unite_data_directory='~/.vim/.cache/unite'
 end
 
-let g:unite_enable_start_insert=1
+let g:unite_enable_start_insert=0
 let g:unite_source_history_yank_enable=1
 let g:unite_source_rec_max_cache_files=5000
 let g:unite_prompt='» '
@@ -176,6 +224,77 @@ nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
     end
     nnoremap <silent> [unite]j :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
   "}}}
+" }}}
+
+" airline utf8 {{{
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+" old vim-powerline symbols
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
+
+" }}}
+
+" sneak configuration {{{
+
+nmap f <Plug>SneakForward
+xmap f <Plug>VSneakForward
+nmap F <Plug>SneakBackward
+xmap F <Plug>VSneakBackward
+
+" "}}}
+
+" jump to next nearest closed fold {{{
+
+function! NextClosedFold(dir)
+    let cmd = 'norm!z' . a:dir
+    let view = winsaveview()
+    let [l0, l, open] = [0, view.lnum, 1]
+    while l != l0 && open
+        exe cmd
+        let [l0, l] = [l, line('.')]
+        let open = foldclosed(l) < 0
+    endwhile
+    if open
+        call winrestview(view)
+    endif
+endfunction
+
+nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
+nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
+
 " }}}
 
 " Personal Configuration {{{
@@ -240,9 +359,6 @@ let g:ctrlp_custom_ignore = {
 
 " rake.vim additions
 map <leader>a :AS<CR>
-
-" powerline configuration
-let g:Powerline_symbols = 'fancy'
 
 " Explicitly tell vim that the terminal supports 256 colors
 set t_Co=256
