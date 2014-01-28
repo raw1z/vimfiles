@@ -100,6 +100,8 @@ autocmd FileType tmux NeoBundleSource vim-tmux
 
 NeoBundleLazy 'raw1z/vim-csharp'
 autocmd FileType csharp NeoBundleSource vim-csharp
+autocmd FileType vb.net NeoBundleSource vim-csharp
+autocmd FileType xaml NeoBundleSource vim-csharp
 
 NeoBundleLazy 'rodjek/vim-puppet'
 autocmd FileType puppet NeoBundleSource vim-puppet
