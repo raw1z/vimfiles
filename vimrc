@@ -100,6 +100,8 @@ autocmd FileType tmux NeoBundleSource vim-tmux
 
 NeoBundleLazy 'raw1z/vim-csharp'
 autocmd FileType csharp NeoBundleSource vim-csharp
+autocmd FileType vb.net NeoBundleSource vim-csharp
+autocmd FileType xaml NeoBundleSource vim-csharp
 
 NeoBundleLazy 'rodjek/vim-puppet'
 autocmd FileType puppet NeoBundleSource vim-puppet
@@ -127,9 +129,6 @@ autocmd FileType ps1 NeoBundleSource Windows-PowerShell-Syntax-Plugin
 
 NeoBundleLazy 'Rip-Rip/clang_complete'
 autocmd FileType c,cpp,m NeoBundleSource clang_complete
-
-NeoBundleLazy 'chrisbra/csv.vim'
-autocmd FileType csv NeoBundleSource csv.vim
 
 "}}}
 
@@ -230,51 +229,54 @@ nnoremap <silent> [unite]i :<C-u>Unite neobundle/install<cr>
 
 " airline utf8 {{{
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+if !s:is_windows && !s:is_cygwin
+
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  let g:airline_symbols.space = "\ua0"
+
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+  " powerline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+
+  " old vim-powerline symbols
+  let g:airline_left_sep = '⮀'
+  let g:airline_left_alt_sep = '⮁'
+  let g:airline_right_sep = '⮂'
+  let g:airline_right_alt_sep = '⮃'
+  let g:airline_symbols.branch = '⭠'
+  let g:airline_symbols.readonly = '⭤'
+  let g:airline_symbols.linenr = '⭡'
+
 endif
-let g:airline_symbols.space = "\ua0"
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
-" old vim-powerline symbols
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
-
 " }}}
 
 " sneak configuration {{{
 
-nmap f <Plug>SneakForward
-xmap f <Plug>VSneakForward
-nmap F <Plug>SneakBackward
-xmap F <Plug>VSneakBackward
+nmap ff <Plug>SneakForward
+xmap ff <Plug>VSneakForward
+nmap FF <Plug>SneakBackward
+xmap FF <Plug>VSneakBackward
 
 " "}}}
 
