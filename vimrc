@@ -586,6 +586,8 @@ nmap <leader>wj <C-w><C-j>
 nmap <leader>wk <C-w><C-k>
 nmap <leader>wh <C-w><C-h>
 nmap <leader>wl <C-w><C-l>
+nmap <leader>wf <C-w>f
+nmap <leader>wgf <C-w>gf
 nmap <silent> <leader>wo :only<CR>
 nmap <silent> <C-space> :only<CR>
 
