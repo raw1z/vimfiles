@@ -130,9 +130,6 @@ autocmd FileType ps1 NeoBundleSource Windows-PowerShell-Syntax-Plugin
 NeoBundleLazy 'Rip-Rip/clang_complete'
 autocmd FileType c,cpp,m NeoBundleSource clang_complete
 
-NeoBundleLazy 'chrisbra/csv.vim'
-autocmd FileType csv NeoBundleSource csv.vim
-
 "}}}
 
 " Colorschemes {{{
