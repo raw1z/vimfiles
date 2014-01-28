@@ -273,10 +273,10 @@ endif
 
 " sneak configuration {{{
 
-nmap f <Plug>SneakForward
-xmap f <Plug>VSneakForward
-nmap F <Plug>SneakBackward
-xmap F <Plug>VSneakBackward
+nmap ff <Plug>SneakForward
+xmap ff <Plug>VSneakForward
+nmap FF <Plug>SneakBackward
+xmap FF <Plug>VSneakBackward
 
 " "}}}
 
