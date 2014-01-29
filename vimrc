@@ -37,6 +37,7 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 NeoBundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-scriptease'
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/unite.vim'
