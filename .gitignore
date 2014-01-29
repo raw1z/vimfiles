@@ -3,6 +3,7 @@
 *.bak
 .cache/*
 bundle/.neobundle/*
+bundle/vim-sensible/*
 bundle/vim-luna/*
 bundle/bubblegum/*
 bundle/clang_complete/*
