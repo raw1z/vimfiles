@@ -210,6 +210,9 @@ nnoremap <silent> [unite]i :<C-u>Unite neobundle/install<cr>
   NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':'colorscheme'}} "{{{
     nnoremap <silent> [unite]c :<C-u>Unite -winheight=10 -auto-preview -buffer-name=colorschemes colorscheme<cr>
   "}}}
+  NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}} "{{{
+    nnoremap <silent> [unite]q :<C-u>Unite -auto-resize -auto-preview quickfix<cr>
+  "}}}
   NeoBundleLazy 'tsukkee/unite-tag', {'autoload':{'unite_sources':['tag','tag/file']}} "{{{
     nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tag tag tag/file<cr>
   "}}}

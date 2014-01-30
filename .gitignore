@@ -3,6 +3,7 @@
 *.bak
 .cache/*
 bundle/.neobundle/*
+bundle/unite-quickfix/*
 bundle/vim-scriptease/*
 bundle/vim-sensible/*
 bundle/vim-luna/*
