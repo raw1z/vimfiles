@@ -461,8 +461,8 @@ set exrc
 " use 4 spaces for vb/cs files
 if has("win32")
   augroup filetypedetect
-    au BufNewFile,BufRead *.*proj set ft=xml
-    au BufNewFile,BufRead *.xaml set ft=xml ts=4 sts=4 sw=4 et
+    au BufNewFile,BufRead *.*proj set syntax=xml
+    au BufNewFile,BufRead *.xaml set ft=xaml syntax=xml ts=4 sts=4 sw=4 et
     au BufNewFile,BufRead *.vb set syntax=vbnet ft=vbnet ts=4 sts=4 sw=4 et
     au BufNewFile,BufRead *.cs set ts=4 sts=4 sw=4 et
   augroup END
@@ -707,7 +707,7 @@ endfunction
 
 command! Xml2Yaml :call Xml2Yaml()
 command! -nargs=1 Xml2YamlDiff call Xml2YamlDiff(<q-args>)
-autocmd FileType xml map <buffer> <leader>r :Xml2Yaml<CR>
-autocmd FileType xml map <buffer> <leader>R :Xml2YamlDiff 
+autocmd Syntax xml map <buffer> <leader>r :Xml2Yaml<CR>
+autocmd Syntax xml map <buffer> <leader>R :Xml2YamlDiff 
 
 "}}}
