@@ -36,6 +36,8 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-scriptease'
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/unite.vim'
@@ -207,6 +209,9 @@ nnoremap <silent> [unite]i :<C-u>Unite neobundle/install<cr>
 
   NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':'colorscheme'}} "{{{
     nnoremap <silent> [unite]c :<C-u>Unite -winheight=10 -auto-preview -buffer-name=colorschemes colorscheme<cr>
+  "}}}
+  NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}} "{{{
+    nnoremap <silent> [unite]q :<C-u>Unite -auto-resize -auto-preview quickfix<cr>
   "}}}
   NeoBundleLazy 'tsukkee/unite-tag', {'autoload':{'unite_sources':['tag','tag/file']}} "{{{
     nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tag tag tag/file<cr>
@@ -459,7 +464,7 @@ set exrc
 " on windows
 " consider all the files with an extension ending with 'proj' or 'xaml' as an xml file
 " use 4 spaces for vb/cs files
-if has("win32")
+if s:is_windows
   augroup filetypedetect
     au BufNewFile,BufRead *.*proj set syntax=xml
     au BufNewFile,BufRead *.xaml set ft=xaml syntax=xml ts=4 sts=4 sw=4 et
@@ -508,8 +513,7 @@ function! ChangeDirectoryAndSource(path, filename)
 endfunction
 command! -nargs=1 Xcd call ChangeDirectoryAndSource(<q-args>, "_exrc")
 
-" allow to run an extenal command an display its output in
-" a preview window
+" allow to run an extenal command an display its output in a preview window
 function! g:RunCommandAndPreviewOutput(shellCommand)
   execute('pclose')
   let env = {}
@@ -534,7 +538,7 @@ function! g:trigger(title, shellCommand)
   echo a:title
 endfunction
 
-" fast quicklist interactions
+" fast quicklist interactions {{{
 function! OpenQuickListAndWrap() 
   execute("copen")
   execute ("set wrap")
@@ -543,8 +547,9 @@ endfunction
 nmap <leader>co :call OpenQuickListAndWrap()<CR>
 nmap <leader>cq :ccl<CR>
 nmap <leader>cc :cc<CR>
+" }}}
 
-" diff mode keymap
+" diff mode keymap {{{
 function! MyDiffput(visualModeEnabled)
   if a:visualModeEnabled == 0
     exe ':diffput'
@@ -582,16 +587,20 @@ endfunction
 augroup DiffModeMaps
   autocmd! FilterWritePre * call EnableDiffKeyMaps()
 augroup END
+"}}}
 
-" easily moves between opened windows
+" easily moves between opened windows {{{
 nmap <leader>wj <C-w><C-j>
 nmap <leader>wk <C-w><C-k>
 nmap <leader>wh <C-w><C-h>
 nmap <leader>wl <C-w><C-l>
+nmap <leader>wf <C-w>f
+nmap <leader>wgf <C-w>gf
 nmap <silent> <leader>wo :only<CR>
 nmap <silent> <C-space> :only<CR>
+"}}}
 
-" easily resize and split windows
+" easily resize and split windows {{{
 nmap <leader>w+ <C-w>+
 nmap <leader>w- <C-w>-
 nmap <leader>w> <C-w>>
@@ -600,10 +609,12 @@ nmap <leader>w= <C-w>=
 nmap <space><space> <C-w><C-w>
 nmap <silent> <leader>wsp :sp<CR>
 nmap <silent> <leader>wvs :vs<CR>
+" }}}
 
-" easy save and quit
+" easy save and quit {{{
 nmap <silent> <leader>s :update<CR>
 nmap <silent> <leader>x :x<CR>
+"}}}
 
 " UltiSnips configuration
 let g:UltiSnipsEditSplit = "horizontal"
@@ -613,7 +624,7 @@ if filereadable(expand($VIM_CUSTOM_DIR."/.vimrc.custom"))
   source $VIM_CUSTOM_DIR/.vimrc.custom
 endif
 
-" Grep
+" Grep {{{
 function! Grep(search)
   let command = 'vimgrep /'.a:search.'/gj '.expand('%')
   execute(command)
@@ -657,12 +668,9 @@ nmap <leader>n :Grep<CR>
 nmap <leader>f :Grepw<CR>
 nmap <leader>N :GGrep<CR>
 nmap <leader>F :GGrepw<CR>
+" }}}
 
-" easymotion highlighting
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
-
-" XML to YAML
+" XML to YAML {{{
 function! s:ConfigureYamlPreviewBuffer()
   execute ':0'
   execute ':delete'
@@ -709,5 +717,6 @@ command! Xml2Yaml :call Xml2Yaml()
 command! -nargs=1 Xml2YamlDiff call Xml2YamlDiff(<q-args>)
 autocmd Syntax xml map <buffer> <leader>r :Xml2Yaml<CR>
 autocmd Syntax xml map <buffer> <leader>R :Xml2YamlDiff 
+" }}}
 
 "}}}
