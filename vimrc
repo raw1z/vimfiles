@@ -96,6 +96,7 @@ autocmd FileType,Syntax html,mustache NeoBundleSource mustache.vim
 
 NeoBundleLazy 'kchmck/vim-coffee-script'
 autocmd FileType coffee NeoBundleSource vim-coffee-script
+autocmd FileType ember-script NeoBundleSource vim-coffee-script
 
 NeoBundleLazy 'peterhoeg/vim-tmux'
 autocmd FileType tmux NeoBundleSource vim-tmux
@@ -131,6 +132,9 @@ autocmd FileType ps1 NeoBundleSource Windows-PowerShell-Syntax-Plugin
 
 NeoBundleLazy 'Rip-Rip/clang_complete'
 autocmd FileType c,cpp,m NeoBundleSource clang_complete
+
+NeoBundleLazy 'heartsentwined/vim-ember-script'
+autocmd FileType ember-script NeoBundleSource vim-ember-script
 
 "}}}
 
