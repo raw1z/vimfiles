@@ -210,6 +210,10 @@ nnoremap <silent> [unite]i :<C-u>Unite neobundle/install<cr>
   NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':'colorscheme'}} "{{{
     nnoremap <silent> [unite]c :<C-u>Unite -winheight=10 -auto-preview -buffer-name=colorschemes colorscheme<cr>
   "}}}
+  NeoBundleLazy 'raw1z/unite-font', {'autoload':{'unite_sources':['font', 'font/size']}} "{{{
+    nnoremap <silent> [unite]g :<C-u>Unite -auto-resize -auto-preview font<cr>
+    nnoremap <silent> [unite]gs :<C-u>Unite -auto-resize -auto-preview font/size<cr>
+  "}}}
   NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}} "{{{
     nnoremap <silent> [unite]q :<C-u>Unite -auto-resize -auto-preview quickfix<cr>
   "}}}
