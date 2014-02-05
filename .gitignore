@@ -3,6 +3,7 @@
 *.bak
 .cache/*
 bundle/.neobundle/*
+bundle/vim-ember-script/*
 bundle/unite-font/*
 bundle/unite-quickfix/*
 bundle/vim-scriptease/*
