@@ -72,7 +72,11 @@ NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'vim-scripts/UltiSnips'
 NeoBundle 'vim-scripts/ZoomWin'
 NeoBundle 'vim-scripts/vimwiki'
-NeoBundle 'airblade/vim-gitgutter'
+
+if !s:is_windows
+  NeoBundle 'airblade/vim-gitgutter'
+endif
+
 NeoBundleLazy 'pydave/AsyncCommand'
 
 " languages {{{
