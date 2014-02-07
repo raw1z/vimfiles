@@ -9,14 +9,14 @@ let s:is_macvim = has('gui_macvim')
 if has('vim_starting')
   set nocompatible               " Be iMproved
   if (s:is_windows)
-    set runtimepath+=$VIM/vimfiles/bundle/neobundle.vim/
+    set runtimepath+=$HOME/vimfiles/bundle/neobundle.vim/
   else
     set runtimepath+=~/.vim/bundle/neobundle.vim/
   endif
 endif
 
 if (s:is_windows)
-  call neobundle#rc(expand('$VIM/vimfiles/bundle/'))
+  call neobundle#rc(expand('$HOME/vimfiles/bundle/'))
 else
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
@@ -169,7 +169,7 @@ function! bundle.hooks.on_source(bundle)
 endfunction
 
 if (s:is_windows)
-  let g:unite_data_directory=$VIM.'/.vim/.cache/unite'
+  let g:unite_data_directory=$HOME.'/.vim/.cache/unite'
 else
   let g:unite_data_directory='~/.vim/.cache/unite'
 end
@@ -236,7 +236,7 @@ nnoremap <silent> [unite]i :<C-u>Unite neobundle/install<cr>
   "}}}
   NeoBundleLazy 'Shougo/junkfile.vim', {'autoload':{'commands':'JunkfileOpen','unite_sources':['junkfile','junkfile/new']}} "{{{
     if (s:is_windows)
-      let g:junkfile#directory=expand($VIM."/.vim/.cache/junk")
+      let g:junkfile#directory=expand($HOME."/.vim/.cache/junk")
     else
       let g:junkfile#directory=expand("~/.vim/.cache/junk")
     end
@@ -322,7 +322,7 @@ nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
 
 " change the leader key mapping to an easier reachable one
 let mapleader="ç"
-let $VIM_CUSTOM_DIR=$VIM
+let $VIM_CUSTOM_DIR=$HOME
 
 " load all the extensions
 syntax on
