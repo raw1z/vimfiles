@@ -222,6 +222,9 @@ nnoremap <silent> [unite]i :<C-u>Unite neobundle/install<cr>
     nnoremap <silent> [unite]g :<C-u>Unite -auto-resize -auto-preview font<cr>
     nnoremap <silent> [unite]gs :<C-u>Unite -auto-resize -auto-preview font/size<cr>
   "}}}
+  NeoBundleLazy 'raw1z/unite-projects', {'autoload':{'unite_sources':'projects'}} "{{{
+    nnoremap <silent> [unite]j :<C-u>Unite -auto-resize projects<cr>
+  "}}}
   NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}} "{{{
     nnoremap <silent> [unite]q :<C-u>Unite -auto-resize -auto-preview quickfix<cr>
   "}}}
