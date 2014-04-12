@@ -43,7 +43,6 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'chrisbra/NrrwRgn'
-NeoBundle 'ervandew/supertab'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'kien/ctrlp.vim'
@@ -72,6 +71,9 @@ NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'vim-scripts/UltiSnips'
 NeoBundle 'vim-scripts/ZoomWin'
 NeoBundle 'vim-scripts/vimwiki'
+NeoBundle 'nosami/Omnisharp'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Valloric/YouCompleteMe'
 
 if !s:is_windows
   NeoBundle 'airblade/vim-gitgutter'
@@ -133,9 +135,6 @@ autocmd FileType stylus NeoBundleSource vim-stylus
 
 NeoBundleLazy 'raw1z/Windows-PowerShell-Syntax-Plugin'
 autocmd FileType ps1 NeoBundleSource Windows-PowerShell-Syntax-Plugin
-
-NeoBundleLazy 'Rip-Rip/clang_complete'
-autocmd FileType c,cpp,m NeoBundleSource clang_complete
 
 NeoBundleLazy 'heartsentwined/vim-ember-script'
 autocmd FileType ember-script NeoBundleSource vim-ember-script
@@ -200,10 +199,8 @@ nmap <space> [unite]
 nnoremap [unite] <nop>
 
 if s:is_windows
-  nnoremap <silent> [unite]p :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec buffer file_mru bookmark<cr><c-u>
   nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec<cr><c-u>
 else
-  nnoremap <silent> [unite]p :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr><c-u>
   nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
 endif
 
@@ -243,7 +240,6 @@ nnoremap <silent> [unite]i :<C-u>Unite neobundle/install<cr>
     else
       let g:junkfile#directory=expand("~/.vim/.cache/junk")
     end
-    nnoremap <silent> [unite]j :<C-u>Unite -auto-resize -buffer-name=junk junkfile junkfile/new<cr>
   "}}}
 " }}}
 

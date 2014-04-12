@@ -2,9 +2,14 @@
 *.sw[a-z]
 *.bak
 .cache/*
+bundle/Omnisharp
+bundle/syntastic
+bundle/YouCompleteMe
 bundle/.neobundle/*
 bundle/vim-ember-script/*
+bundle/unite-projects/*
 bundle/unite-font/*
+bundle/neocomplete.vim/*
 bundle/unite-quickfix/*
 bundle/vim-scriptease/*
 bundle/vim-sensible/*
