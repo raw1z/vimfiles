@@ -306,8 +306,11 @@ set encoding=utf-8
 set fileencoding=utf-8
 set nobackup
 set noswapfile
-set autoread
 set foldmethod=marker
+
+set autowrite
+set autowriteall
+set autoread
 
 " disable search highlights
 nmap <silent> <leader>/ :nohl<CR>
