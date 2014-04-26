@@ -696,8 +696,4 @@ autocmd Syntax xml map <buffer> <leader>R :Xml2YamlDiff
 
 "}}}
 
-" Highlight the current line and column {{{
-au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
-set cursorline cursorcolumn
 " }}}
