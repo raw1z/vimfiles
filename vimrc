@@ -82,63 +82,24 @@ endif
 NeoBundleLazy 'pydave/AsyncCommand'
 
 " languages {{{
-NeoBundleLazy 'adimit/prolog.vim'
-autocmd FileType prolog NeoBundleSource prolog.vim
-
-NeoBundleLazy 'digitaltoad/vim-jade'
-autocmd FileType jade NeoBundleSource vim-jade
-
-NeoBundleLazy 'elixir-lang/vim-elixir'
-autocmd FileType elixir NeoBundleSource vim-elixir
-
-NeoBundleLazy 'groenewege/vim-less'
-autocmd FileType less NeoBundleSource vim-less
-
-NeoBundleLazy 'heartsentwined/vim-emblem'
-autocmd FileType emblem NeoBundleSource vim-emblem
-
-NeoBundleLazy 'juvenn/mustache.vim'
-autocmd FileType,Syntax html,mustache NeoBundleSource mustache.vim
-
-NeoBundleLazy 'kchmck/vim-coffee-script'
-autocmd FileType coffee NeoBundleSource vim-coffee-script
-autocmd FileType ember-script NeoBundleSource vim-coffee-script
-
-NeoBundleLazy 'peterhoeg/vim-tmux'
-autocmd FileType tmux NeoBundleSource vim-tmux
-
-NeoBundleLazy 'raw1z/vim-csharp'
-autocmd FileType csharp NeoBundleSource vim-csharp
-autocmd FileType vb.net NeoBundleSource vim-csharp
-autocmd FileType xaml NeoBundleSource vim-csharp
-
-NeoBundleLazy 'rodjek/vim-puppet'
-autocmd FileType puppet NeoBundleSource vim-puppet
-
-NeoBundleLazy 'simpsonjulian/cypher-vim-syntax'
-autocmd FileType cypher NeoBundleSource cypher-vim-syntax
-
-NeoBundleLazy 'tpope/vim-haml'
-autocmd FileType haml,sass,scss NeoBundleSource vim-haml
-
-NeoBundleLazy 'tpope/vim-markdown'
-autocmd FileType markdown NeoBundleSource vim-markdown
-
-NeoBundleLazy 'vim-ruby/vim-ruby'
-autocmd FileType ruby NeoBundleSource vim-ruby
-
-NeoBundleLazy 'vim-scripts/VB.NET-Syntax'
-autocmd FileType vbnet NeoBundleSource VB.NET-Syntax
-
-NeoBundleLazy 'wavded/vim-stylus'
-autocmd FileType stylus NeoBundleSource vim-stylus
-
-NeoBundleLazy 'raw1z/Windows-PowerShell-Syntax-Plugin'
-autocmd FileType ps1 NeoBundleSource Windows-PowerShell-Syntax-Plugin
-
-NeoBundleLazy 'heartsentwined/vim-ember-script'
-autocmd FileType ember-script NeoBundleSource vim-ember-script
-
+NeoBundle 'adimit/prolog.vim'
+NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'heartsentwined/vim-emblem'
+NeoBundle 'juvenn/mustache.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'peterhoeg/vim-tmux'
+NeoBundle 'raw1z/vim-csharp'
+NeoBundle 'rodjek/vim-puppet'
+NeoBundle 'simpsonjulian/cypher-vim-syntax'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-scripts/VB.NET-Syntax'
+NeoBundle 'wavded/vim-stylus'
+NeoBundle 'raw1z/Windows-PowerShell-Syntax-Plugin'
+NeoBundle 'heartsentwined/vim-ember-script'
 "}}}
 
 " Colorschemes {{{
