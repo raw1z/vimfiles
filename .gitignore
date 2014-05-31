@@ -2,6 +2,8 @@
 *.sw[a-z]
 *.bak
 .cache/*
+bundle/matchit.zip
+bundle/vim-projectionist
 bundle/Omnisharp
 bundle/syntastic
 bundle/YouCompleteMe
