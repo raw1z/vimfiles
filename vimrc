@@ -74,6 +74,7 @@ NeoBundle 'vim-scripts/vimwiki'
 NeoBundle 'nosami/Omnisharp'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'tpope/vim-projectionist'
 
 if !s:is_windows
   NeoBundle 'airblade/vim-gitgutter'
