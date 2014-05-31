@@ -697,4 +697,13 @@ autocmd Syntax xml map <buffer> <leader>R :Xml2YamlDiff
 
 "}}}
 
+" define shortcuts for inserting backslash, tilde, brackets and square brackets {{{
+imap <leader>) ]
+imap <leader>( [
+imap <leader><leader>) }
+imap <leader><leader>( {
+imap <leader>n ~
+imap <leader>/ \
+imap <leader>! \|
 " }}}
+
