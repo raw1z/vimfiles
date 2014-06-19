@@ -71,7 +71,6 @@ NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'vim-scripts/UltiSnips'
 NeoBundle 'vim-scripts/ZoomWin'
 NeoBundle 'vim-scripts/vimwiki'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'ervandew/supertab'
 
