@@ -90,3 +90,4 @@ bundle/vim-wombat/*
 bundle/vimproc/*
 bundle/vimshell.vim/*
 bundle/vimwiki/*
+bundle/landscape.vim
