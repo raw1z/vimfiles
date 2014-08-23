@@ -513,7 +513,7 @@ function! g:trigger(title, shellCommand)
 endfunction
 
 " fast quicklist interactions {{{
-function! OpenQuickListAndWrap() 
+function! OpenQuickListAndWrap()
   execute("copen")
   execute ("set wrap")
 endfunction
@@ -690,7 +690,7 @@ endfunction
 command! Xml2Yaml :call Xml2Yaml()
 command! -nargs=1 Xml2YamlDiff call Xml2YamlDiff(<q-args>)
 autocmd Syntax xml map <buffer> <leader>r :Xml2Yaml<CR>
-autocmd Syntax xml map <buffer> <leader>R :Xml2YamlDiff 
+autocmd Syntax xml map <buffer> <leader>R :Xml2YamlDiff
 " }}}
 
 "}}}
