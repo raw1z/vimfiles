@@ -73,6 +73,7 @@ NeoBundle 'vim-scripts/ZoomWin'
 NeoBundle 'vim-scripts/vimwiki'
 NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'ervandew/supertab'
+NeoBundle 'edkolev/tmuxline.vim'
 
 if !s:is_windows
   NeoBundle 'airblade/vim-gitgutter'
@@ -202,6 +203,10 @@ nnoremap <silent> [unite]i :<C-u>Unite neobundle/install<cr>
       let g:junkfile#directory=expand("~/.vim/.cache/junk")
     end
   "}}}
+" }}}
+
+" tmuxline {{{
+let g:tmuxline_powerline_separators = 0
 " }}}
 
 " airline {{{
