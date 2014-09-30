@@ -391,7 +391,7 @@ nmap <leader>ve :split _exrc<CR>
 
 " keyboard map for toggling wrap mode
 nmap <leader>W :set wrap! linebreak nolist<CR>
-nmap <leader><space> :set wrap! linebreak nolist<CR>
+nmap <leader><space> :only<CR>
 
 " mapping to make movements operate on 1 screen line in wrap mode
 :map j gj
