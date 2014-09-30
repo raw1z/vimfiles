@@ -1,0 +1,78 @@
+snippet divc "add a div with a class" !b
+<div class="${1:container}">
+  $2
+</div>
+endsnippet
+
+snippet alerts "add a success alert div" !b
+<div class="alert alert-success alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	${1:Message}
+</div>
+endsnippet
+
+snippet alerti "add a danger alert div" !b
+<div class="alert alert-info alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	${1:Message}
+</div>
+endsnippet
+
+snippet alertd "add a danger alert div" !b
+<div class="alert alert-danger alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	${1:Message}
+</div>
+endsnippet
+
+snippet class "insert a box with class attributes" !b
+<div class="$1">
+  $2
+</div>
+endsnippet
+
+snippet h "insert a header" !b
+<h$1>$2</h$1>
+endsnippet
+
+snippet small "insert a small tag" !b
+<small>$1</small>
+endsnippet
+
+snippet attr "insert an attribute" !i
+$1="$2"
+endsnippet
+
+snippet p "insert a paragraph" !b
+<p>$1</p>
+endsnippet
+
+snippet b "insert b block" !i
+<b>$1</b>
+endsnippet
+
+snippet tag "insert a tag block" !i
+<${1:tag}>
+  $2
+</$1>
+endsnippet
+
+snippet tagl "insert an inline tag" !i
+<${1:tag}>$2</$1>
+endsnippet
+
+snippet if "insert if block" !b
+{{#if ${1:condition}}}
+  $2
+{{else}}
+  $3
+{{/if}}
+endsnippet
+
+snippet btact "insert action button" !b
+  <button {{action "${1:action}"}}>${2:title}</button>
+endsnippet
+
+snippet js "insert a script inline tag" !b
+<script type="text/javascript" src="${1:source}"></script>
+endsnippet
