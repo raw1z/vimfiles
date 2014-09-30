@@ -91,3 +91,6 @@ bundle/vimproc/*
 bundle/vimshell.vim/*
 bundle/vimwiki/*
 bundle/landscape.vim
+bundle/vim-abolish
+bundle/vim-heroku
+bundle/vim-rsi
