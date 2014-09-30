@@ -36,13 +36,13 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 
-NeoBundle 'tpope/vim-sensible'
-NeoBundle 'tpope/vim-scriptease'
 NeoBundle 'AndrewRadev/linediff.vim'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'ervandew/supertab'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'kien/ctrlp.vim'
@@ -55,25 +55,28 @@ NeoBundle 'salsifis/vim-transpose'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'skalnik/vim-vroom'
+NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-heroku'
+NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-rake'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-rsi'
+NeoBundle 'tpope/vim-scriptease'
+NeoBundle 'tpope/vim-sensible'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'vim-scripts/UltiSnips'
 NeoBundle 'vim-scripts/ZoomWin'
+NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/vimwiki'
-NeoBundle 'tpope/vim-projectionist'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'edkolev/tmuxline.vim'
 
 if !s:is_windows
   NeoBundle 'airblade/vim-gitgutter'
@@ -256,6 +259,7 @@ syntax on
 filetype plugin indent on
 
 set nu
+set ttyfast
 set nowrap
 set tabstop=2 shiftwidth=2 expandtab autoindent
 set incsearch
@@ -277,7 +281,6 @@ set foldmethod=marker
 
 set autowrite
 set autowriteall
-set autoread
 
 " disable search highlights
 nmap <silent> <leader>/ :nohl<CR>
@@ -673,3 +676,4 @@ imap <leader>/ \
 imap <leader>! \|
 " }}}
 
+set autoread
