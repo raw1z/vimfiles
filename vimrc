@@ -7,7 +7,10 @@ let s:is_macvim = has('gui_macvim')
 " NeoBundle Configuration {{{
 
 if has('vim_starting')
-  set nocompatible               " Be iMproved
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
   if (s:is_windows)
     set runtimepath+=$HOME/vimfiles/bundle/neobundle.vim/
   else
@@ -16,15 +19,13 @@ if has('vim_starting')
 endif
 
 if (s:is_windows)
-  call neobundle#rc(expand('$HOME/vimfiles/bundle/'))
+  call neobundle#begin(expand('$HOME/vimfiles/bundle/'))
 else
-  call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
 endif
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
-
-"}}}
 
 " Bundles {{{
 NeoBundle 'Shougo/vimproc', {
@@ -77,10 +78,7 @@ NeoBundle 'vim-scripts/UltiSnips'
 NeoBundle 'vim-scripts/ZoomWin'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/vimwiki'
-
-if !s:is_windows
-  NeoBundle 'airblade/vim-gitgutter'
-endif
+NeoBundle 'JarrodCTaylor/vim-ember-cli-test-runner'
 
 NeoBundleLazy 'pydave/AsyncCommand'
 
@@ -103,6 +101,8 @@ NeoBundle 'vim-scripts/VB.NET-Syntax'
 NeoBundle 'wavded/vim-stylus'
 NeoBundle 'raw1z/Windows-PowerShell-Syntax-Plugin'
 NeoBundle 'heartsentwined/vim-ember-script'
+NeoBundle 'toyamarinyon/vim-swift'
+NeoBundle 'vim-scripts/Vim-R-plugin'
 "}}}
 
 " Colorschemes {{{
@@ -117,18 +117,26 @@ NeoBundle 'wgibbs/vim-irblack'
 NeoBundle 'baskerville/bubblegum'
 NeoBundle 'Pychimp/vim-luna'
 NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'Lokaltog/vim-distinguished'
+NeoBundle 'vim-scripts/candy.vim'
 "}}}
+
+" }}}
+
+call neobundle#end()
 
 filetype plugin indent on     " Required!
 
-" }}}
+NeoBundleCheck
+
+"}}}
 
 " Unite Configuration {{{
 let bundle = neobundle#get('unite.vim')
 function! bundle.hooks.on_source(bundle)
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   call unite#filters#sorter_default#use(['sorter_rank'])
-  call unite#set_profile('files', 'smartcase', 1)
+  call unite#set_profile('files', 'context.smartcase', 1)
   call unite#custom#source('line,outline','matchers','matcher_fuzzy')
 endfunction
 
@@ -256,7 +264,6 @@ let $VIM_CUSTOM_DIR=$HOME
 
 " load all the extensions
 syntax on
-filetype plugin indent on
 
 set nu
 set ttyfast
@@ -278,9 +285,6 @@ set fileencoding=utf-8
 set nobackup
 set noswapfile
 set foldmethod=marker
-
-set autowrite
-set autowriteall
 
 " disable search highlights
 nmap <silent> <leader>/ :nohl<CR>
@@ -327,8 +331,7 @@ cmap <C-P> <Up>
 cmap <C-N> <Down>
 
 " ack configuration
-let g:ackprg="ack --smart-case --recurse -H --nocolor --nogroup --column --ignore-dir=node_modules"
-let g:ackprg=g:ackprg." --type-add EXT=.sass,.haml,.coffee,.feature,.sql"
+let g:ackprg="ag --nogroup --nocolor --column"
 
 " nerdtree configuration
 map <leader>q :NERDTreeToggle<CR>
@@ -406,17 +409,16 @@ nmap <leader>g :Gstatus<CR>
 " allow folder specific configuration
 set exrc
 
-" on windows
 " consider all the files with an extension ending with 'proj' or 'xaml' as an xml file
-" use 4 spaces for vb/cs files
-if s:is_windows
-  augroup filetypedetect
-    au BufNewFile,BufRead *.*proj set syntax=xml
-    au BufNewFile,BufRead *.xaml set ft=xaml syntax=xml ts=4 sts=4 sw=4 et
-    au BufNewFile,BufRead *.vb set syntax=vbnet ft=vbnet ts=4 sts=4 sw=4 et
-    au BufNewFile,BufRead *.cs set ts=4 sts=4 sw=4 et
-  augroup END
-endif
+" use 4 spaces for vb/cs/m/swift files
+augroup filetypedetect
+  au BufNewFile,BufRead *.*proj set syntax=xml
+  au BufNewFile,BufRead *.xaml set ft=xaml syntax=xml ts=4 sts=4 sw=4 et
+  au BufNewFile,BufRead *.vb set syntax=vbnet ft=vbnet ts=4 sts=4 sw=4 et
+  au BufNewFile,BufRead *.cs set ts=4 sts=4 sw=4 et
+  au BufNewFile,BufRead *.m set ts=4 sts=4 sw=4 et
+  au BufNewFile,BufRead *.swift set ts=4 sts=4 sw=4 et
+augroup END
 
 " allow to open a folder in a new tab
 " and set it as the tab's working folder
@@ -676,4 +678,6 @@ imap <leader>/ \
 imap <leader>! \|
 " }}}
 
-set autoread
+" search visually selected text by pressing * {{{
+vnorem * y/<c-r>"<cr>
+" }}}

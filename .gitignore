@@ -94,3 +94,8 @@ bundle/landscape.vim
 bundle/vim-abolish
 bundle/vim-heroku
 bundle/vim-rsi
+bundle/candy.vim
+bundle/vim-distinguished
+bundle/vim-ember-cli-test-runner
+bundle/Vim-R-plugin
+bundle/vim-swift
