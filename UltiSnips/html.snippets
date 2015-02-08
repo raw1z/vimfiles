@@ -1,7 +1,7 @@
-snippet divc "add a div with a class" !b
-<div class="${1:container}">
-  $2
-</div>
+snippet class "add an element with a class" !b
+<${2:div} class="${1:container}">
+  $3
+</$2>
 endsnippet
 
 snippet alerts "add a success alert div" !b
@@ -22,12 +22,6 @@ snippet alertd "add a danger alert div" !b
 <div class="alert alert-danger alert-dismissible" role="alert">
 	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 	${1:Message}
-</div>
-endsnippet
-
-snippet class "insert a box with class attributes" !b
-<div class="$1">
-  $2
 </div>
 endsnippet
 
@@ -76,3 +70,50 @@ endsnippet
 snippet js "insert a script inline tag" !b
 <script type="text/javascript" src="${1:source}"></script>
 endsnippet
+
+snippet { "insert interpolation" !i
+{{${1:interpolation}}}
+endsnippet
+
+snippet tr "insert a table row" !b
+<tr>
+  $1
+</tr>
+endsnippet
+
+snippet th "insert a table cell" !b
+<th>$1</th>
+endsnippet
+
+snippet td "insert a table cell" !b
+<td>$1</td>
+endsnippet
+
+snippet table "insert a table" !b
+<table>
+  $1
+</table>
+endsnippet
+
+snippet fa "insert a font-awesome icon" !i
+<i class="fa fa-$1"></i>
+endsnippet
+
+snippet ul "insert a side nav" !b
+<ul class="$1">
+  <li>$2</li>
+</ul>
+endsnippet
+
+snippet a "insert a link"
+<a href="${1:#}">$2</a>
+endsnippet
+
+snippet link-to "insert a link-to helper"
+{{#link-to "${1:route}" ${2:model}}}$3{{/link-to}}
+endsnippet
+
+snippet link-to-li "insert a link-to helper whith a li tagName"
+{{#link-to "${1:route}" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>${2:label}</a>{{/link-to}}
+endsnippet
+

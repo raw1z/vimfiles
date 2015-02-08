@@ -9,3 +9,16 @@ endsnippet
 snippet # "insert a string interpolation" !i
 #{$1}
 endsnippet
+
+snippet prop "insert an ember property" !b
+${1:propertyName}: (->
+  $3
+).property(${2:'dependency'})
+endsnippet
+
+snippet obs "insert an ember observer" !b
+${1:observerName}: (->
+  $3
+).observes(${2:'dependency'})
+endsnippet
+

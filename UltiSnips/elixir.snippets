@@ -74,9 +74,11 @@ end
 endsnippet
 
 snippet inspect "inspect an expression result" !b
-IO.puts "#############################"
-IO.inspect $1
-IO.puts "#############################"
+IO.puts """
+#############################
+#{inspect $1}
+#############################
+"""
 endsnippet
 
 snippet fn "insert an anonymous function" !i
