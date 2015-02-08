@@ -119,6 +119,7 @@ NeoBundle 'Pychimp/vim-luna'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'Lokaltog/vim-distinguished'
 NeoBundle 'vim-scripts/candy.vim'
+NeoBundle 'chriskempson/base16-vim'
 "}}}
 
 " }}}
