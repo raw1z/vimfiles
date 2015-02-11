@@ -79,6 +79,7 @@ NeoBundle 'vim-scripts/ZoomWin'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/vimwiki'
 NeoBundle 'JarrodCTaylor/vim-ember-cli-test-runner'
+NeoBundle 'bronson/vim-trailing-whitespace'
 
 NeoBundleLazy 'pydave/AsyncCommand'
 
@@ -120,6 +121,9 @@ NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'Lokaltog/vim-distinguished'
 NeoBundle 'vim-scripts/candy.vim'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'morhetz/gruvbox'
+NeoBundle 'goatslacker/mango.vim'
 "}}}
 
 " }}}
@@ -462,7 +466,7 @@ endfunction
 command! -nargs=1 Xcd call ChangeDirectoryAndSource(<q-args>, "_exrc")
 
 " allow to run an extenal command an display its output in a preview window
-function! g:RunCommandAndPreviewOutput(shellCommand)
+function! s:RunCommandAndPreviewOutput(shellCommand)
   execute('pclose')
   let env = {}
   function env.get(temp_file)
@@ -481,8 +485,8 @@ function! g:RunCommandAndPreviewOutput(shellCommand)
   call asynccommand#run(a:shellCommand, asynccommand#tab_restore(env))
 endfunction
 
-function! g:trigger(title, shellCommand)
-  call g:RunCommandAndPreviewOutput(a:shellCommand)
+function! s:trigger(title, shellCommand)
+  call s:RunCommandAndPreviewOutput(a:shellCommand)
   echo a:title
 endfunction
 
