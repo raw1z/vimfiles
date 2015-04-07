@@ -315,8 +315,8 @@ noremap <Right> <Nop>
 
 " ctrlp configuration
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules$',
-      \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\|\.sw[a-z]$',
+      \ 'dir':  '\v((\.(git|hg|svn))|(node_modules|_build|deps|bower_components))$',
+      \ 'file': '\v\.(pyc|pyo|rbc|rbo|class|o|beam)$',
       \ }
 
 " rake.vim additions
