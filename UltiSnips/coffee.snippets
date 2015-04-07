@@ -1,13 +1,13 @@
-snippet log "logs a value"
-console.log $1
-endsnippet
-
 snippet inspect "inspect an ember object"
 console.log Ember.inspect($1)
 endsnippet
 
-snippet # "insert a string interpolation" !i
-#{$1}
+snippet get "get('property');"
+${1:@}get('${2:property}');
+endsnippet
+
+snippet set "set('property', value);"
+${1:@}set('${2:property}', ${3:value});
 endsnippet
 
 snippet prop "insert an ember property" !b

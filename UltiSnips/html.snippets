@@ -1,58 +1,15 @@
-snippet class "add an element with a class" !b
-<${2:div} class="${1:container}">
-  $3
-</$2>
-endsnippet
-
-snippet alerts "add a success alert div" !b
-<div class="alert alert-success alert-dismissible" role="alert">
-	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	${1:Message}
-</div>
-endsnippet
-
-snippet alerti "add a danger alert div" !b
-<div class="alert alert-info alert-dismissible" role="alert">
-	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	${1:Message}
-</div>
-endsnippet
-
-snippet alertd "add a danger alert div" !b
-<div class="alert alert-danger alert-dismissible" role="alert">
-	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	${1:Message}
-</div>
-endsnippet
-
-snippet h "insert a header" !b
-<h$1>$2</h$1>
-endsnippet
-
-snippet small "insert a small tag" !b
-<small>$1</small>
-endsnippet
-
 snippet attr "insert an attribute" !i
 $1="$2"
 endsnippet
 
-snippet p "insert a paragraph" !b
-<p>$1</p>
-endsnippet
-
-snippet b "insert b block" !i
-<b>$1</b>
-endsnippet
-
-snippet tag "insert a tag block" !i
-<${1:tag}>
-  $2
+snippet tag "<tag> with ID & class" w
+<${1:div}`!p snip.rv=' id="' if t[2] else ""`${2:name}`!p snip.rv = '"' if t[2] else ""``!p snip.rv=' class="' if t[3] else ""`${3:name}`!p snip.rv = '"' if t[3] else ""`>
+	$0
 </$1>
 endsnippet
 
 snippet tagl "insert an inline tag" !i
-<${1:tag}>$2</$1>
+<${1:div}`!p snip.rv=' id="' if t[2] else ""`${2:name}`!p snip.rv = '"' if t[2] else ""``!p snip.rv=' class="' if t[3] else ""`${3:name}`!p snip.rv = '"' if t[3] else ""`>$0</$1>
 endsnippet
 
 snippet if "insert if block" !b
@@ -63,57 +20,25 @@ snippet if "insert if block" !b
 {{/if}}
 endsnippet
 
-snippet btact "insert action button" !b
-  <button {{action "${1:action}"}}>${2:title}</button>
+snippet each "insert an each block" b
+{{#each ${items} as |item|}}
+  $0
+{{/each}}
 endsnippet
 
-snippet js "insert a script inline tag" !b
-<script type="text/javascript" src="${1:source}"></script>
+snippet btact "insert action button" !b
+  <button {{action "${1:action}"}}>$0</button>
 endsnippet
 
 snippet { "insert interpolation" !i
-{{${1:interpolation}}}
-endsnippet
-
-snippet tr "insert a table row" !b
-<tr>
-  $1
-</tr>
-endsnippet
-
-snippet th "insert a table cell" !b
-<th>$1</th>
-endsnippet
-
-snippet td "insert a table cell" !b
-<td>$1</td>
-endsnippet
-
-snippet table "insert a table" !b
-<table>
-  $1
-</table>
-endsnippet
-
-snippet fa "insert a font-awesome icon" !i
-<i class="fa fa-$1"></i>
-endsnippet
-
-snippet ul "insert a side nav" !b
-<ul class="$1">
-  <li>$2</li>
-</ul>
-endsnippet
-
-snippet a "insert a link"
-<a href="${1:#}">$2</a>
+{{$0}}
 endsnippet
 
 snippet link-to "insert a link-to helper"
-{{#link-to "${1:route}" ${2:model}}}$3{{/link-to}}
+{{#link-to "${1:route}" ${2:model}}}$0{{/link-to}}
 endsnippet
 
 snippet link-to-li "insert a link-to helper whith a li tagName"
-{{#link-to "${1:route}" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>${2:label}</a>{{/link-to}}
+{{#link-to "${1:route}" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>$0</a>{{/link-to}}
 endsnippet
 

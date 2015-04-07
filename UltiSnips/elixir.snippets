@@ -54,7 +54,7 @@ test "${1:description}" do
 end
 endsnippet
 
-snippet server "incorporate the GenServer behaviour" !b
+snippet exactor "incorporate the GenServer behaviour" !b
 use ExActor.GenServer
 
 endsnippet
@@ -83,6 +83,10 @@ endsnippet
 
 snippet fn "insert an anonymous function" !i
 fn(${1:args}) -> ${2} end
+endsnippet
+
+snippet & "insert an anonymous function short syntax" !i
+&($1)
 endsnippet
 
 snippet doc "insert a function documentation block" !b
@@ -121,12 +125,3 @@ defmacro __before_compile__(env) do
 end
 endsnippet
 
-snippet map "insert Enum.map" !i
-Enum.map(fn ${1:x} -> $2 end)
-endsnippet
-
-snippet quote "insert a quote block" !b
-quote do
-  $1
-end
-endsnippet
