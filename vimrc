@@ -38,13 +38,16 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 
 NeoBundle 'AndrewRadev/linediff.vim'
+NeoBundle 'JarrodCTaylor/vim-ember-cli-test-runner'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'godlygeek/tabular'
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
@@ -75,11 +78,9 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'vim-scripts/UltiSnips'
-NeoBundle 'honza/vim-snippets'
+NeoBundle 'vim-scripts/git-flow-format'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/vimwiki'
-NeoBundle 'JarrodCTaylor/vim-ember-cli-test-runner'
-NeoBundle 'bronson/vim-trailing-whitespace'
 
 NeoBundleLazy 'pydave/AsyncCommand'
 
@@ -104,6 +105,9 @@ NeoBundle 'raw1z/Windows-PowerShell-Syntax-Plugin'
 NeoBundle 'heartsentwined/vim-ember-script'
 NeoBundle 'toyamarinyon/vim-swift'
 NeoBundle 'vim-scripts/Vim-R-plugin'
+NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'maralla/vim-toml-enhance', {'depends': 'cespare/vim-toml'}
+NeoBundle 'kylef/apiblueprint.vim'
 "}}}
 
 " Colorschemes {{{
@@ -229,6 +233,7 @@ let g:tmuxline_powerline_separators = 0
   let g:airline_left_sep=''
   let g:airline#extensions#tabline#left_alt_sep = '|'
   let g:airline_right_sep=''
+  let g:airline#extensions#branch#format = 'Git_flow_branch_format'
 " }}}
 
 " sneak configuration {{{
@@ -685,4 +690,42 @@ imap <leader>! \|
 
 " search visually selected text by pressing * {{{
 vnorem * y/<c-r>"<cr>
+" }}}
+
+" manage vim session with support for nerdtree {{{
+function! s:SaveSession(...)
+  let filename = a:1
+  if strlen(filename) == 0
+    if exists("g:currentSessionFile")
+      let filename = g:currentSessionFile
+      if strlen(filename) == 0
+        let filename = "./session.vim"
+      endif
+    else
+      let filename = "./session.vim"
+    endif
+  endif
+
+  let filename = fnamemodify(filename, ":p")
+  echom "Saved session to path: " filename
+
+  tabdo NERDTreeClose
+  execute ':mksession! ' filename
+endfunction
+command! -nargs=? -complete=file SaveSession call s:SaveSession(<q-args>)
+
+function! s:RestoreSession(...)
+  let filename = a:1
+  if strlen(filename) == 0
+    let filename = "./session.vim"
+  endif
+
+  let filename = fnamemodify(filename, ":p")
+  echom "Restored session from path: " filename
+
+  tabdo NERDTreeClose
+  execute 'source  ' filename
+  let g:currentSessionFile = filename
+endfunction
+command! -nargs=? -complete=file RestoreSession call s:RestoreSession(<q-args>)
 " }}}

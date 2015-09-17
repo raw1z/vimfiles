@@ -181,3 +181,8 @@ bundle/vital.vim
 bundle/Windows-PowerShell-Syntax-Plugin
 bundle/ZoomWin
 bundle/vim-snippets
+bundle/vim-toml-enhance
+bundle/vim-toml
+bundle/rust.vim
+bundle/git-flow-format
+bundle/apiblueprint.vim
