@@ -1,0 +1,52 @@
+snippet attr "insert an attribute" !i
+$1="$2"
+endsnippet
+
+snippet tag "<tag> with ID & class" w
+<${1:div}`!p snip.rv=' id="' if t[2] else ""`${2:name}`!p snip.rv = '"' if t[2] else ""``!p snip.rv=' class="' if t[3] else ""`${3:name}`!p snip.rv = '"' if t[3] else ""`>
+	$0
+</$1>
+endsnippet
+
+snippet tagl "insert an inline tag" !i
+<${1:div}`!p snip.rv=' id="' if t[2] else ""`${2:name}`!p snip.rv = '"' if t[2] else ""``!p snip.rv=' class="' if t[3] else ""`${3:name}`!p snip.rv = '"' if t[3] else ""`>$0</$1>
+endsnippet
+
+snippet if "insert if block" !b
+{{#if ${1:condition}}}
+  $2
+{{else}}
+  $3
+{{/if}}
+endsnippet
+
+snippet unless "insert unless block" !b
+{{#unless ${1:condition}}}
+  $2
+{{else}}
+  $3
+{{/unless}}
+endsnippet
+
+snippet each "insert an each block" b
+{{#each ${1:items} as |${2:item}|}}
+  $0
+{{/each}}
+endsnippet
+
+snippet btact "insert action button" !b
+  <button {{action "${1:action}"}}>$0</button>
+endsnippet
+
+snippet { "insert interpolation" !i
+{{$0}}
+endsnippet
+
+snippet link-to "insert a link-to helper" !i
+{{#link-to "${1:route}" ${2:model}}}$0{{/link-to}}
+endsnippet
+
+snippet link-to-li "insert a link-to helper whith a li tagName"
+{{#link-to "${1:route}" tagName="li" href=false}}<a {{bind-attr href="view.href"}}>$0</a>{{/link-to}}
+endsnippet
+

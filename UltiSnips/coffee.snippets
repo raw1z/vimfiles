@@ -1,0 +1,30 @@
+snippet inspect "inspect an ember object"
+console.log Ember.inspect($1)
+endsnippet
+
+snippet get "get('property');" i
+get('${1:property}')
+endsnippet
+
+snippet set "set('property', value);" i
+set('${1:property}', ${2:value})
+endsnippet
+
+snippet prop "insert an ember property" !b
+${1:propertyName}: (->
+  $0
+).property(${2:"${3:msg}"})
+endsnippet
+
+snippet obs "insert an ember observer" !b
+${1:observerName}: (->
+  $0
+).observes(${2:"${3:path}"})
+endsnippet
+
+snippet on "insert an ember event handler" !b
+${1:observerName}: (->
+  $0
+).on(${2:"${3:path}"})
+endsnippet
+
