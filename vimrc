@@ -15,44 +15,28 @@ let s:is_macvim = has('gui_macvim')
 if 0 | endif
 
 if has('vim_starting')
-  set runtimepath+=~/.nvim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#begin(expand('~/.nvim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Bundles {{{
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'nmake -f make_msvc.mak nodebug=1',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+
+NeoBundle 'Shougo/vimproc', {'build' : 'make'}
+NeoBundle 'honza/vim-snippets'
 
 " Utils {{{
 
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'AndrewRadev/linediff.vim'
-NeoBundle 'JarrodCTaylor/vim-ember-cli-test-runner'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'ervandew/supertab'
-NeoBundle 'godlygeek/tabular'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'mileszs/ack.vim'
-NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'rizzatti/funcoo.vim'
-NeoBundle 'salsifis/vim-transpose'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'skalnik/vim-vroom'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-bundler'
@@ -61,7 +45,6 @@ NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-heroku'
 NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-rake'
@@ -74,19 +57,81 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'vim-scripts/git-flow-format'
 NeoBundle 'vim-scripts/matchit.zip'
-NeoBundle 'vim-scripts/vimwiki'
 NeoBundle 'yssl/QFEnter'
-NeoBundle 'mbbill/undotree'
 NeoBundle 'easymotion/vim-easymotion'
-NeoBundle 'haya14busa/incsearch.vim'
-NeoBundle 'haya14busa/incsearch-fuzzy.vim'
-NeoBundle 'haya14busa/incsearch-easymotion.vim'
-NeoBundle 'thinca/vim-prettyprint'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 't9md/vim-choosewin'
-NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'vimwiki/vimwiki'
+NeoBundle 'salsifis/vim-transpose'
+
+NeoBundleLazy 'scrooloose/nerdtree', {'augroup' : 'NERDTree'}
+
+NeoBundleLazy 'bronson/vim-trailing-whitespace', {'on_cmd': 'FixWhitespace'}
+
+NeoBundleLazy 'Shougo/vimshell.vim', {
+		\ 'on_cmd': [
+		\   'VimShell', 'VimShellCreate', 'VimShellTab',
+    \   'VimShellPop', 'VimShellCurrentDir', 'VimShellBufferDir',
+    \   'VimShellExecute', 'VimShellInteractive', 'VimShellSendBuffer',
+    \   'VimShellSendString', 'VimShellClose'
+		\ ]}
+
+NeoBundleLazy 'tyru/open-browser.vim', {
+		\ 'on_cmd': [
+		\   'OpenBrowser', 'OpenBrowserSearch', 'OpenBrowserSmartSearch'
+		\ ]}
+
+NeoBundleLazy 'JarrodCTaylor/vim-ember-cli-test-runner', {
+		\ 'on_cmd': [
+		\   'RunAllEmberTests', 'RunSingleEmberTest', 'RunSingleEmberTestModule',
+		\   'RerunLastEmberTests'
+		\ ]}
+
+NeoBundleLazy 'thinca/vim-quickrun', {'on_cmd': 'QuickRun'}
+NeoBundleLazy 'godlygeek/tabular', {'on_cmd': 'Tabularize'}
+NeoBundleLazy 'chrisbra/NrrwRgn', {'on_cmd': 'NarrowRegion'}
+NeoBundleLazy 'AndrewRadev/linediff.vim', {'on_cmd': 'LineDiff'}
+NeoBundleLazy 'tpope/vim-heroku', {'on_cmd': 'Hk'}
+NeoBundle 'rizzatti/dash.vim'
+
+NeoBundleLazy 't9md/vim-choosewin', {'on_map': '<Plug>(choosewin)'}
+NeoBundleLazy 'mbbill/undotree', {'on_cmd': 'UndotreeToggle'}
+NeoBundleLazy 'Shougo/vinarise.vim', {
+  \ 'on_cmd': [{'name': 'Vinarise', 'complete': 'file'}]}
+NeoBundleLazy 'terryma/vim-expand-region', {
+	\ 'on_map': [['x', '<Plug>']]
+	\ }
+NeoBundleLazy 'thinca/vim-prettyprint', {'on_cmd': 'PP', 'on_func': 'PP'}
+NeoBundleLazy 'Shougo/deoplete.nvim', {
+	\ 'depends': 'Shougo/context_filetype.vim',
+	\ 'disabled': ! has('nvim'),
+	\ 'on_i': 1
+	\ }
+NeoBundleLazy 'Shougo/unite.vim', {
+	\ 'depends': 'Shougo/tabpagebuffer.vim',
+	\ 'on_cmd': [
+	\   {'name': 'Unite', 'complete': 'customlist,unite#complete_source'}
+	\ ]}
+NeoBundleLazy 'kana/vim-operator-user'
+NeoBundleLazy 'kana/vim-operator-replace', {
+	\ 'depends': 'vim-operator-user',
+	\ 'on_map': '<Plug>(operator-replace)'
+	\ }
+NeoBundleLazy 'haya14busa/incsearch.vim', {
+	\ 'depends': ['haya14busa/incsearch-fuzzy.vim', 'haya14busa/incsearch-easymotion.vim'],
+  \ 'on_map': '<Plug>(incsearch-'}
+
 NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'osyo-manga/vim-textobj-multiblock'
+NeoBundle 'thinca/vim-textobj-between'
+NeoBundle 'rhysd/vim-textobj-anyblock'
+NeoBundle 'sotte/presenting.vim'
+
+if has('nvim')
+  NeoBundle 'vim-scripts/UltiSnips'
+endif
+
+NeoBundleLazy 'pydave/AsyncCommand'
 NeoBundleLazy 'rafi/vim-unite-issue', {
     \  'directory': 'unite-issue',
     \  'unite_sources': [ 'issue' ],
@@ -94,13 +139,6 @@ NeoBundleLazy 'rafi/vim-unite-issue', {
     \    'mattn/webapi-vim', 'tyru/open-browser.vim', 'Shougo/unite.vim'
     \  ]
     \ }
-
-if has('nvim')
-  NeoBundle 'Shougo/deoplete.nvim'
-  NeoBundle 'vim-scripts/UltiSnips'
-endif
-
-NeoBundleLazy 'pydave/AsyncCommand'
 " }}}
 
 " colorschemes {{{
@@ -111,31 +149,14 @@ NeoBundle 'chriskempson/base16-vim'
 " }}}
 
 " languages {{{
+NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'adimit/prolog.vim'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'heartsentwined/vim-emblem'
 NeoBundle 'juvenn/mustache.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'peterhoeg/vim-tmux'
 NeoBundle 'raw1z/vim-csharp'
-NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'simpsonjulian/cypher-vim-syntax'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'vim-scripts/VB.NET-Syntax'
-NeoBundle 'wavded/vim-stylus'
 NeoBundle 'raw1z/Windows-PowerShell-Syntax-Plugin'
-NeoBundle 'heartsentwined/vim-ember-script'
-NeoBundle 'toyamarinyon/vim-swift'
 NeoBundle 'vim-scripts/Vim-R-plugin'
-NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'maralla/vim-toml-enhance', {'depends': 'cespare/vim-toml'}
 NeoBundle 'kylef/apiblueprint.vim'
-NeoBundle 'lambdatoast/elm.vim'
-NeoBundle 'mxw/vim-jsx'
 "}}}
 
 " }}}
@@ -188,13 +209,6 @@ map <C-L> <C-]>
 inoremap kj <Esc>
 cmap <C-P> <Up>
 cmap <C-N> <Down>
-" }}}
-
-" forces use of hklm for navigating in a document {{{
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
 " }}}
 
 " disable search highlights {{{
@@ -319,6 +333,10 @@ nnoremap <A-o> :only<CR>
 "}}}
 
 " easily resize and split windows {{{
+nmap <Up> <C-w>+
+nmap <Down> <C-w>-
+nmap <Left> <C-w><
+nmap <Right> <C-w>>
 nmap <leader>w+ <C-w>+
 nmap <leader>w- <C-w>-
 nmap <leader>w> <C-w>>
@@ -378,6 +396,19 @@ augroup END
 augroup filetypedetect
   au BufNewFile,BufRead *.html.erb.deface set syntax=eruby
 augroup END
+" }}}
+
+" SASS/SCSS better word detection {{{
+
+autocmd BufNewFile,BufRead *.sass setl iskeyword+=#,-
+autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,-
+
+"}}}
+
+" When pressing <leader>cd switch to the directory of the open buffer {{{
+
+map <Leader>cd :cd %:p:h<CR>:pwd<CR>
+
 " }}}
 
 " }}}
@@ -507,6 +538,8 @@ nnoremap <silent> [unite]u :<C-u>Unite neobundle/update<cr>
     else
       let g:junkfile#directory=expand("~/.vim/.cache/junk")
     end
+  "}}}
+  NeoBundleLazy 'osyo-manga/unite-filetype', {'autoload':{'unite_sources':'filetype'}} "{{{
   "}}}
 
 " }}}
@@ -663,6 +696,19 @@ let g:openbrowser_default_search = "duckduckgo"
 
 " }}}
 
+" vim-operator-replace {{{
+
+nmap <leader>y <Plug>(operator-replace)
+
+" }}}
+
+" vim-expand-region {{{
+
+map + <Plug>(expand_region_expand)
+map - <Plug>(expand_region_shrink)
+
+" }}}
+
 " }}}
 
 " Commands {{{
@@ -704,7 +750,6 @@ function! RemoveCurrentFileReadOnly()
   call g:RemoveFilesReadOnlyAttribute(filename)
 endfunction
 
-nmap <leader>y  :call RemoveCurrentFileReadOnly()<CR>
 " }}}
 
 " Grep Improved {{{
@@ -795,11 +840,13 @@ function! s:RestoreSession(...)
 endfunction
 
 function! s:AutoRestoreSession()
-  let filename = "./session.vim"
-  let filename = fnamemodify(filename, ":p")
-  if filereadable(filename)
-    echo "Restoring session..."
-    call s:RestoreSession(filename)
+  if argc() == 0
+    let filename = "./session.vim"
+    let filename = fnamemodify(filename, ":p")
+    if filereadable(filename)
+      echo "Restoring session..."
+      call s:RestoreSession(filename)
+    endif
   endif
 endfunction
 
