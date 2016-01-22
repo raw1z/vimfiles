@@ -219,3 +219,4 @@ bundle/unite-filetype
 bundle/tabpagebuffer.vim
 bundle/presenting.vim
 bundle/context_filetype.vim
+bundle/vimfiler.vim

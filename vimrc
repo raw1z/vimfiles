@@ -30,6 +30,7 @@ NeoBundle 'honza/vim-snippets'
 
 " Utils {{{
 
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'kien/ctrlp.vim'
@@ -61,6 +62,15 @@ NeoBundle 'yssl/QFEnter'
 NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'vimwiki/vimwiki'
 NeoBundle 'salsifis/vim-transpose'
+NeoBundle 'rizzatti/dash.vim'
+
+NeoBundleLazy 'Shougo/vimfiler.vim', {
+	\ 'depends': 'Shougo/unite.vim',
+	\ 'on_map': '<Plug>',
+	\ 'on_path': '.*',
+	\ 'on_cmd': [
+	\    {'name': ['VimFiler'], 'complete': 'customlist,vimfiler#complete'}
+	\ ]}
 
 NeoBundleLazy 'scrooloose/nerdtree', {'augroup' : 'NERDTree'}
 
@@ -88,9 +98,8 @@ NeoBundleLazy 'JarrodCTaylor/vim-ember-cli-test-runner', {
 NeoBundleLazy 'thinca/vim-quickrun', {'on_cmd': 'QuickRun'}
 NeoBundleLazy 'godlygeek/tabular', {'on_cmd': 'Tabularize'}
 NeoBundleLazy 'chrisbra/NrrwRgn', {'on_cmd': 'NarrowRegion'}
-NeoBundleLazy 'AndrewRadev/linediff.vim', {'on_cmd': 'LineDiff'}
+NeoBundleLazy 'AndrewRadev/linediff.vim', {'on_cmd': 'Linediff'}
 NeoBundleLazy 'tpope/vim-heroku', {'on_cmd': 'Hk'}
-NeoBundle 'rizzatti/dash.vim'
 
 NeoBundleLazy 't9md/vim-choosewin', {'on_map': '<Plug>(choosewin)'}
 NeoBundleLazy 'mbbill/undotree', {'on_cmd': 'UndotreeToggle'}
@@ -226,34 +235,44 @@ imap <leader>! \|
 " }}}
 
 " Default colorscheme {{{
-colorscheme gruvbox
-set background=dark
+
+function! s:SetDefaultColorcheme()
+  let defaultColorscheme = "gruvbox"
+  let colorschemeFilePath = globpath(&runtimepath, 'colors/'.defaultColorscheme.'.vim')
+  if filereadable(colorschemeFilePath)
+    exe 'colorscheme '.defaultColorscheme
+  endif
+endfunction
+
+call s:SetDefaultColorcheme()
+
 " }}}
 
 " Source the vimrc/gvimrc/exrc file after saving it {{{
+
+command! -nargs=+ Silent execute 'silent <args>' | redraw!
+
 if has("autocmd")
   augroup ConfigChangeDetect
-    autocmd! bufwritepost init.vim source $MYVIMRC
-    autocmd  bufwritepost init.vim echo "init.vim reloaded"
-
-    autocmd! bufwritepost [_.]nvimrc source $MYVIMRC
-    autocmd  bufwritepost [_.]nvimrc echo ".nvimrc reloaded"
-
-    autocmd! bufwritepost [_.]nvimrc.custom source $MYVIMRC
-    autocmd  bufwritepost [_.]nvimrc.custom echo ".nvimrc.custom reloaded"
-
-    autocmd  bufwritepost [_.]exrc source %:p
-    autocmd  bufwritepost [_.]exrc echo "_exrc reloaded"
+    autocmd! BufWritePost [_.]vimrc source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
+    autocmd! BufWritePost [_.]gvimrc source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
+    autocmd! BufWritePost [_.]nvimrc source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
+    autocmd! BufWritePost init.vim source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
+    autocmd! BufWritePost [_.]vimrc.custom source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
+    autocmd! BufWritePost [_.]gvimrc.custom source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
+    autocmd! BufWritePost [_.]nvimrc.custom source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
+    autocmd! BufWritePost [_.]exrc source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
   augroup END
 endif
+
 " }}}
 
 " keyboard map for editing the configuration files {{{
-nmap <leader>v :split $MYVIMRC<CR>
-nmap <leader>vc :split $VIM_CUSTOM_DIR/.nvimrc.custom<CR>
-nmap <leader>vg :split $MYGVIMRC<CR>
-nmap <leader>vgc :split $VIM_CUSTOM_DIR/.gvimrc.custom<CR>
-nmap <leader>ve :split _exrc<CR>
+nmap <leader>v :tabnew $MYVIMRC<CR>
+nmap <leader>vc :tabnew $VIM_CUSTOM_DIR/.nvimrc.custom<CR>
+nmap <leader>vg :tabnew $MYGVIMRC<CR>
+nmap <leader>vgc :tabnew $VIM_CUSTOM_DIR/.gvimrc.custom<CR>
+nmap <leader>ve :tabnew _exrc<CR>
 " }}}
 
 " keyboard map for toggling wrap mode {{{
@@ -342,6 +361,7 @@ nmap <leader>w- <C-w>-
 nmap <leader>w> <C-w>>
 nmap <leader>w< <C-w><
 nmap <leader>w= <C-w>=
+nmap <leader>w<space> <C-w><C-w>
 nmap <space><space> <C-w><C-w>
 nmap <silent> <leader>wsp :sp<CR>
 nmap <silent> <leader>wvs :vs<CR>
@@ -371,10 +391,6 @@ endfunction
 nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
 nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
 
-" }}}
-
-" search visually selected text by pressing * {{{
-vnorem * y/<c-r>"<cr>
 " }}}
 
 " .net development {{{
@@ -408,6 +424,18 @@ autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,-
 " When pressing <leader>cd switch to the directory of the open buffer {{{
 
 map <Leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" }}}
+
+" configure neovim {{{
+
+if has("nvim")
+  " changing cursor shape for neovim
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+  " enabling true color
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
 " }}}
 
@@ -461,7 +489,11 @@ let g:unite_source_history_yank_enable=1
 let g:unite_source_rec_max_cache_files=5000
 let g:unite_prompt='» '
 
-if executable('ag')
+if executable('hw')
+  let g:unite_source_grep_command = 'hw'
+  let g:unite_source_grep_default_opts = '--no-group --no-color'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts =
   \ '-i --vimgrep --hidden --ignore ' .
@@ -709,6 +741,13 @@ map - <Plug>(expand_region_shrink)
 
 " }}}
 
+" vimfiler {{{
+
+let g:vimfiler_as_default_explorer=1
+let g:vimfiler_time_format="%d/%m/%y %H:%M"
+
+" }}}
+
 " }}}
 
 " Commands {{{
@@ -753,11 +792,11 @@ endfunction
 " }}}
 
 " Grep Improved {{{
+
 function! Grep(search)
-  let command = 'vimgrep /'.a:search.'/gj '.expand('%')
-  execute(command)
-  copen
-  cc
+  let sanitizedSearch = escape(a:search, '-')
+  echo a:search
+  exe "Unite -no-quit -auto-preview -buffer-name=search -input=".sanitizedSearch." grep:%"
 endfunction
 
 function! GrepLastSearch()
@@ -770,12 +809,7 @@ function! GrepCurrentWord()
 endfunction
 
 function! GlobalGrep(search)
-  ccl
-  cgete []
-  let command = 'silent bufdo vimgrepadd /'.a:search.'/gj %'
-  execute(command)
-  copen
-  cc
+  exe "Unite -no-quit -auto-preview -buffer-name=search -input=".a:search." grep:$buffers"
 endfunction
 
 function! GlobalGrepLastSearch()
@@ -787,15 +821,43 @@ function! GlobalGrepCurrentWord()
   call GlobalGrepLastSearch()
 endfunction
 
-command! Grep :call GrepLastSearch()
-command! Grepw :call GrepCurrentWord()
-command! GGrep :call GlobalGrepLastSearch()
-command! GGrepw :call GlobalGrepCurrentWord()
+function! GetVisuallySelectedText()
+  let [lnum1, col1] = getpos("'<")[1:2]
+  let [lnum2, col2] = getpos("'>")[1:2]
+  let lines = getline(lnum1, lnum2)
+  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][col1 - 1:]
+  return join(lines, "\n")
+endfunction
 
-nmap <leader>n :Grep<CR>
-nmap <leader>f :Grepw<CR>
-nmap <leader>N :GGrep<CR>
-nmap <leader>F :GGrepw<CR>
+function! GrepVisuallySelectedText(isGlobal)
+  let selectedText = GetVisuallySelectedText()
+	let s:V = vital#of("vital")
+	let s:S = s:V.import("Data.String")
+  let search = s:S.chomp(s:S.trim(selectedText))
+  let @/ = search
+  if a:isGlobal == 0
+    call Grep(search)
+  else
+    call GlobalGrep(search)
+  endif
+endfunction
+
+command! -nargs=1 Grep :call Grep(<q-args>)
+command! GrepLastSearch :call GrepLastSearch()
+command! GrepCurrentWord :call GrepCurrentWord()
+command! GGrepLastSearch :call GlobalGrepLastSearch()
+command! GGrepCurrentWord :call GlobalGrepCurrentWord()
+command! -range GrepVisualSelection :call GrepVisuallySelectedText(0)
+command! -range GGrepVisualSelection :call GrepVisuallySelectedText(1)
+
+nmap <leader>n :GrepLastSearch<CR>
+nmap <leader>f :GrepCurrentWord<CR>
+nmap <leader>N :GGrepLastSearch<CR>
+nmap <leader>F :GGrepCurrentWord<CR>
+vnorem <leader>n :GrepVisualSelection<CR>
+vnorem <leader>N :GGrepVisualSelection<CR>
+
 " }}}
 
 " manage vim session with support for nerdtree {{{
