@@ -88,7 +88,7 @@ if has('nvim')
   call dein#add('Shougo/deoplete.nvim')
 else
   call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neocomplete.nvim')
+  call dein#add('Shougo/neocomplete.vim')
 endif
 "}}}
 
