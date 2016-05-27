@@ -87,6 +87,7 @@ call dein#add('rhysd/vim-textobj-anyblock')
 call dein#add('sotte/presenting.vim')
 call dein#add('thinca/vim-quickrun')
 call dein#add('ervandew/supertab')
+call dein#add('rizzatti/dash.vim')
 call dein#add('vim-jp/vital.vim')
 
 if has('nvim')
