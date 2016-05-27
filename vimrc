@@ -100,7 +100,6 @@ endif
 "}}}
 
 " colorschemes {{{
-call dein#add('altercation/vim-colors-solarized')
 call dein#add('morhetz/gruvbox')
 call dein#add('jonathanfilip/vim-lucius')
 call dein#add('chriskempson/base16-vim')
