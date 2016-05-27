@@ -193,6 +193,7 @@ set showcmd
 set nobackup
 set noswapfile
 set foldmethod=marker
+set splitright
 
 if has("nvim")
   set wildignorecase
