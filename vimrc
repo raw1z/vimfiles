@@ -87,6 +87,7 @@ call dein#add('rhysd/vim-textobj-anyblock')
 call dein#add('sotte/presenting.vim')
 call dein#add('thinca/vim-quickrun')
 call dein#add('ervandew/supertab')
+call dein#add('vim-jp/vital.vim')
 
 if has('nvim')
   call dein#add('SirVer/ultisnips')
@@ -664,12 +665,20 @@ endfunction
 " }}}
 
 " Grep Improved {{{
+fun! EscapeSearch(search)
+  let s:V = vital#of("vital")
+  let s:S = s:V.import("Data.String")
+
+  let sanitizedSearch = a:search "escape(a:search, '-')
+  let sanitizedSearch = s:S.replace(sanitizedSearch, "\\<", "")
+  let sanitizedSearch = s:S.replace(sanitizedSearch, "\\>", "")
+  echo sanitizedSearch
+
+  return sanitizedSearch
+endf
 
 function! Grep(search)
-  let sanitizedSearch = escape(a:search, '-')
-  let sanitizedSearch = escape(sanitizedSearch, "\<")
-  let sanitizedSearch = escape(sanitizedSearch, "\>")
-  echo sanitizedSearch
+  let sanitizedSearch = EscapeSearch(a:search)
   exe "Unite -no-quit -auto-preview -buffer-name=search -input=".sanitizedSearch." grep:%"
 endfunction
 
