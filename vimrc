@@ -666,7 +666,9 @@ endfunction
 
 function! Grep(search)
   let sanitizedSearch = escape(a:search, '-')
-  echo a:search
+  let sanitizedSearch = escape(sanitizedSearch, "\<")
+  let sanitizedSearch = escape(sanitizedSearch, "\>")
+  echo sanitizedSearch
   exe "Unite -no-quit -auto-preview -buffer-name=search -input=".sanitizedSearch." grep:%"
 endfunction
 
