@@ -31,6 +31,11 @@ if has("nvim")
     execute "new | terminal"
   endfunction
   command! Vterm call s:openTerminalInSplittedWindow()
+
+  function! s:openTerminalInNewTab()
+    execute "tabnew | terminal"
+  endfunction
+  command! Tterm call s:openTerminalInNewTab()
   " }}}
 
 endif
