@@ -1,10 +1,3 @@
-let s:Prelude = s:Vital.import('Prelude')
-
-" detect OS {{{
-let s:is_windows = s:Prelude.is_windows()
-let s:is_mac = s:Prelude.is_mac()
-let s:is_macvim = has('gui_macvim')
-"}}}
 
 " configure neovim {{{
 
@@ -132,13 +125,6 @@ call dein#add('Shougo/neoyank.vim')
 call dein#add('ujihisa/unite-colorscheme')
   nnoremap <silent> [unite]c :<C-u>Unite -auto-resize -auto-preview -buffer-name=colorschemes colorscheme<cr>
 
-if s:is_macvim
-  call dein#add('raw1z/unite-font') "{{{
-  nnoremap <silent> [unite]g :<C-u>Unite -auto-resize -auto-preview font<cr>
-  nnoremap <silent> [unite]gs :<C-u>Unite -auto-resize -auto-preview font/size<cr>
-  "}}}
-endif
-
 call dein#add('raw1z/unite-projects')
   nnoremap <silent> [unite]p :<C-u>Unite -auto-resize projects<cr>
 
@@ -155,11 +141,7 @@ call dein#add('Shougo/unite-help')
   nnoremap <silent> [unite]h :<C-u>Unite -auto-resize -buffer-name=help help<cr>
 
 call dein#add('Shougo/junkfile.vim')
-  if (s:is_windows)
-    let g:junkfile#directory=expand($HOME."/.vim/.cache/junk")
-  else
-    let g:junkfile#directory=expand("~/.vim/.cache/junk")
-  end
+  let g:junkfile#directory=expand("~/.vim/.cache/junk")
 
 call dein#add('osyo-manga/unite-filetype')
 "}}}
@@ -177,6 +159,13 @@ endif
 nnoremap <silent> <space>u :call dein#update()<CR>
 "}}}
 
+"}}}
+
+" detect OS {{{
+let s:Vital = vital#of('vital')
+let s:Prelude = s:Vital.import('Prelude')
+let s:is_windows = s:Prelude.is_windows()
+let s:is_mac = s:Prelude.is_mac()
 "}}}
 
 " Base configuration {{{
