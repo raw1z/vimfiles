@@ -1,6 +1,8 @@
+let s:Prelude = s:Vital.import('Prelude')
+
 " detect OS {{{
-let s:is_windows = has('win32') || has('win64')
-let s:is_cygwin = has('win32unix')
+let s:is_windows = s:Prelude.is_windows()
+let s:is_mac = s:Prelude.is_mac()
 let s:is_macvim = has('gui_macvim')
 "}}}
 
@@ -597,6 +599,10 @@ call vimfiler#custom#profile('default', 'context', {
 
 let g:vimfiler_as_default_explorer=1
 let g:vimfiler_time_format="%d/%m/%y %H:%M"
+
+if s:is_mac
+  let g:vimfiler_quick_look_command = 'qlmanage -p'
+endif
 
 map <space>e :VimFiler -create<CR>
 map <space>s :new <bar> VimFiler -create<CR>
