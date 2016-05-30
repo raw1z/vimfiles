@@ -285,7 +285,12 @@ nmap <leader>v :tabnew $MYVIMRC<CR>
 nmap <leader>vc :tabnew $VIM_CUSTOM_DIR/.nvimrc.custom<CR>
 nmap <leader>vg :tabnew $MYGVIMRC<CR>
 nmap <leader>vgc :tabnew $VIM_CUSTOM_DIR/.gvimrc.custom<CR>
-nmap <leader>ve :tabnew _exrc<CR>
+
+if s:is_windows
+  nmap <leader>ve :tabnew _exrc<CR>
+else
+  nmap <leader>ve :tabnew .exrc<CR>
+endif
 " }}}
 
 " keyboard map for toggling wrap mode {{{
