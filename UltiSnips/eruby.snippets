@@ -1,18 +1,10 @@
-snippet % "insert interpolation" i
-<% $0 %>
-endsnippet
-
-snippet %= "insert interpolation" i
-<%= $0 %>
-endsnippet
-
-snippet %block "insert a block" b
+snippet block "insert a block" b
 <%= $1 do %>
   $0
 <% end %>
 endsnippet
 
-snippet %blockp "insert a block" b
+snippet blockp "insert a block" b
 <%= $1 do |$2| %>
   $0
 <% end %>
