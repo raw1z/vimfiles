@@ -686,7 +686,7 @@ endf
 
 function! Grep(search)
   let sanitizedSearch = EscapeSearch(a:search)
-  exe "Unite -no-quit -auto-preview -buffer-name=search -input=".sanitizedSearch." grep:%"
+  exe "Unite -no-quit -auto-preview -buffer-name=search grep:%"
 endfunction
 
 function! GrepLastSearch()
@@ -699,7 +699,7 @@ function! GrepCurrentWord()
 endfunction
 
 function! GlobalGrep(search)
-  exe "Unite -no-quit -auto-preview -buffer-name=search -input=".a:search." grep:."
+  exe "Unite -no-quit -auto-preview -buffer-name=search grep:."
 endfunction
 
 function! GlobalGrepLastSearch()
