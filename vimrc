@@ -427,24 +427,20 @@ if executable('hw')
 elseif executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts =
-  \ '-i --vimgrep --hidden --ignore ' .
-  \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+        \ '-i --vimgrep --hidden --ignore ' .
+        \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
 
   let g:unite_source_rec_async_command =
-  \ ['ag', '--nocolor', '--nogroup', '-g', '""',
-  \ '--ignore', '*.jpg',
-  \ '--ignore', '*.jpeg',
-  \ '--ignore', '*.gif',
-  \ '--ignore', '*.png',
-  \ '--ignore', '*.ttf',
-  \ '--ignore', '*.woff',
-  \ '--ignore', '*.eot'
-  \ ]
+        \ ['ag', '--follow', '--nocolor', '--nogroup',
+        \  '--hidden', '-g', '']
 elseif executable('ack')
   let g:unite_source_grep_command='ack'
   let g:unite_source_grep_default_opts='--no-heading --no-color -a -C4'
   let g:unite_source_grep_recursive_opt=''
+
+  let g:unite_source_rec_async_command =
+        \ ['ack', '-f', '--nofilter']
 endif
 
 function! s:unite_settings()
@@ -460,7 +456,11 @@ nnoremap [unite] <nop>
 if s:is_windows
   nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec<cr><c-u>
 else
-  nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+  if has('nvim')
+    nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/neovim<cr><c-u>
+  else
+    nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+  endif
 endif
 
 nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
