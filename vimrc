@@ -50,7 +50,8 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('tpope/vim-sensible')
 call dein#add('honza/vim-snippets')
 call dein#add('mileszs/ack.vim')
-call dein#add('bling/vim-airline')
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
 call dein#add('tpope/vim-abolish')
 call dein#add('tpope/vim-bundler')
 call dein#add('tpope/vim-commentary')
@@ -272,7 +273,7 @@ endif
 " }}}
 
 " keyboard map for editing the configuration files {{{
-nmap <leader>v :tabnew $MYVIMRC<CR>
+nmap <leader>vv :tabnew $MYVIMRC<CR>
 nmap <leader>vc :tabnew $VIM_CUSTOM_DIR/.nvimrc.custom<CR>
 nmap <leader>vg :tabnew $MYGVIMRC<CR>
 nmap <leader>vgc :tabnew $VIM_CUSTOM_DIR/.gvimrc.custom<CR>
@@ -669,10 +670,11 @@ fun! EscapeSearch(search)
   let s:V = vital#of("vital")
   let s:S = s:V.import("Data.String")
 
-  let sanitizedSearch = a:search "escape(a:search, '-')
-  let sanitizedSearch = s:S.replace(sanitizedSearch, "\\<", "")
+  let sanitizedSearch = s:S.replace(a:search, "\\<", "")
   let sanitizedSearch = s:S.replace(sanitizedSearch, "\\>", "")
-  echo sanitizedSearch
+  let sanitizedSearch = s:S.chomp(sanitizedSearch)
+  let sanitizedSearch = s:S.trim(sanitizedSearch)
+  let sanitizedSearch = s:S.replace(sanitizedSearch, " ", '\\ ')
 
   return sanitizedSearch
 endf
@@ -692,7 +694,7 @@ function! GrepCurrentWord()
 endfunction
 
 function! GlobalGrep(search)
-  exe "Unite -no-quit -auto-preview -buffer-name=search -input=".a:search." grep:$buffers"
+  exe "Unite -no-quit -auto-preview -buffer-name=search -input=".a:search." grep:."
 endfunction
 
 function! GlobalGrepLastSearch()
@@ -715,14 +717,12 @@ endfunction
 
 function! GrepVisuallySelectedText(isGlobal)
   let selectedText = GetVisuallySelectedText()
-  let s:V = vital#of("vital")
-  let s:S = s:V.import("Data.String")
-  let search = s:S.chomp(s:S.trim(selectedText))
-  let @/ = search
+  let sanitizedSearch = EscapeSearch(selectedText)
+  let @/ = sanitizedSearch
   if a:isGlobal == 0
-    call Grep(search)
+    call Grep(sanitizedSearch)
   else
-    call GlobalGrep(search)
+    call GlobalGrep(sanitizedSearch)
   endif
 endfunction
 
