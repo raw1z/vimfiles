@@ -85,6 +85,7 @@ call dein#add('thinca/vim-quickrun')
 call dein#add('ervandew/supertab')
 call dein#add('rizzatti/dash.vim')
 call dein#add('vim-jp/vital.vim')
+call dein#add('raw1z/unite-rspec')
 
 if has('nvim')
   call dein#add('SirVer/ultisnips')
