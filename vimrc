@@ -1,3 +1,4 @@
+let mapleader="ç"
 
 " configure neovim {{{
 
@@ -42,113 +43,10 @@ set runtimepath^=~/.vim/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.vim'))
 call dein#add('Shougo/dein.vim')
 
-" plugins {{{
-
-" utils {{{
-call dein#add('michaeljsmith/vim-indent-object')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-call dein#add('tpope/vim-sensible')
-call dein#add('honza/vim-snippets')
-call dein#add('mileszs/ack.vim')
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('tpope/vim-abolish')
-call dein#add('tpope/vim-bundler')
-call dein#add('tpope/vim-commentary')
-call dein#add('tpope/vim-dispatch')
-call dein#add('tpope/vim-endwise')
-call dein#add('tpope/vim-eunuch')
-call dein#add('tpope/vim-fugitive')
-call dein#add('tpope/vim-projectionist')
-call dein#add('tpope/vim-rails')
-call dein#add('tpope/vim-rake')
-call dein#add('tpope/vim-repeat')
-call dein#add('tpope/vim-rsi')
-call dein#add('tpope/vim-scriptease')
-call dein#add('tpope/vim-sensible')
-call dein#add('tpope/vim-surround')
-call dein#add('tpope/vim-unimpaired')
-call dein#add('Shougo/vimfiler.vim')
-call dein#add('bronson/vim-trailing-whitespace')
-call dein#add('tyru/open-browser.vim')
-call dein#add('godlygeek/tabular')
-call dein#add('AndrewRadev/linediff.vim')
-call dein#add('mbbill/undotree')
-call dein#add('Shougo/unite.vim')
-call dein#add('easymotion/vim-easymotion')
-call dein#add('kana/vim-textobj-user')
-call dein#add('osyo-manga/vim-textobj-multiblock')
-call dein#add('thinca/vim-textobj-between')
-call dein#add('rhysd/vim-textobj-anyblock')
-call dein#add('sotte/presenting.vim')
-call dein#add('thinca/vim-quickrun')
-call dein#add('ervandew/supertab')
-call dein#add('rizzatti/dash.vim')
-call dein#add('vim-jp/vital.vim')
-call dein#add('raw1z/unite-rspec')
-
-if has('nvim')
-  call dein#add('SirVer/ultisnips')
-  call dein#add('Shougo/deoplete.nvim')
-else
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neocomplete.vim')
-endif
-"}}}
-
-" colorschemes {{{
-call dein#add('morhetz/gruvbox')
-call dein#add('jonathanfilip/vim-lucius')
-call dein#add('chriskempson/base16-vim')
-" }}}
-
-" languages {{{
-call dein#add('sheerun/vim-polyglot')
-call dein#add('adimit/prolog.vim')
-call dein#add('juvenn/mustache.vim')
-call dein#add('raw1z/vim-csharp')
-call dein#add('simpsonjulian/cypher-vim-syntax')
-call dein#add('raw1z/Windows-PowerShell-Syntax-Plugin')
-call dein#add('vim-scripts/Vim-R-plugin')
-call dein#add('kylef/apiblueprint.vim')
-"}}}
-
-" Unite sources {{{
-
-call dein#add('rafi/vim-unite-issue', {
-  \  'depends': [
-  \    'mattn/webapi-vim', 'tyru/open-browser.vim', 'Shougo/unite.vim'
-  \  ]
-  \ })
-
-call dein#add('Shougo/neoyank.vim')
-  nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
-
-call dein#add('ujihisa/unite-colorscheme')
-  nnoremap <silent> [unite]c :<C-u>Unite -auto-resize -auto-preview -buffer-name=colorschemes colorscheme<cr>
-
-call dein#add('raw1z/unite-projects')
-  nnoremap <silent> [unite]p :<C-u>Unite -auto-resize projects<cr>
-
-call dein#add('osyo-manga/unite-quickfix')
-  nnoremap <silent> [unite]q :<C-u>Unite -auto-resize -auto-preview quickfix<cr>
-
-call dein#add('tsukkee/unite-tag')
-  nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tag tag tag/file<cr>
-
-call dein#add('Shougo/unite-outline')
-  nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
-
-call dein#add('Shougo/unite-help')
-  nnoremap <silent> [unite]h :<C-u>Unite -auto-resize -buffer-name=help help<cr>
-
-call dein#add('Shougo/junkfile.vim')
-  let g:junkfile#directory=expand("~/.vim/.cache/junk")
-
-call dein#add('osyo-manga/unite-filetype')
-"}}}
-
-"}}}
+call dein#load_toml( "~/.vim/toml/plugins.toml"      , {'lazy' : 0} )
+call dein#load_toml( '~/.vim/toml/lazy.toml'         , {'lazy' : 1} )
+call dein#load_toml( "~/.vim/toml/colorschemes.toml" , {'lazy' : 0} )
+call dein#load_toml( "~/.vim/toml/languages.toml"    , {'lazy' : 0} )
 
 call dein#end()
 filetype plugin indent on
@@ -174,8 +72,6 @@ let s:is_mac = s:Prelude.is_mac()
 
 " sensible defaults {{{
 
-let mapleader="ç"
-
 set nu
 set nowrap
 set tabstop=2 shiftwidth=2 expandtab autoindent
@@ -187,6 +83,8 @@ set showcmd
 set nobackup
 set noswapfile
 set foldmethod=marker
+set foldcolumn=1
+set fillchars=vert:\|
 set splitright
 
 if has("nvim")
@@ -362,7 +260,6 @@ nmap <leader>w> <C-w>>
 nmap <leader>w< <C-w><
 nmap <leader>w= <C-w>=
 nmap <leader>w<space> <C-w><C-w>
-nmap <space><space> <C-w><C-w>
 nmap <silent> <leader>wsp :sp<CR>
 nmap <silent> <leader>wvs :vs<CR>
 " }}}
@@ -470,35 +367,8 @@ nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mappin
 nnoremap <silent> <leader><leader>r <Plug>(unite_redraw)
 "}}}
 
-" airline configuration {{{
-  let g:airline_left_sep=''
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_right_sep=''
-  let g:airline#extensions#tabline#enabled = 0
-" }}}
-
-" rake.vim additions {{{
-map <leader>a :AS<CR>
-" }}}
-
 " ack configuration {{{
 let g:ackprg="ag --nogroup --nocolor --column"
-" }}}
-
-" fugitive configuration {{{
-
-" autoclean fugitive buffers
-autocmd BufReadPost fugitive://* set bufhidden=delete
-
-" jump up to the commit object for the current tree by pressing C.
-autocmd User fugitive
-      \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-      \   nnoremap <buffer> .. :edit %:h<CR> |
-      \ endif
-
-" keyboard map for opening the git status window
-nmap <leader>g :Gstatus<CR>
-
 " }}}
 
 " tabularize configuration {{{
@@ -518,115 +388,6 @@ endfunction
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 " }}}
-
-" deoplete {{{
-
-let g:deoplete#enable_at_startup = 1
-
-" }}}
-
-" undotree {{{
-
-nmap <leader>u :UndotreeToggle<CR>
-let g:undotree_WindowLayout = 2
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_DiffpanelHeight = 0
-
-if has("persistent_undo")
-  set undodir=~/.undodir/
-  set undofile
-endif
-
-" }}}
-
-" unite-issues configuration {{{
-let g:github_token = "d75aad090ec246827bf6139971a3b6ba22bd135e"
-" }}}
-
-" easymotion {{{
-
-nmap <Leader><Leader>s <Plug>(easymotion-s2)
-let g:EasyMotion_smartcase = 1
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
-
-hi link EasyMotionTarget2First MatchParen
-hi link EasyMotionTarget2Second MatchParen
-
-hi link EasyMotionMoveHL Search
-" }}}
-
-" openbrowser {{{
-
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
-
-let g:openbrowser_default_search = "duckduckgo"
-
-" }}}
-
-" vim-operator-replace {{{
-
-nmap <leader>y <Plug>(operator-replace)
-
-" }}}
-
-" vim-expand-region {{{
-
-map + <Plug>(expand_region_expand)
-map - <Plug>(expand_region_shrink)
-
-" }}}
-
-" vimfiler {{{
-
-call vimfiler#custom#profile('default', 'context', {
-\   'safe' : 0
-\ })
-
-let g:vimfiler_as_default_explorer=1
-let g:vimfiler_time_format="%d/%m/%y %H:%M"
-
-if s:is_mac
-  let g:vimfiler_quick_look_command = 'qlmanage -p'
-endif
-
-map <space>e :VimFiler -create<CR>
-map <space>s :new <bar> VimFiler -create<CR>
-map <space>v :vnew <bar> VimFiler -create<CR>
-
-" }}}
-
-" UltiSnips configuration {{{
-let g:UltiSnipsEditSplit = "horizontal"
-let g:UltiSnipsExpandTrigger="<TAB>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-b>"
-" }}}
-
-" easymotion {{{
-
-nmap <Leader><Leader>s <Plug>(easymotion-s2)
-let g:EasyMotion_smartcase = 1
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
-
-hi link EasyMotionTarget2First MatchParen
-hi link EasyMotionTarget2Second MatchParen
-
-hi link EasyMotionMoveHL Search
-" }}}
-
-" quickrun {{{
-let g:quickrun_no_default_key_mappings = 1
-"}}}
 
 "}}}
 

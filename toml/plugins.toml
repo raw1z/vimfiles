@@ -1,0 +1,180 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'michaeljsmith/vim-indent-object'
+
+[[plugins]]
+repo = 'tpope/vim-sensible'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'mileszs/ack.vim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_source = '''
+  let g:airline_left_sep=''
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_right_sep=''
+  let g:airline#extensions#tabline#enabled = 0
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'tpope/vim-abolish'
+
+[[plugins]]
+repo = 'tpope/vim-bundler'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
+[[plugins]]
+repo = 'tpope/vim-eunuch'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+  nmap <leader>g :Gstatus<CR>
+'''
+hook_source = '''
+
+" autoclean fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" jump up to the commit object for the current tree by pressing C.
+autocmd User fugitive
+      \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+      \   nnoremap <buffer> .. :edit %:h<CR> |
+      \ endif
+'''
+
+[[plugins]]
+repo = 'tpope/vim-projectionist'
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+
+[[plugins]]
+repo = 'tpope/vim-rake'
+hook_add = '''
+  nnoremap <leader>a :AS<CR>
+'''
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'tpope/vim-rsi'
+
+[[plugins]]
+repo = 'tpope/vim-scriptease'
+
+[[plugins]]
+repo = 'tpope/vim-sensible'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-unimpaired'
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'godlygeek/tabular'
+
+[[plugins]]
+repo = 'AndrewRadev/linediff.vim'
+
+[[plugins]]
+repo = 'mbbill/undotree'
+hook_add = '''
+  nmap <leader>u :UndotreeToggle<CR>
+'''
+hook_source = '''
+  let g:undotree_WindowLayout = 2
+  let g:undotree_SetFocusWhenToggle = 1
+  let g:undotree_DiffpanelHeight = 0
+
+  if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+  endif
+'''
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'thinca/vim-textobj-between'
+
+[[plugins]]
+repo = 'rhysd/vim-textobj-anyblock'
+
+[[plugins]]
+repo = 'sotte/presenting.vim'
+
+[[plugins]]
+repo = 'ervandew/supertab'
+
+[[plugins]]
+repo = 'rizzatti/dash.vim'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+if = "has('nvim')"
+hook_source = '''
+  let g:UltiSnipsEditSplit = "horizontal"
+  let g:UltiSnipsExpandTrigger="<TAB>"
+  let g:UltiSnipsJumpForwardTrigger="<C-j>"
+  let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+'''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+depends = 'context_filetype.vim'
+on_i = 1
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+hook_add = '''
+  map + <Plug>(expand_region_expand)
+  map - <Plug>(expand_region_shrink)
+'''
+

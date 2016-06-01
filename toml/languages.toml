@@ -1,0 +1,30 @@
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'adimit/prolog.vim'
+
+[[plugins]]
+repo = 'juvenn/mustache.vim'
+
+[[plugins]]
+repo = 'raw1z/vim-csharp'
+
+[[plugins]]
+repo = 'simpsonjulian/cypher-vim-syntax'
+
+[[plugins]]
+repo = 'raw1z/Windows-PowerShell-Syntax-Plugin'
+
+[[plugins]]
+repo = 'vim-scripts/Vim-R-plugin'
+
+[[plugins]]
+repo = 'kylef/apiblueprint.vim'
+
+[[plugins]]
+repo = 'marijnh/tern_for_vim'
+on_ft = 'javascript'
+build = 'npm install'
+
+
