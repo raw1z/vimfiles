@@ -28,7 +28,7 @@ endif
 function! s:goto_folder_in_new_tab(path)
   execute 'tabnew ' a:path
   execute 'lcd ' a:path
-  execute "Vimfiler"
+  execute "VimFiler"
 endfunction
 
 command! -nargs=1 -complete=dir TabGo call s:goto_folder_in_new_tab(<q-args>)

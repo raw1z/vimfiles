@@ -31,6 +31,9 @@ inoremap kj <Esc>
 cmap <C-P> <Up>
 cmap <C-N> <Down>
 " }}}
+" ack configuration {{{
+let g:ackprg="ag --nogroup --nocolor --column"
+" }}}
 " jump to next nearest closed fold {{{
 
 function! s:goto_next_closed_fold(dir)
@@ -210,6 +213,4 @@ autocmd BufNewFile,BufRead *.sass setl iskeyword+=#,-
 autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,-
 
 "}}}
-
-
 

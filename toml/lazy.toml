@@ -1,4 +1,37 @@
 [[plugins]]
+repo = 'Shougo/unite.vim'
+hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
+hook_add = '''
+  nmap <space> [unite]
+  nnoremap [unite] <nop>
+
+  if has('win32') || has('win64')
+    nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec<cr><c-u>
+  else
+    if has('nvim')
+      nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/neovim<cr><c-u>
+    else
+      nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+    endif
+  endif
+
+  nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
+  nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+  nnoremap <silent> [unite]k :<C-u>Unite -no-quit -auto-preview -buffer-name=search grep:.<cr>
+  nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
+  nnoremap <silent> <leader><leader>r <Plug>(unite_redraw)
+
+  nnoremap <silent> [unite]c :<C-u>Unite -auto-resize -auto-preview -buffer-name=colorschemes colorscheme<cr>
+  nnoremap <silent> [unite]p :<C-u>Unite -auto-resize projects<cr>
+  nnoremap <silent> [unite]q :<C-u>Unite -auto-resize -auto-preview quickfix<cr>
+  nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
+  nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
+  nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
+  nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tag tag tag/file<cr>
+  nnoremap <silent> [Window]e :<C-u>Unite junkfile/new junkfile -start-insert<CR>
+'''
+
+[[plugins]]
 repo = 'thinca/vim-unite-history'
 on_if = 1
 on_source = 'unite.vim'
@@ -17,33 +50,21 @@ on_source = 'unite.vim'
 repo = 'ujihisa/unite-colorscheme'
 on_if = 1
 on_source = 'unite.vim'
-hook_add = '''
-  nnoremap <silent> [unite]c :<C-u>Unite -auto-resize -auto-preview -buffer-name=colorschemes colorscheme<cr>
-'''
 
 [[plugins]]
 repo = 'raw1z/unite-projects'
 on_if = 1
 on_source = 'unite.vim'
-hook_add = '''
-  nnoremap <silent> [unite]p :<C-u>Unite -auto-resize projects<cr>
-'''
 
 [[plugins]]
 repo = 'osyo-manga/unite-quickfix'
 on_if = 1
 on_source = 'unite.vim'
-hook_add = '''
-  nnoremap <silent> [unite]q :<C-u>Unite -auto-resize -auto-preview quickfix<cr>
-'''
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
 on_if = 1
 on_source = 'unite.vim'
-hook_add = '''
-  nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
-'''
 
 [[plugins]]
 repo = 'osyo-manga/unite-filetype'
@@ -54,9 +75,6 @@ on_source = 'unite.vim'
 repo = 'Shougo/neoyank.vim'
 on_if = 1
 on_source = 'unite.vim'
-hook_add = '''
-  nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
-'''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
@@ -86,40 +104,20 @@ repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
 on_map = {n = '<Plug>'}
 on_if = "isdirectory(bufname('%'))"
+hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
 hook_add = '''
   nnoremap <space>e :VimFiler -create<CR>
   nnoremap <space>s :new <bar> VimFiler -create<CR>
   nnoremap <space>v :vnew <bar> VimFiler -create<CR>
 '''
-hook_source = '''
-  call vimfiler#custom#profile('default', 'context', {
-  \   'safe' : 0
-  \ })
-
-  let g:vimfiler_as_default_explorer=1
-  let g:vimfiler_time_format="%d/%m/%y %H:%M"
-
-  if executable('qlmanage')
-    let g:vimfiler_quick_look_command = 'qlmanage -p'
-  endif
-'''
 
 [[plugins]]
 repo = 'Shougo/junkfile.vim'
 on_source = 'unite.vim'
-hook_add = '''
-  nnoremap <silent> [Window]e :<C-u>Unite junkfile/new junkfile -start-insert<CR>
-'''
-hook_source = '''
-  let g:junkfile#directory=expand("~/.vim/.cache/junk")
-'''
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
 on_source = 'unite.vim'
-hook_add = '''
-  nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
-'''
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
@@ -156,9 +154,6 @@ hook_source = '''
 [[plugins]]
 repo = 'tsukkee/unite-tag'
 on_source = 'unite.vim'
-hook_add = '''
-  nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tag tag tag/file<cr>
-'''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
@@ -183,11 +178,13 @@ hook_add = '''
 [[plugins]]
 repo = 't9md/vim-choosewin'
 on_map = {n = '<Plug>'}
-hook_add = '''
-  nmap <space><space>  <Plug>(choosewin)
+hook_source = '''
   let g:choosewin_overlay_enable = 1
   let g:choosewin_overlay_clear_multibyte = 1
   let g:choosewin_blink_on_land = 0
+'''
+hook_add = '''
+  nmap <space><space>  <Plug>(choosewin)
 '''
 
 [[plugins]]
@@ -223,21 +220,11 @@ on_ft = 'ruby'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 on_map = {n = '<Plug>'}
+hook_source = 'source ~/.vim/rc/plugins/easymotion.rc.vim'
 hook_add = '''
   nmap <Leader><Leader>s <Plug>(easymotion-s2)
   map <Leader>j <Plug>(easymotion-j)
   map <Leader>k <Plug>(easymotion-k)
-'''
-hook_source = '''
-  let g:EasyMotion_smartcase = 1
-
-  hi link EasyMotionTarget ErrorMsg
-  hi link EasyMotionShade  Comment
-
-  hi link EasyMotionTarget2First MatchParen
-  hi link EasyMotionTarget2Second MatchParen
-
-  hi link EasyMotionMoveHL Search
 '''
 
 [[plugins]]

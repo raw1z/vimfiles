@@ -9,9 +9,6 @@ build = 'make'
 repo = 'vim-jp/vital.vim'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-
-[[plugins]]
 repo = 'michaeljsmith/vim-indent-object'
 
 [[plugins]]
@@ -101,13 +98,13 @@ repo = 'tpope/vim-surround'
 repo = 'tpope/vim-unimpaired'
 
 [[plugins]]
-repo = 'Shougo/vimfiler.vim'
-
-[[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
 repo = 'godlygeek/tabular'
+hook_add = '''
+  inoremap <silent> <Bar>   <Bar><Esc>:call AutoTabularize()<CR>a
+'''
 
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
