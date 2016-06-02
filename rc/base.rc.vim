@@ -81,22 +81,11 @@ call s:set_colorscheme()
 
 " }}}
 " Auto source vim rc files {{{
-
-command! -nargs=+ Silent execute 'silent <args>' | redraw!
-
 if has("autocmd")
   augroup ConfigChangeDetect
-    autocmd! BufWritePost [_.]vimrc source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
-    autocmd! BufWritePost [_.]gvimrc source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
-    autocmd! BufWritePost [_.]nvimrc source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
-    autocmd! BufWritePost init.vim source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
-    autocmd! BufWritePost [_.]vimrc.custom source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
-    autocmd! BufWritePost [_.]gvimrc.custom source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
-    autocmd! BufWritePost [_.]nvimrc.custom source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
-    autocmd! BufWritePost [_.]exrc source %:p | echo expand('<afile>').' reloaded' | silent AirlineRefresh
+    autocmd BufWritePost [_.]vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
   augroup END
 endif
-
 " }}}
 " keyboard map for editing the configuration files {{{
 nmap <leader>vd :TabGo ~/.vim<CR>
