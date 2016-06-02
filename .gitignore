@@ -11,3 +11,5 @@ temp
 merged
 repos/unite-issue
 repos/github.com
+cache_nvim
+state_nvim.vim
