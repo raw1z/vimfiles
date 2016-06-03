@@ -14,6 +14,12 @@ call dein#load_toml( '~/.vim/toml/lazy.toml'         , {'lazy' : 1} )
 call dein#load_toml( "~/.vim/toml/colorschemes.toml" , {'lazy' : 0} )
 call dein#load_toml( "~/.vim/toml/languages.toml"    , {'lazy' : 0} )
 
+let $DEV_REPO = '~/.vim/dev'
+if !isdirectory(expand($DEV_REPO))
+  call mkdir(expand($DEV_REPO), 'p')
+endif
+call dein#local($DEV_REPO, {}, ['vim*', 'unite-*', '*.vim'])
+
 if dein#tap('deoplete.nvim') && has('nvim')
   call dein#disable('neocomplete.vim')
 endif
