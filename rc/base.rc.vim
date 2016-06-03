@@ -133,6 +133,8 @@ function! EnableDiffKeyMaps()
   if &diff
     nmap <buffer> <leader>dj ]c
     nmap <buffer> <leader>dk [c
+    nmap <buffer> J ]c
+    nmap <buffer> K [c
     nmap <buffer> <silent> <leader>dp :call MyDiffput(0)<CR>
     nmap <buffer> <silent> <leader>dg :call MyDiffget(0)<CR>
     nmap <buffer> <silent> <leader>du :diffupdate<CR>
