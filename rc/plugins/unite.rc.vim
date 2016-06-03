@@ -3,12 +3,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#set_profile('files', 'context.smartcase', 1)
 call unite#custom#source('line,outline','matchers','matcher_fuzzy')
 
-if (IsWindows())
-  let g:unite_data_directory=$HOME.'/.vim/.cache/unite'
-else
-  let g:unite_data_directory='~/.vim/.cache/unite'
-end
-
+let g:unite_data_directory='~/.cache/unite'
 let g:unite_enable_start_insert=0
 let g:unite_source_history_yank_enable=1
 let g:unite_source_rec_max_cache_files=5000
@@ -44,5 +39,5 @@ function! s:unite_settings()
 endfunction
 autocmd FileType unite call s:unite_settings()
 
-let g:junkfile#directory=expand("~/.vim/.cache/junk")
+let g:junkfile#directory=expand("~/.cache/junk")
 
