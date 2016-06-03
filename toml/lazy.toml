@@ -93,9 +93,6 @@ on_event = 'InsertCharPre'
 on_ft = 'snippet'
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
 repo = 'Shougo/neossh.vim'
 on_ft = ['vimfiler', 'vimshell']
 
@@ -178,11 +175,7 @@ hook_add = '''
 [[plugins]]
 repo = 't9md/vim-choosewin'
 on_map = {n = '<Plug>'}
-hook_source = '''
-  let g:choosewin_overlay_enable = 1
-  let g:choosewin_overlay_clear_multibyte = 1
-  let g:choosewin_blink_on_land = 0
-'''
+hook_source = 'source ~/.vim/rc/plugins/choosewin.rc.vim'
 hook_add = '''
   nmap <space><space>  <Plug>(choosewin)
 '''

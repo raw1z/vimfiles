@@ -1,4 +1,4 @@
-" Base configuration 
+" Base configuration
 " TODO: split this file into several rc files
 
 " sensible defaults {{{
@@ -83,7 +83,7 @@ call s:set_colorscheme()
 " Auto source vim rc files {{{
 if has("autocmd")
   augroup ConfigChangeDetect
-    autocmd BufWritePost [_.]vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
+    autocmd BufWritePost init.vim,[_.]vimrc,[_.]exrc,exrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
   augroup END
 endif
 " }}}
