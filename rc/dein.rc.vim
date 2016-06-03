@@ -6,7 +6,8 @@ if !dein#load_state(s:path)
   finish
 endif
 
-call dein#begin(expand('~/.vim'))
+call dein#begin(s:path, [expand('<sfile>')]
+      \ + split(glob('~/.vim/toml/*.toml'), '\n'))
 
 call dein#load_toml( "~/.vim/toml/plugins.toml"      , {'lazy' : 0} )
 call dein#load_toml( '~/.vim/toml/lazy.toml'         , {'lazy' : 1} )

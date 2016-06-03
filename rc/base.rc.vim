@@ -2,7 +2,6 @@
 " TODO: split this file into several rc files
 
 " sensible defaults {{{
-
 set nu
 set nowrap
 set tabstop=2 shiftwidth=2 expandtab autoindent
@@ -12,6 +11,7 @@ set ruler
 set showcmd
 
 set nobackup
+set foldenable
 set noswapfile
 set foldmethod=marker
 set foldcolumn=1
@@ -22,7 +22,6 @@ if has("nvim")
   set wildignorecase
 endif
 
-" allow folder specific configuration
 set exrc
 "}}}
 " vim default keys remap {{{

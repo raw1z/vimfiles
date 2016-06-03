@@ -1,5 +1,5 @@
-let s:Vital = vital#of('vital') "{{{
-let s:Prelude = s:Vital.import('Prelude') "}}}
+
+let s:is_windows = has('win32') || has('win64')
 
 function! g:RunCommandInTerminal(command) abort "{{{
   execute 'tabnew'
@@ -7,10 +7,12 @@ function! g:RunCommandInTerminal(command) abort "{{{
   call termopen(a:command)
 endfunction "}}}
 function! g:IsWindows() abort "{{{
-  return s:Prelude.is_windows()
+  return s:is_windows
 endfunction "}}}
 function! g:IsMac() abort "{{{
-  return s:Prelude.is_mac()
+  return !s:is_windows && !has('win32unix')
+      \ && (has('mac') || has('macunix') || has('gui_macvim')
+      \     || (!executable('xdg-open') && system('uname') =~? '^darwin'))
 endfunction "}}}
 function! g:RemoveFilesReadOnlyAttribute(files) abort "{{{
   if has("win32")
