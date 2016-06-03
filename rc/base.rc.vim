@@ -1,4 +1,3 @@
-" Base configuration
 " TODO: split this file into several rc files
 
 " sensible defaults {{{
