@@ -33,7 +33,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/help'
+repo = 'Shougo/unite-help'
 on_if = 1
 on_source = 'unite.vim'
 
