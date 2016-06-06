@@ -242,3 +242,20 @@ hook_source = '''
   source ~/.vim/rc/plugins/deoplete.rc.vim
 '''
 
+[[plugins]]
+repo = 'mbbill/undotree'
+on_cmd = 'UndotreeToggle'
+hook_source = 'source ~/.vim/rc/plugins/undotree.rc.vim'
+hook_add = '''
+  nmap <leader>u :UndotreeToggle<CR>
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = 'vim-airline-themes'
+on_event = 'VimEnter'
+hook_source = 'source ~/.vim/rc/plugins/airline.rc.vim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+

@@ -24,13 +24,6 @@ repo = 'honza/vim-snippets'
 repo = 'mileszs/ack.vim'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_source = 'source ~/.vim/rc/plugins/airline.rc.vim'
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-
-[[plugins]]
 repo = 'tpope/vim-abolish'
 
 [[plugins]]
@@ -50,7 +43,6 @@ repo = 'tpope/vim-eunuch'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-hook_source = 'source ~/.vim/rc/plugins/fugitive.rc.vim'
 hook_add = '''
   nmap <leader>g :Gstatus<CR>
 '''
@@ -98,13 +90,6 @@ hook_add = '''
 repo = 'AndrewRadev/linediff.vim'
 
 [[plugins]]
-repo = 'mbbill/undotree'
-hook_source = 'source ~/.vim/rc/plugins/undotree.rc.vim'
-hook_add = '''
-  nmap <leader>u :UndotreeToggle<CR>
-'''
-
-[[plugins]]
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]
@@ -123,11 +108,6 @@ repo = 'sotte/presenting.vim'
 repo = 'rizzatti/dash.vim'
 
 [[plugins]]
-repo = 'SirVer/ultisnips'
-if = "has('nvim')"
-hook_source = 'source ~/.vim/rc/plugins/ultisnips.rc.vim'
-
-[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
@@ -139,4 +119,11 @@ hook_add = '''
   map + <Plug>(expand_region_expand)
   map - <Plug>(expand_region_shrink)
 '''
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+if = "has('nvim')"
+
+[[plugins]]
+repo = 'ervandew/supertab'
 

@@ -1,5 +1,7 @@
 " TODO: split this file into several rc files
 
+source ~/.vim/rc/plugins/ultisnips.rc.vim
+
 " sensible defaults {{{
 set nu
 set nowrap
@@ -22,6 +24,11 @@ if has("nvim")
 endif
 
 set exrc
+
+if has("persistent_undo")
+  set undodir=~/.undodir/
+  set undofile
+endif
 "}}}
 " vim default keys remap {{{
 map <C-L> <C-]>
