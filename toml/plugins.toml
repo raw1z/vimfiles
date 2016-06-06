@@ -127,3 +127,15 @@ if = "has('nvim')"
 [[plugins]]
 repo = 'ervandew/supertab'
 
+[[plugins]]
+repo = 'joonty/vdebug'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+on_map = {n = '<Plug>'}
+hook_add = '''
+  nmap <Leader><Leader>s <Plug>(easymotion-s2)
+  map <Leader>j <Plug>(easymotion-j)
+  map <Leader>k <Plug>(easymotion-k)
+'''
+

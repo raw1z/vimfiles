@@ -218,16 +218,6 @@ repo = 'osyo-manga/vim-monster'
 on_ft = 'ruby'
 
 [[plugins]]
-repo = 'easymotion/vim-easymotion'
-on_map = {n = '<Plug>'}
-hook_source = 'source ~/.vim/rc/plugins/easymotion.rc.vim'
-hook_add = '''
-  nmap <Leader><Leader>s <Plug>(easymotion-s2)
-  map <Leader>j <Plug>(easymotion-j)
-  map <Leader>k <Plug>(easymotion-k)
-'''
-
-[[plugins]]
 repo = 'Konfekt/FastFold'
 on_event = 'InsertEnter'
 hook_post_source = 'FastFoldUpdate'

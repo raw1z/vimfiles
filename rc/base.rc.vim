@@ -1,5 +1,6 @@
 " TODO: split this file into several rc files
 
+source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
 
 " sensible defaults {{{
