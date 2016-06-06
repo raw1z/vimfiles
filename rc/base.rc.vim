@@ -64,7 +64,7 @@ imap <leader>n ~
 imap <leader>/ \
 imap <leader>! \|
 " }}}
-" Default colorscheme {{{
+" default colorscheme {{{
 
 function! s:set_colorscheme()
   let defaultColorscheme = "gruvbox"
@@ -78,10 +78,11 @@ endfunction
 call s:set_colorscheme()
 
 " }}}
-" Auto source vim rc files {{{
+" auto source vim rc files {{{
 if has("autocmd")
   augroup ConfigChangeDetect
-    autocmd BufWritePost init.vim,[_.]vimrc,[_.]exrc,exrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
+    autocmd BufWritePost init.vim,[_.]vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
+    autocmd BufWritePost [_.]exrc,exrc source % | redraw
   augroup END
 endif
 " }}}
@@ -179,7 +180,7 @@ nmap <silent> <leader>wvs :vs<CR>
 nmap <silent> <leader>s :update<CR>
 nmap <silent> <leader>x :x<CR>
 "}}}
-" When pressing <leader>cd switch to the directory of the open buffer {{{
+" when pressing <leader>cd switch to the directory of the open buffer {{{
 
 map <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
@@ -191,7 +192,7 @@ if has("autocmd")
   augroup END
 endif
 "}}}
-" Deface support {{{
+" deface support {{{
 augroup filetypedetect
   au BufNewFile,BufRead *.html.erb.deface set ft=eruby
 augroup END
@@ -202,4 +203,6 @@ autocmd BufNewFile,BufRead *.sass setl iskeyword+=#,-
 autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,-
 
 "}}}
-
+" display the date"{{{
+nnoremap <space>d :!date<CR>
+"}}}
