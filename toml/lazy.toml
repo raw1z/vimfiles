@@ -232,3 +232,13 @@ repo = 'Konfekt/FastFold'
 on_event = 'InsertEnter'
 hook_post_source = 'FastFoldUpdate'
 
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+depends = 'context_filetype.vim'
+on_event = "InsertEnter"
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+  source ~/.vim/rc/plugins/deoplete.rc.vim
+'''
+

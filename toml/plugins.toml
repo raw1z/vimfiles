@@ -128,16 +128,6 @@ if = "has('nvim')"
 hook_source = 'source ~/.vim/rc/plugins/ultisnips.rc.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-if = "has('nvim')"
-depends = 'context_filetype.vim'
-on_i = 1
-hook_source = '''
-  let g:deoplete#enable_at_startup = 1
-  source ~/.vim/rc/plugins/deoplete.rc.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
