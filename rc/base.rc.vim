@@ -15,7 +15,7 @@ set showcmd
 set nobackup
 set foldenable
 set noswapfile
-set foldmethod=marker
+set foldmethod=manual
 set foldcolumn=1
 set fillchars=vert:\|
 set splitright
@@ -214,3 +214,10 @@ autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,-
 " display the date"{{{
 nnoremap <space>d :!date<CR>
 "}}}
+" file type specific configuration"{{{
+augroup filetypedetect
+  au FileType vim setlocal foldmethod=marker
+  au FileType python setlocal foldmethod=indent
+  au FileType toml syntax sync minlines=500
+augroup END"}}}
+
