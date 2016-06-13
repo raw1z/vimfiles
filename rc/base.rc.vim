@@ -30,6 +30,8 @@ if has("persistent_undo")
   set undodir=~/.undodir/
   set undofile
 endif
+
+set viewoptions=cursor,folds,slash,unix
 "}}}
 " vim default keys remap {{{
 map <C-L> <C-]>
