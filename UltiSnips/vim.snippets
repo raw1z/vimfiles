@@ -1,0 +1,9 @@
+snippet cpo "insert cpo instruction" b
+let s:save_cpo = &cpo
+set cpo&vim
+
+$0
+
+let &cop = s:save_cpo
+unlet s:save_cpo
+endsnippet
