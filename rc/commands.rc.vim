@@ -170,8 +170,8 @@ function! s:AutoSaveSession()
   endif
 endfunction
 
-autocmd VimEnter * nested call s:AutoRestoreSession()
-autocmd VimLeavePre * call s:AutoSaveSession()
+" autocmd VimEnter * nested call s:AutoRestoreSession()
+" autocmd VimLeavePre * call s:AutoSaveSession()
 
 command! -nargs=? -complete=file SaveSession call s:SaveSession(<q-args>)
 command! -nargs=? -complete=file RestoreSession call s:RestoreSession(<q-args>)
