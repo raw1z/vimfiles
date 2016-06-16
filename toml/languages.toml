@@ -22,9 +22,4 @@ repo = 'vim-scripts/Vim-R-plugin'
 [[plugins]]
 repo = 'kylef/apiblueprint.vim'
 
-[[plugins]]
-repo = 'ternjs/tern_for_vim'
-on_ft = 'javascript'
-build = 'npm install'
-
 
