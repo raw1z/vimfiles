@@ -181,4 +181,11 @@ command! -nargs=? -complete=file RestoreSession call s:RestoreSession(<q-args>)
 nmap <leader>t :silent !gittower .<CR>
 
 "}}}
-
+" Open current buffer file in new tab {{{
+function! s:tab_this()
+  let currentBuffer = bufname("%")
+  execute 'hide'
+  execute 'tabnew ' . currentBuffer
+endfunction
+command! TabThis call s:tab_this()
+"}}}
