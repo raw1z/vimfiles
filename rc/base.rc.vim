@@ -224,8 +224,8 @@ augroup filetypedetect
 augroup END"}}}
 " ruby better keyword detection {{{
 
-autocmd BufNewFile,BufRead *.rb setl iskeyword+=?,!
-autocmd BufNewFile,BufRead *.rbx setl iskeyword+=?,!
+autocmd BufNewFile,BufRead *.rb setl iskeyword+=?,!,@,$
+autocmd BufNewFile,BufRead *.rbx setl iskeyword+=?,!,@,$
 
 "}}}
 
