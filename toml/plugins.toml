@@ -145,3 +145,6 @@ repo = 'kopischke/vim-stay'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
+[[plugins]]
+repo = 'terryma/vim-multiple-cursors'
+
