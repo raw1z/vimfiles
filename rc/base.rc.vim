@@ -222,4 +222,10 @@ augroup filetypedetect
   au FileType python setlocal foldmethod=indent
   au FileType toml syntax sync minlines=500
 augroup END"}}}
+" ruby better keyword detection {{{
+
+autocmd BufNewFile,BufRead *.rb setl iskeyword+=?,!
+autocmd BufNewFile,BufRead *.rbx setl iskeyword+=?,!
+
+"}}}
 
