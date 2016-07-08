@@ -214,10 +214,6 @@ depends = 'vim-textobj-user'
 on_map = {ox = '<Plug>'}
 
 [[plugins]]
-repo = 'osyo-manga/vim-monster'
-on_ft = 'ruby'
-
-[[plugins]]
 repo = 'Konfekt/FastFold'
 on_event = 'InsertEnter'
 hook_post_source = 'FastFoldUpdate'
