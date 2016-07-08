@@ -140,9 +140,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'kopischke/vim-stay'
-
-[[plugins]]
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
