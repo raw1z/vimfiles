@@ -7,6 +7,3 @@ repo = 'jonathanfilip/vim-lucius'
 [[plugins]]
 repo = 'chriskempson/base16-vim'
 
-[[plugins]]
-repo = 'vim-jp/syntax-vim-ex'
-

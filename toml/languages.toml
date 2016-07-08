@@ -2,6 +2,9 @@
 repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
+repo = 'vim-jp/syntax-vim-ex'
+
+[[plugins]]
 repo = 'adimit/prolog.vim'
 
 [[plugins]]
