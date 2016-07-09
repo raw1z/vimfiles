@@ -1,0 +1,13 @@
+{
+  "rc/*.vim": {
+    "command": "rc"
+  },
+
+  "toml/*.toml": {
+    "command": "toml"
+  },
+
+  "UltiSnips/*.snippets": {
+    "command": "snippets"
+  }
+}
