@@ -206,14 +206,10 @@ endif
 " deface support {{{
 augroup filetypedetect
   au BufNewFile,BufRead *.html.erb.deface set ft=eruby
-augroup END
-" }}}
+augroup END " }}}
 " SASS/SCSS better word detection {{{
-
 autocmd BufNewFile,BufRead *.sass setl iskeyword+=#,-
-autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,-
-
-"}}}
+autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,- "}}}
 " display the date"{{{
 nnoremap <space>d :!date<CR>
 "}}}
