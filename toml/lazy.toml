@@ -249,3 +249,11 @@ repo = 'vim-airline/vim-airline-themes'
 repo = 'ap/vim-css-color'
 on_ft = ['css', 'scss', 'sass']
 
+[[plugins]]
+repo = 'raw1z/vim-repl'
+on_cmd = ['SendToREPL', 'SendVisualSelectionToREPL']
+hook_add = '''
+  nnoremap <leader>cc :SendToREPL<CR>
+  vnoremap <leader>cc :SendVisualSelectionToREPL<CR>
+'''
+
