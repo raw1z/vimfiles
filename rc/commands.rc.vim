@@ -112,7 +112,7 @@ vnorem <leader>N :GGrepVisualSelection<CR>
 
 " }}}
 " manage vim sessions {{{
-function! s:SaveSession(...)
+function! s:SaveSession(...) "{{{
   let filename = a:1
   if strlen(filename) == 0
     if exists("g:currentSessionFile")
@@ -134,9 +134,8 @@ function! s:SaveSession(...)
 
   let g:currentSessionFile = filename
   echom "Saved session to path: " filename
-endfunction
-
-function! s:RestoreSession(...)
+endfunction "}}}
+function! s:RestoreSession(...) "{{{
   let filename = a:1
   if strlen(filename) == 0
     let filename = "./session.vim"
@@ -148,9 +147,8 @@ function! s:RestoreSession(...)
 
   let g:currentSessionFile = filename
   echom "Restored session from path: " filename
-endfunction
-
-function! s:AutoRestoreSession()
+endfunction "}}}
+function! s:AutoRestoreSession() "{{{
   if argc() == 0
     let filename = "./session.vim"
     let filename = fnamemodify(filename, ":p")
@@ -159,19 +157,15 @@ function! s:AutoRestoreSession()
       call s:RestoreSession(filename)
     endif
   endif
-endfunction
-
-function! s:AutoSaveSession()
+endfunction "}}}
+function! s:AutoSaveSession() "{{{
   if exists("g:currentSessionFile")
     let filename = g:currentSessionFile
     if filereadable(filename)
       call s:SaveSession(filename)
     endif
   endif
-endfunction
-
-" autocmd VimEnter * nested call s:AutoRestoreSession()
-" autocmd VimLeavePre * call s:AutoSaveSession()
+endfunction "}}}
 
 command! -nargs=? -complete=file SaveSession call s:SaveSession(<q-args>)
 command! -nargs=? -complete=file RestoreSession call s:RestoreSession(<q-args>)
