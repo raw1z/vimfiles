@@ -214,15 +214,10 @@ autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,- "}}}
 nnoremap <space>d :silent !date<CR>
 "}}}
 " file type specific configuration"{{{
-augroup filetypedetect
-  au FileType vim setlocal foldmethod=marker
-  au FileType python setlocal foldmethod=indent
-  au FileType toml syntax sync minlines=500
-augroup END"}}}
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType python setlocal foldmethod=indent
+autocmd FileType toml syntax sync minlines=500 "}}}
 " ruby better keyword detection {{{
-
 autocmd BufNewFile,BufRead *.rb setl iskeyword+=?,!,@,$
-autocmd BufNewFile,BufRead *.rbx setl iskeyword+=?,!,@,$
-
-"}}}
+autocmd BufNewFile,BufRead *.rbx setl iskeyword+=?,!,@,$ "}}}
 
