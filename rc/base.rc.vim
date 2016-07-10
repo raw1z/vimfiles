@@ -98,8 +98,9 @@ call s:set_colorscheme()
 " auto source vim rc files {{{
 if has("autocmd")
   augroup ConfigChangeDetect
-    autocmd BufWritePost init.vim,[_.]vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
-    autocmd BufWritePost [_.]exrc,exrc source % | redraw
+    autocmd BufWritePost init.vim,[_.]vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC
+    autocmd BufWritePost [_.]exrc,exrc source %
+    autocmd BufWritePost [_.]vimrc.custom source %
   augroup END
 endif
 " }}}
