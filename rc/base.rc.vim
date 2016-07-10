@@ -107,9 +107,7 @@ endif
 " keyboard map for editing the configuration files {{{
 nmap <leader>vd :TabGo ~/.vim<CR>
 nmap <leader>vv :tabnew $MYVIMRC<CR>
-nmap <leader>vc :tabnew $VIM_CUSTOM_DIR/.nvimrc.custom<CR>
-nmap <leader>vg :tabnew $MYGVIMRC<CR>
-nmap <leader>vgc :tabnew $VIM_CUSTOM_DIR/.gvimrc.custom<CR>
+nmap <leader>vc :tabnew $VIM_CUSTOM_DIR/.vimrc.custom<CR>
 
 if IsWindows()
   nmap <leader>ve :tabnew _exrc<CR>

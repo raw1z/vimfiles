@@ -31,8 +31,8 @@ call s:source_rc("commands"        )
 
 " load the customizations {{{
 let $VIM_CUSTOM_DIR=$HOME
-if filereadable(expand($VIM_CUSTOM_DIR."/.nvimrc.custom"))
-  source $VIM_CUSTOM_DIR/.nvimrc.custom
+if filereadable(expand($VIM_CUSTOM_DIR."/.vimrc.custom"))
+  source $VIM_CUSTOM_DIR/.vimrc.custom
 endif
 " }}}
 
