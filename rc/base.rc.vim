@@ -196,11 +196,6 @@ nmap <silent> <leader>wvs :vs<CR>
 nmap <silent> <leader>s :update<CR>
 nmap <silent> <leader>x :x<CR>
 "}}}
-" when pressing <leader>cd switch to the directory of the open buffer {{{
-
-map <Leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" }}}
 " ensure autoread when an opened file has been changed outside vim {{{
 if has("autocmd")
   augroup ChangeDetect
