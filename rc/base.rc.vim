@@ -85,7 +85,7 @@ cmap <leader>! \|
 " default colorscheme {{{
 
 function! s:set_colorscheme()
-  let defaultColorscheme = "base16-tomorrow"
+  let defaultColorscheme = "base16-harmonic16-light"
   let colorschemeFilePath = globpath(&runtimepath, 'colors/'.defaultColorscheme.'.vim')
   if filereadable(colorschemeFilePath)
     exe 'colorscheme '.defaultColorscheme
