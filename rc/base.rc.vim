@@ -211,7 +211,7 @@ augroup END " }}}
 autocmd BufNewFile,BufRead *.sass setl iskeyword+=#,-
 autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,- "}}}
 " display the date"{{{
-nnoremap <space>d :silent !date<CR>
+nnoremap <space>d :!date<CR>
 "}}}
 " file type specific configuration"{{{
 autocmd FileType vim setlocal foldmethod=marker
