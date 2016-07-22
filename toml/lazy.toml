@@ -110,9 +110,9 @@ on_map = {n = '<Plug>'}
 on_if = "isdirectory(bufname('%'))"
 hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
 hook_add = '''
-  nnoremap <space>e :VimFiler -create<CR>
-  nnoremap <space>s :new <bar> VimFiler -create<CR>
-  nnoremap <space>v :vnew <bar> VimFiler -create<CR>
+  nnoremap <space>e :VimFiler<CR>
+  nnoremap <space>s :new <bar> VimFiler<CR>
+  nnoremap <space>v :vnew <bar> VimFiler<CR>
 '''
 
 [[plugins]]
