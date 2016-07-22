@@ -148,4 +148,6 @@ repo = 'terryma/vim-multiple-cursors'
 [[plugins]]
 repo = 'kien/rainbow_parentheses.vim'
 
+[[plugins]]
+repo = 'mattn/emmet-vim'
 
