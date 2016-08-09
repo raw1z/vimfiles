@@ -105,7 +105,11 @@ if has("autocmd")
 endif
 " }}}
 " keyboard map for editing the configuration files {{{
-nmap <leader>vd :TabGo ~/.vim<CR>
+function! s:goto_vim_folder()
+  TabGo ~/.vim
+  e vimrc
+endfunction
+nmap <leader>vd :call <SID>goto_vim_folder()<CR>
 nmap <leader>vv :tabnew $MYVIMRC<CR>
 nmap <leader>vc :tabnew $VIM_CUSTOM_DIR/.vimrc.custom<CR>
 
