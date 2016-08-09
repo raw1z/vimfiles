@@ -151,3 +151,6 @@ repo = 'kien/rainbow_parentheses.vim'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
+[[plugins]]
+repo = 'tpope/vim-jdaddy'
+
