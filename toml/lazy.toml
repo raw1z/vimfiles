@@ -79,11 +79,6 @@ on_if = 1
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
-on_if = 1
-on_source = 'unite.vim'
-
-[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
 if = "!has('nvim') && has('lua')"
