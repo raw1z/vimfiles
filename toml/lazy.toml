@@ -187,6 +187,14 @@ repo = 'todesking/ruby_hl_lvar.vim'
 on_ft = 'ruby'
 
 [[plugins]]
+repo = 'kylef/apiblueprint.vim'
+on_ft = 'apiblueprint'
+
+[[plugins]]
+repo = 'adimit/prolog.vim'
+on_ft = 'prolog'
+
+[[plugins]]
 repo = 'kana/vim-operator-replace'
 depends = 'vim-operator-user'
 on_map = '<Plug>'

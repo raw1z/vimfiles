@@ -5,12 +5,6 @@ repo = 'sheerun/vim-polyglot'
 repo = 'vim-jp/syntax-vim-ex'
 
 [[plugins]]
-repo = 'adimit/prolog.vim'
-
-[[plugins]]
-repo = 'juvenn/mustache.vim'
-
-[[plugins]]
 repo = 'raw1z/vim-csharp'
 
 [[plugins]]
@@ -21,8 +15,5 @@ repo = 'raw1z/Windows-PowerShell-Syntax-Plugin'
 
 [[plugins]]
 repo = 'vim-scripts/Vim-R-plugin'
-
-[[plugins]]
-repo = 'kylef/apiblueprint.vim'
 
 
