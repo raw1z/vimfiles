@@ -183,10 +183,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'todesking/ruby_hl_lvar.vim'
-on_ft = 'ruby'
-
-[[plugins]]
 repo = 'kylef/apiblueprint.vim'
 on_ft = 'apiblueprint'
 
