@@ -215,7 +215,13 @@ augroup END " }}}
 autocmd BufNewFile,BufRead *.sass setl iskeyword+=#,-
 autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,- "}}}
 " display the date"{{{
-nnoremap <space>d :!date<CR>
+function! s:display_date()
+  let s:Vital = vital#of('vital')
+  let s:DateTime = s:Vital.import('DateTime')
+  let now = s:DateTime.now()
+  echo now.format("%c")
+endfunction
+nnoremap <space>d :call <SID>display_date()<CR>
 "}}}
 " file type specific configuration"{{{
 autocmd FileType vim setlocal foldmethod=marker
@@ -224,4 +230,3 @@ autocmd FileType toml syntax sync minlines=500 "}}}
 " ruby better keyword detection {{{
 autocmd BufNewFile,BufRead *.rb setl iskeyword+=?,!,@,$
 autocmd BufNewFile,BufRead *.rbx setl iskeyword+=?,!,@,$ "}}}
-
