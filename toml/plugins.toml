@@ -5,6 +5,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
