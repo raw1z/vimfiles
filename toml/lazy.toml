@@ -253,8 +253,9 @@ on_ft = ['css', 'scss', 'sass']
 
 [[plugins]]
 repo = 'raw1z/vim-repl'
-on_cmd = ['SendToREPL', 'SendVisualSelectionToREPL']
+on_cmd = ['OpenREPL', 'SendToREPL', 'SendVisualSelectionToREPL']
 hook_add = '''
+  nnoremap <leader>!! :OpenREPL<CR>
   nnoremap <leader>! :SendToREPL<CR>
   vnoremap <leader>! :SendVisualSelectionToREPL<CR>
 '''
