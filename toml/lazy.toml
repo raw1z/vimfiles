@@ -108,6 +108,9 @@ hook_add = '''
   nnoremap <space>e :VimFiler<CR>
   nnoremap <space>s :new <bar> VimFiler<CR>
   nnoremap <space>v :vnew <bar> VimFiler<CR>
+  nnoremap <space>E :VimFiler -create<CR>
+  nnoremap <space>S :new <bar> VimFiler -create<CR>
+  nnoremap <space>V :vnew <bar> VimFiler -create<CR>
 '''
 
 [[plugins]]
@@ -252,7 +255,7 @@ on_ft = ['css', 'scss', 'sass']
 repo = 'raw1z/vim-repl'
 on_cmd = ['SendToREPL', 'SendVisualSelectionToREPL']
 hook_add = '''
-  nnoremap <leader>cc :SendToREPL<CR>
-  vnoremap <leader>cc :SendVisualSelectionToREPL<CR>
+  nnoremap <leader>! :SendToREPL<CR>
+  vnoremap <leader>! :SendVisualSelectionToREPL<CR>
 '''
 
