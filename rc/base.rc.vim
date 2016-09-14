@@ -73,6 +73,7 @@ imap <leader><leader>( {
 imap <leader>n ~
 imap <leader>/ \
 imap <leader>! \|
+imap <leader>' `
 
 cmap <leader>) ]
 cmap <leader>( [
@@ -81,6 +82,7 @@ cmap <leader><leader>( {
 cmap <leader>n ~
 cmap <leader>/ \
 cmap <leader>! \|
+cmap <leader>' `
 " }}}
 " default colorscheme {{{
 
