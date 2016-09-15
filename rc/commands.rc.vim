@@ -183,3 +183,10 @@ function! s:tab_this()
 endfunction
 command! TabThis call s:tab_this()
 "}}}
+" Show current folder's git history {{{
+function! s:show_git_history()
+  execute "Git log --oneline"
+endfunction
+command! ShowGitHistory call s:show_git_history()
+nmap <leader>h :ShowGitHistory<CR>
+" }}}
