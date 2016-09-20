@@ -154,3 +154,6 @@ repo = 'mattn/emmet-vim'
 [[plugins]]
 repo = 'tpope/vim-jdaddy'
 
+[[plugins]]
+repo = 'metakirby5/codi.vim'
+
