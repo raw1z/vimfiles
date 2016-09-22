@@ -32,6 +32,7 @@ if has("persistent_undo")
 endif
 
 set viewoptions=cursor,folds,slash,unix
+set shortmess=a
 "}}}
 " vim default keys remap {{{
 map <C-L> <C-]>
