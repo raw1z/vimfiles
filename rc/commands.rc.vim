@@ -186,9 +186,15 @@ endfunction
 command! TabThis call s:tab_this()
 "}}}
 " Show current folder's git history {{{
-function! s:show_git_history()
-  execute "Git log --oneline"
+function! s:show_git_history(current_branch_only)
+  if a:current_branch_only
+    execute "Git log develop.. --oneline"
+  else
+    execute "Git log --oneline"
+  endif
 endfunction
-command! ShowGitHistory call s:show_git_history()
-nmap <leader>h :ShowGitHistory<CR>
+command! ShowGitHistory call s:show_git_history(0)
+command! ShowCurrentBranchGitHistory call s:show_git_history(1)
+nmap <leader>h :silent ShowGitHistory<CR>
+nmap <leader>H :silent ShowCurrentBranchGitHistory<CR>
 " }}}
