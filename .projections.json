@@ -1,5 +1,5 @@
 {
-  "rc/*.vim": {
+  "rc/*.rc.vim": {
     "command": "rc"
   },
 
