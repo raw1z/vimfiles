@@ -1,8 +1,9 @@
 " TODO: split this file into several rc files
 
+" Plugins configuration"{{{
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
-
+let g:elm_format_autosave = 1"}}}
 " sensible defaults {{{
 set nu
 set nowrap
