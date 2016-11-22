@@ -3,7 +3,9 @@
 " Plugins configuration"{{{
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
-let g:elm_format_autosave = 1"}}}
+let g:elm_format_autosave = 1
+call camelcasemotion#CreateMotionMappings('<leader>')
+"}}}
 " sensible defaults {{{
 set nu
 set nowrap
@@ -173,13 +175,6 @@ augroup DiffModeMaps
 augroup END
 "}}}
 " easily moves between opened windows {{{
-nnoremap <leader>wj <C-w><C-j>
-nnoremap <leader>wk <C-w><C-k>
-nnoremap <leader>wh <C-w><C-h>
-nnoremap <leader>wl <C-w><C-l>
-nnoremap <leader>wf <C-w>f
-nnoremap <leader>wgf <C-w>gf
-nnoremap <silent> <leader>wo :only<CR>
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -191,14 +186,7 @@ nmap <Up> <C-w>+
 nmap <Down> <C-w>-
 nmap <Left> <C-w><
 nmap <Right> <C-w>>
-nmap <leader>w+ <C-w>+
-nmap <leader>w- <C-w>-
-nmap <leader>w> <C-w>>
-nmap <leader>w< <C-w><
-nmap <leader>w= <C-w>=
-nmap <leader>w<space> <C-w><C-w>
-nmap <silent> <leader>wsp :sp<CR>
-nmap <silent> <leader>wvs :vs<CR>
+nmap <leader>= <C-w>=
 " }}}
 " easy save and quit {{{
 nmap <silent> <leader>s :update<CR>

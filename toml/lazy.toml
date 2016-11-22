@@ -1,25 +1,23 @@
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
+hook_add = '''
+  nnoremap <silent> <space>f :Denite -buffer-name=files file_rec<cr>
+  nnoremap <silent> <space>l :Denite -buffer-name=line line<cr>
+  nnoremap <silent> <space>b :Denite -buffer-name=buffers buffer<cr>
+  nnoremap <silent> <space>h :Denite -buffer-name=help help<cr>
+  nnoremap <silent> <space>c :Denite -auto-preview -buffer-name=colorschemes colorscheme<cr>
+  nnoremap <silent> <space>k :Denite -auto-preview -buffer-name=search grep:.<cr>
+'''
+
+[[plugins]]
 repo = 'Shougo/unite.vim'
 hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
 hook_add = '''
   nmap <space> [unite]
   nnoremap [unite] <nop>
 
-  if has('win32') || has('win64')
-    nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec<cr><c-u>
-  else
-    if has('nvim')
-      nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/neovim<cr><c-u>
-    else
-      nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
-    endif
-  endif
-
-  nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
-  nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
-  nnoremap <silent> [unite]k :<C-u>Unite -no-quit -auto-preview -buffer-name=search grep:.<cr>
   nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
-  nnoremap <silent> [unite]c :<C-u>Unite -auto-resize -auto-preview -buffer-name=colorschemes colorscheme<cr>
   nnoremap <silent> [unite]p :<C-u>Unite -auto-resize projects<cr>
   nnoremap <silent> [unite]q :<C-u>Unite -auto-resize -auto-preview quickfix<cr>
   nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
@@ -27,9 +25,6 @@ hook_add = '''
   nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
   nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tag tag tag/file<cr>
   nnoremap <silent> [unite]e :<C-u>Unite junkfile/new junkfile -start-insert<CR>
-  nnoremap <silent> [unite]h :<C-u>Unite -auto-resize -buffer-name=help help<cr>
-
-  nnoremap <silent> <leader><leader>r <Plug>(unite_redraw)
 '''
 
 [[plugins]]
@@ -91,7 +86,7 @@ hook_source = '''
 repo = 'ElmCast/elm-vim'
 on_ft = 'elm'
 hook_source = '''
-let g:polyglot_disabled = ['elm']
+let g:elm_format_autosave = 1
 '''
 
 [[plugins]]
@@ -210,12 +205,6 @@ hook_add = 'xmap p <Plug>(operator-replace)'
 repo = 'rhysd/vim-operator-surround'
 depends = 'vim-operator-user'
 on_map = {n = '<Plug>'}
-hook_add = '''
-  nmap <silent>sa <Plug>(operator-surround-append)a
-  nmap <silent>sd <Plug>(operator-surround-delete)a
-  nmap <silent>sr <Plug>(operator-surround-replace)a
-  nmap <silent>sc <Plug>(operator-surround-replace)a
-'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-textobj-multiblock'

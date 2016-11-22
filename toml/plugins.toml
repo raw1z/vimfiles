@@ -157,3 +157,12 @@ repo = 'tpope/vim-jdaddy'
 [[plugins]]
 repo = 'metakirby5/codi.vim'
 
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'nixprime/cpsm'
+
+[[plugins]]
+repo = 'bkad/CamelCaseMotion'
+
