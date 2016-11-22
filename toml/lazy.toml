@@ -256,3 +256,15 @@ hook_add = '''
   vnoremap <leader>! :SendVisualSelectionToREPL<CR>
 '''
 
+[[plugins]]
+repo = 'c-brenn/phoenix.vim'
+on_ft = ['ex', 'exs']
+
+[[plugins]]
+repo = 'slashmili/alchemist.vim'
+on_ft = ['ex', 'exs']
+
+[[plugins]]
+repo = 'junegunn/gv.vim'
+on_cmd = ['GV', 'GV!', 'GV?']
+

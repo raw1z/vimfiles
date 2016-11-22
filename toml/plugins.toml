@@ -166,3 +166,23 @@ repo = 'nixprime/cpsm'
 [[plugins]]
 repo = 'bkad/CamelCaseMotion'
 
+[[plugins]]
+repo = 'ludovicchabant/vim-gutentags'
+
+[[plugins]]
+repo = 'neomake/neomake'
+
+[[plugins]]
+repo = 'mhinz/vim-startify'
+
+[[plugins]]
+repo = 'dietsche/vim-lastplace'
+
+[[plugins]]
+repo = 'AndrewRadev/splitjoin.vim'
+
+[[plugins]]
+repo = 'briandoll/change-inside-surroundings.vim'
+
+
+
