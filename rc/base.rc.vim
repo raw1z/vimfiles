@@ -1,11 +1,5 @@
 " TODO: split this file into several rc files
 
-" Plugins configuration"{{{
-source ~/.vim/rc/plugins/easymotion.rc.vim
-source ~/.vim/rc/plugins/ultisnips.rc.vim
-let g:elm_format_autosave = 1
-call camelcasemotion#CreateMotionMappings('<leader>')
-"}}}
 " sensible defaults {{{
 set nu
 set nowrap
@@ -199,13 +193,6 @@ if has("autocmd")
   augroup END
 endif
 "}}}
-" deface support {{{
-augroup filetypedetect
-  au BufNewFile,BufRead *.html.erb.deface set ft=eruby
-augroup END " }}}
-" SASS/SCSS better word detection {{{
-autocmd BufNewFile,BufRead *.sass setl iskeyword+=#,-
-autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,- "}}}
 " display the date"{{{
 function! s:display_date()
   let s:Vital = vital#of('vital')
@@ -216,9 +203,23 @@ endfunction
 nnoremap <space>d :call <SID>display_date()<CR>
 "}}}
 " file type specific configuration"{{{
-autocmd FileType vim setlocal foldmethod=marker
-autocmd FileType python setlocal foldmethod=indent
-autocmd FileType toml syntax sync minlines=500 "}}}
+" deface support {{{
+augroup filetypedetect
+  au BufNewFile,BufRead *.html.erb.deface set ft=eruby
+augroup END " }}}
+" SASS/SCSS better word detection {{{
+autocmd BufNewFile,BufRead *.sass setl iskeyword+=#,-
+autocmd BufNewFile,BufRead *.scss setl iskeyword+=#,- "}}}
 " ruby better keyword detection {{{
 autocmd BufNewFile,BufRead *.rb setl iskeyword+=?,!,@,$
 autocmd BufNewFile,BufRead *.rbx setl iskeyword+=?,!,@,$ "}}}
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType python setlocal foldmethod=indent
+autocmd FileType toml syntax sync minlines=500 "}}}
+" Plugins configuration"{{{
+source ~/.vim/rc/plugins/misc.rc.vim
+source ~/.vim/rc/plugins/easymotion.rc.vim
+source ~/.vim/rc/plugins/ultisnips.rc.vim
+source ~/.vim/rc/plugins/startify.rc.vim
+"}}}
+
