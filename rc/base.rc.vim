@@ -30,6 +30,31 @@ endif
 
 set viewoptions=cursor,folds,slash,unix
 set shortmess=a
+
+" higlight cursor position
+set cursorline
+
+" Set the title of the iterm tab
+set title
+
+set diffopt=vertical,filler
+
+" Automatically set the indent of a new line (local to buffer)
+" from railsbros-dirk
+set ai
+
+" Disable output and VCS files
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+
+" Disable archive files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+" Ignore bundler and sass cache
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+
+" Disable temp and backup files
+set wildignore+=*.swp,*~,._*
+
 "}}}
 " vim default keys remap {{{
 map <C-L> <C-]>
