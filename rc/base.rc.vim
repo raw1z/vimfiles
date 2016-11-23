@@ -220,7 +220,7 @@ function! s:display_date()
   let now = s:DateTime.now()
   echo now.format("%c")
 endfunction
-nnoremap <space>d :call <SID>display_date()<CR>
+nnoremap <silent> <space>d :call <SID>display_date()<CR>
 "}}}
 " file type specific configuration"{{{
 " deface support {{{
