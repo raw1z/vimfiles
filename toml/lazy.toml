@@ -6,8 +6,8 @@ hook_add = '''
   nnoremap <silent> <space>l :Denite -buffer-name=line line<cr>
   nnoremap <silent> <space>b :Denite -buffer-name=buffers buffer<cr>
   nnoremap <silent> <space>h :Denite -buffer-name=help help<cr>
-  nnoremap <silent> <space>c :Denite -auto-preview -buffer-name=colorschemes colorscheme<cr>
-  nnoremap <silent> <space>k :Denite -auto-preview -buffer-name=search grep:.<cr>
+  nnoremap <silent> <space>c :Denite -buffer-name=colorschemes colorscheme<cr>
+  nnoremap <silent> <space>k :Denite -buffer-name=search grep:.<cr>
 '''
 
 [[plugins]]
