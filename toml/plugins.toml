@@ -146,9 +146,6 @@ repo = 'airblade/vim-gitgutter'
 repo = 'terryma/vim-multiple-cursors'
 
 [[plugins]]
-repo = 'kien/rainbow_parentheses.vim'
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
 
 [[plugins]]
@@ -183,6 +180,4 @@ repo = 'AndrewRadev/splitjoin.vim'
 
 [[plugins]]
 repo = 'briandoll/change-inside-surroundings.vim'
-
-
 

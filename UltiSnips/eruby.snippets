@@ -9,3 +9,11 @@ snippet blockp "insert a block" b
   $0
 <% end %>
 endsnippet
+
+snippet inspect "insert insepction log" i
+Rails.logger.info %{
+##########################################
+#{$1${2:.ai}}$0
+##########################################
+}
+endsnippet

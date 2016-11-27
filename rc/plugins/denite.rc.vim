@@ -24,6 +24,6 @@ call denite#custom#var('grep', 'default_opts',
     \ ['--vimgrep', '--smart-case', '--no-heading'])
 
 " Change mappings.
-call denite#custom#map('insert', '<C-j>', 'move_to_next_line')
-call denite#custom#map('insert', '<C-k>', 'move_to_prev_line')
+call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
+call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
 

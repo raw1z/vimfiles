@@ -2,12 +2,14 @@
 repo = 'Shougo/denite.nvim'
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 hook_add = '''
-  nnoremap <silent> <space>f :Denite -buffer-name=files file_rec<cr>
-  nnoremap <silent> <space>l :Denite -buffer-name=line line<cr>
   nnoremap <silent> <space>b :Denite -buffer-name=buffers buffer<cr>
-  nnoremap <silent> <space>h :Denite -buffer-name=help help<cr>
   nnoremap <silent> <space>c :Denite -buffer-name=colorschemes colorscheme<cr>
+  nnoremap <silent> <space>f :Denite -buffer-name=files file_rec<cr>
+  nnoremap <silent> <space>h :Denite -buffer-name=help help<cr>
   nnoremap <silent> <space>k :Denite -buffer-name=search grep:.<cr>
+  nnoremap <silent> <space>o :Denite -buffer-name=outline unite:outline<cr>
+  nnoremap <silent> <space>p :Denite -buffer-name=projects unite:projects<cr>
+  nnoremap <silent> <space>q :Denite -buffer-name=quickfix unite:quickfix<cr>
 '''
 
 [[plugins]]
@@ -18,19 +20,8 @@ hook_add = '''
   nnoremap [unite] <nop>
 
   nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
-  nnoremap <silent> [unite]p :<C-u>Unite -auto-resize projects<cr>
-  nnoremap <silent> [unite]q :<C-u>Unite -auto-resize -auto-preview quickfix<cr>
-  nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
-  nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
-  nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
-  nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tag tag tag/file<cr>
   nnoremap <silent> [unite]e :<C-u>Unite junkfile/new junkfile -start-insert<CR>
 '''
-
-[[plugins]]
-repo = 'Shougo/unite-help'
-on_if = 1
-on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'thinca/vim-unite-history'
@@ -48,11 +39,6 @@ on_if = 1
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'ujihisa/unite-colorscheme'
-on_if = 1
-on_source = 'unite.vim'
-
-[[plugins]]
 repo = 'raw1z/unite-projects'
 depends = 'vimfiler.vim'
 on_if = 1
@@ -65,11 +51,6 @@ on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
-on_if = 1
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'osyo-manga/unite-filetype'
 on_if = 1
 on_source = 'unite.vim'
 
@@ -107,20 +88,16 @@ on_map = {n = '<Plug>'}
 on_if = "isdirectory(bufname('%'))"
 hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
 hook_add = '''
-  nnoremap <space>e :VimFiler<CR>
-  nnoremap <space>s :new <bar> VimFiler<CR>
-  nnoremap <space>v :vnew <bar> VimFiler<CR>
-  nnoremap <space>E :VimFiler -create<CR>
-  nnoremap <space>S :new <bar> VimFiler -create<CR>
-  nnoremap <space>V :vnew <bar> VimFiler -create<CR>
+  nnoremap <space>e :VimFilerCurrentDir<CR>
+  nnoremap <space>s :new <bar> VimFilerCurrentDir<CR>
+  nnoremap <space>v :vnew <bar> VimFilerCurrentDir<CR>
+  nnoremap <space>E :VimFilerBufferDir<CR>
+  nnoremap <space>S :new <bar> VimFilerBufferDir<CR>
+  nnoremap <space>V :vnew <bar> VimFilerBufferDir<CR>
 '''
 
 [[plugins]]
 repo = 'Shougo/junkfile.vim'
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
 on_source = 'unite.vim'
 
 [[plugins]]
@@ -156,10 +133,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'tsukkee/unite-tag'
-on_source = 'unite.vim'
-
-[[plugins]]
 repo = 'tyru/open-browser.vim'
 on_if = 1
 hook_add = '''
@@ -169,14 +142,6 @@ hook_add = '''
 hook_source = '''
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
   let g:openbrowser_default_search = "duckduckgo"
-'''
-
-[[plugins]]
-repo = 'rhysd/accelerated-jk'
-on_map = {n = '<Plug>'}
-hook_add = '''
-  nmap <silent>j <Plug>(accelerated_jk_gj)
-  nmap <silent>k <Plug>(accelerated_jk_gk)
 '''
 
 [[plugins]]
@@ -210,11 +175,6 @@ on_map = {n = '<Plug>'}
 repo = 'osyo-manga/vim-textobj-multiblock'
 depends = 'vim-textobj-user'
 on_map = {ox = '<Plug>'}
-
-[[plugins]]
-repo = 'Konfekt/FastFold'
-on_event = 'InsertEnter'
-hook_post_source = 'FastFoldUpdate'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
