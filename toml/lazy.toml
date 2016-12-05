@@ -105,10 +105,6 @@ repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
 [[plugins]]
-repo = 'Shougo/neoinclude.vim'
-on_if = 1
-
-[[plugins]]
 repo = 'Shougo/neco-syntax'
 on_source = ['neocomplete.vim', 'deoplete.nvim']
 
