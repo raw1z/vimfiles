@@ -162,12 +162,18 @@ repo = 'nixprime/cpsm'
 
 [[plugins]]
 repo = 'bkad/CamelCaseMotion'
+hook_add = '''
+  call camelcasemotion#CreateMotionMappings('<leader>')
+'''
 
 [[plugins]]
 repo = 'ludovicchabant/vim-gutentags'
 
 [[plugins]]
 repo = 'neomake/neomake'
+hook_add = '''
+  autocmd! BufWritePost * Neomake
+'''
 
 [[plugins]]
 repo = 'mhinz/vim-startify'

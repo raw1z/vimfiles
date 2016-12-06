@@ -237,7 +237,6 @@ autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType toml syntax sync minlines=500 "}}}
 " Plugins configuration"{{{
-source ~/.vim/rc/plugins/misc.rc.vim
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
 source ~/.vim/rc/plugins/startify.rc.vim

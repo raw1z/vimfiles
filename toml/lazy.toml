@@ -67,7 +67,7 @@ hook_source = '''
 repo = 'ElmCast/elm-vim'
 on_ft = 'elm'
 hook_source = '''
-let g:elm_format_autosave = 1
+  let g:elm_format_autosave = 1
 '''
 
 [[plugins]]
