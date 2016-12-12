@@ -49,7 +49,7 @@ endf
 
 function! s:grep(search)
   let sanitizedSearch = s:escape_search(a:search)
-  exe "Denite -buffer-name=search -input=" . sanitizedSearch . " grep:%"
+  exe "Denite -mode=normal -buffer-name=search -input=" . sanitizedSearch . " grep:%"
 endfunction
 
 function! s:grep_last_search()
@@ -63,7 +63,7 @@ endfunction
 
 function! GlobalGrep(search)
   let sanitizedSearch = s:escape_search(a:search)
-  exe "Denite -buffer-name=search -input=" . sanitizedSearch . " grep:."
+  exe "Denite -mode=normal -buffer-name=search -input=" . sanitizedSearch . " grep:."
 endfunction
 
 function! GlobalGrepLastSearch()

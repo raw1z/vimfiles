@@ -2,14 +2,14 @@
 repo = 'Shougo/denite.nvim'
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 hook_add = '''
-  nnoremap <silent> <space>b :Denite -buffer-name=buffers buffer<cr>
-  nnoremap <silent> <space>c :Denite -buffer-name=colorschemes colorscheme<cr>
-  nnoremap <silent> <space>f :Denite -buffer-name=files file_rec<cr>
-  nnoremap <silent> <space>h :Denite -buffer-name=help help<cr>
-  nnoremap <silent> <space>k :Denite -buffer-name=search grep:.<cr>
-  nnoremap <silent> <space>o :Denite -buffer-name=outline unite:outline<cr>
-  nnoremap <silent> <space>p :Denite -buffer-name=projects unite:projects<cr>
-  nnoremap <silent> <space>q :Denite -buffer-name=quickfix unite:quickfix<cr>
+  nnoremap <silent> <space>b :Denite -mode=normal -buffer-name=buffers buffer<cr>
+  nnoremap <silent> <space>c :Denite -mode=normal -buffer-name=colorschemes colorscheme<cr>
+  nnoremap <silent> <space>f :Denite -mode=normal -buffer-name=files file_rec<cr>
+  nnoremap <silent> <space>h :Denite -mode=normal -buffer-name=help help<cr>
+  nnoremap <silent> <space>k :Denite -mode=normal -buffer-name=search grep:.<cr>
+  nnoremap <silent> <space>o :Denite -mode=normal -buffer-name=outline unite:outline<cr>
+  nnoremap <silent> <space>p :Denite -mode=normal -buffer-name=projects unite:projects<cr>
+  nnoremap <silent> <space>q :Denite -mode=normal -buffer-name=quickfix unite:quickfix<cr>
 '''
 
 [[plugins]]
