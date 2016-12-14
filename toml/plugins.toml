@@ -172,7 +172,8 @@ repo = 'ludovicchabant/vim-gutentags'
 [[plugins]]
 repo = 'neomake/neomake'
 hook_add = '''
-  autocmd! BufWritePost * Neomake
+  autocmd! BufWritePost *.ex Neomake
+  autocmd! BufWritePost *.exs Neomake
 '''
 
 [[plugins]]
