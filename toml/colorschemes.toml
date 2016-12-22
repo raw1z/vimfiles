@@ -7,3 +7,6 @@ repo = 'jonathanfilip/vim-lucius'
 [[plugins]]
 repo = 'chriskempson/base16-vim'
 
+[[plugins]]
+repo = 'raw1z/vim-colorschemes'
+
