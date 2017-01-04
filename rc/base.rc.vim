@@ -201,6 +201,7 @@ nmap <Down> <C-w>-
 nmap <Left> <C-w><
 nmap <Right> <C-w>>
 nmap <leader>= <C-w>=
+nmap <C-t> :tabnew<CR>
 " }}}
 " easy save and quit {{{
 nmap <silent> <leader>s :update<CR>
