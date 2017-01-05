@@ -105,9 +105,10 @@ cmap <leader>' `
 " default colorscheme {{{
 
 function! s:set_colorscheme()
-  let defaultColorscheme = "base16-harmonic16-light"
+  let defaultColorscheme = "gruvbox"
   let colorschemeFilePath = globpath(&runtimepath, 'colors/'.defaultColorscheme.'.vim')
   if filereadable(colorschemeFilePath)
+    set background=dark
     exe 'colorscheme '.defaultColorscheme
   endif
 endfunction
