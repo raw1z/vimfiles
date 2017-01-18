@@ -31,9 +31,6 @@ endif
 set viewoptions=cursor,folds,slash,unix
 set shortmess=a
 
-" higlight cursor position
-set cursorline
-
 " Set the title of the iterm tab
 set title
 
