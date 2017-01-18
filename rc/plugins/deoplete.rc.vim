@@ -7,7 +7,6 @@ let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.python = ''
 let g:deoplete#omni#functions = {}
 let g:deoplete#enable_camel_case = 1
-let g:deoplete#disable_auto_complete = 0
 
 call deoplete#custom#set('_', 'converters', [
       \ 'converter_remove_paren',
