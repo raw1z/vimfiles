@@ -10,10 +10,33 @@ snippet debug "insert binding.pry" !i
 binding.pry
 endsnippet
 
-snippet inspect "insert insepction log" b
+snippet insp "insert insepction log" b
 Rails.logger.info %{
 ##########################################
 #{$1${2:.ai}}$0
 ##########################################
 }
 endsnippet
+
+snippet pinsp "insert insepction log" b
+puts %{
+##########################################
+#{$1${2:.ai}}$0
+##########################################
+}
+endsnippet
+
+snippet sinsp "insert insepction log" b
+Sidekiq.logger.warn %{
+#{$1${2:.ai}}$0
+}
+endsnippet
+
+snippet { "insert brackets" i
+{$1}$0
+endsnippet
+
+snippet | "insert pipes" i
+|$1|$0
+endsnippet
+
