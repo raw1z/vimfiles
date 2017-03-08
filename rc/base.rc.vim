@@ -102,7 +102,7 @@ cmap <leader>' `
 " default colorscheme {{{
 
 function! s:set_colorscheme()
-  let defaultColorscheme = "gruvbox"
+  let defaultColorscheme = "base16-gruvbox-dark-hard"
   let colorschemeFilePath = globpath(&runtimepath, 'colors/'.defaultColorscheme.'.vim')
   if filereadable(colorschemeFilePath)
     set background=dark

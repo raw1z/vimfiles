@@ -1,7 +1,4 @@
 [[plugins]]
-repo = 'morhetz/gruvbox'
-
-[[plugins]]
 repo = 'jonathanfilip/vim-lucius'
 
 [[plugins]]
