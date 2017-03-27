@@ -51,6 +51,8 @@ set wildignore+=*/node_modules/****************" " NodeJS
 " vim default keys remap {{{
 map <C-L> <C-]>
 inoremap kj <Esc>
+vnoremap kj <Esc>
+cnoremap kj <C-c>
 cmap <C-P> <Up>
 cmap <C-N> <Down>
 " }}}
