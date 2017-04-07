@@ -49,7 +49,8 @@ endf
 
 function! s:grep(search)
   let sanitizedSearch = s:escape_search(a:search)
-  exe "Denite -mode=normal -buffer-name=search -input=" . sanitizedSearch . " grep:%"
+  let path = expand('%', 'p')
+  exe "Denite -mode=normal -buffer-name=search -input=" . sanitizedSearch . " grep:".path
 endfunction
 
 function! s:grep_last_search()
