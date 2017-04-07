@@ -196,3 +196,6 @@ command! ShowCurrentBranchGitHistory call s:show_git_history(1)
 nmap <leader>h :silent ShowGitHistory<CR>
 nmap <leader>H :silent ShowCurrentBranchGitHistory<CR>
 " }}}
+" Show current buffer git diff {{{
+nmap <leader>d :silent Gvdiff<CR>
+" }}}
