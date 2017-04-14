@@ -236,7 +236,10 @@ autocmd BufNewFile,BufRead *.rb setl iskeyword+=?,!,@,$
 autocmd BufNewFile,BufRead *.rbx setl iskeyword+=?,!,@,$ "}}}
 autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType python setlocal foldmethod=indent
-autocmd FileType toml syntax sync minlines=500 "}}}
+autocmd FileType toml syntax sync minlines=500
+autocmd BufNewFile,BufRead *.exs set ft=elixir
+autocmd BufNewFile,BufRead .zshrc set ft=zsh
+"}}}
 " Plugins configuration"{{{
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
