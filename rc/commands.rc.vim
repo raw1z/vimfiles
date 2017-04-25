@@ -161,8 +161,9 @@ endfunction "}}}
 
 command! -nargs=? -complete=file SaveSession call s:SaveSession(<q-args>)
 command! -nargs=? -complete=file RestoreSession call s:RestoreSession(<q-args>)
-autocmd VimEnter * nested call s:AutoRestoreSession()
+nmap <leader><leader>r :silent RestoreSession<CR>
 autocmd VimLeavePre * call s:AutoSaveSession()
+autocmd FocusLost * call s:AutoSaveSession()
 " }}}
 " open current directory in Git Tower {{{
 
