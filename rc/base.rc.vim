@@ -29,7 +29,7 @@ if has("persistent_undo")
 endif
 
 set viewoptions=cursor,folds,slash,unix
-set shortmess=a
+set shortmess=aoOt
 
 " Set the title of the iterm tab
 set title
