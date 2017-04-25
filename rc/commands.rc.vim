@@ -116,14 +116,7 @@ vnorem <leader>N :GGrepVisualSelection<CR>
 function! s:SaveSession(...) "{{{
   let filename = a:1
   if strlen(filename) == 0
-    if exists("g:currentSessionFile")
-      let filename = g:currentSessionFile
-      if strlen(filename) == 0
-        let filename = "./session.vim"
-      endif
-    else
-      let filename = "./session.vim"
-    endif
+    let filename = "./session.vim"
   endif
 
   let filename = fnamemodify(filename, ":p")
@@ -133,7 +126,6 @@ function! s:SaveSession(...) "{{{
   execute ':tabnext ' currentTab
   execute ':mksession! ' filename
 
-  let g:currentSessionFile = filename
   echom "Saved session to path: " filename
 endfunction "}}}
 function! s:RestoreSession(...) "{{{
@@ -146,7 +138,6 @@ function! s:RestoreSession(...) "{{{
 
   execute ':source  ' filename
 
-  let g:currentSessionFile = filename
   echom "Restored session from path: " filename
 endfunction "}}}
 function! s:AutoRestoreSession() "{{{
@@ -160,8 +151,8 @@ function! s:AutoRestoreSession() "{{{
   endif
 endfunction "}}}
 function! s:AutoSaveSession() "{{{
-  if exists("g:currentSessionFile")
-    let filename = g:currentSessionFile
+  if exists("v:this_session")
+    let filename = v:this_session
     if filereadable(filename)
       call s:SaveSession(filename)
     endif
@@ -170,6 +161,8 @@ endfunction "}}}
 
 command! -nargs=? -complete=file SaveSession call s:SaveSession(<q-args>)
 command! -nargs=? -complete=file RestoreSession call s:RestoreSession(<q-args>)
+autocmd VimEnter * nested call s:AutoRestoreSession()
+autocmd VimLeavePre * call s:AutoSaveSession()
 " }}}
 " open current directory in Git Tower {{{
 

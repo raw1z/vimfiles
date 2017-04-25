@@ -177,9 +177,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'mhinz/vim-startify'
-
-[[plugins]]
 repo = 'dietsche/vim-lastplace'
 
 [[plugins]]
