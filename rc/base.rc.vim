@@ -241,6 +241,8 @@ autocmd BufNewFile,BufRead *.exs set ft=elixir
 autocmd BufNewFile,BufRead .zshrc set ft=zsh
 autocmd BufNewFile,BufRead *.eex set ft=eelixir
 "}}}
+" enter terminal pane in insert mod {{{
+autocmd BufWinEnter,WinEnter term://* startinsert "}}}
 " Plugins configuration"{{{
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
