@@ -247,6 +247,5 @@ autocmd BufLeave term://* stopinsert
 " Plugins configuration"{{{
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
-source ~/.vim/rc/plugins/startify.rc.vim
 "}}}
 
