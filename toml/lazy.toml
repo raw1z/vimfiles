@@ -10,6 +10,7 @@ hook_add = '''
   nnoremap <silent> <space>o :Denite -mode=normal -buffer-name=outline unite:outline<cr>
   nnoremap <silent> <space>p :Denite -mode=normal -buffer-name=projects unite:projects<cr>
   nnoremap <silent> <space>q :Denite -mode=normal -buffer-name=quickfix unite:quickfix<cr>
+  nnoremap <silent> <space>t :Denite -mode=normal -buffer-name=tags tag<cr>
 '''
 
 [[plugins]]
