@@ -18,7 +18,7 @@ let $DEV_REPO = '~/.vim/dev'
 if !isdirectory(expand($DEV_REPO))
   call mkdir(expand($DEV_REPO), 'p')
 endif
-call dein#local($DEV_REPO, {}, ['vim*', 'unite-*', '*.vim'])
+call dein#local($DEV_REPO, {}, ['vim*', 'denite-*', 'unite-*', '*.vim'])
 
 if dein#tap('deoplete.nvim') && has('nvim')
   call dein#disable('neocomplete.vim')
