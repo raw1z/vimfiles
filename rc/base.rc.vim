@@ -51,7 +51,6 @@ set wildignore+=*/node_modules/****************" " NodeJS
 " vim default keys remap {{{
 map <C-L> <C-]>
 inoremap kj <Esc>
-vnoremap kj <Esc>
 cnoremap kj <C-c>
 cmap <C-P> <Up>
 cmap <C-N> <Down>
@@ -242,11 +241,11 @@ autocmd BufNewFile,BufRead .zshrc set ft=zsh
 autocmd BufNewFile,BufRead *.eex set ft=eelixir
 "}}}
 " enter terminal pane in insert mod {{{
-autocmd BufWinEnter,WinEnter term://* startinsert "}}}
+autocmd BufEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
+"}}}
 " Plugins configuration"{{{
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
-source ~/.vim/rc/plugins/startify.rc.vim
 "}}}
 
