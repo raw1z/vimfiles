@@ -35,11 +35,6 @@ on_if = 1
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'raw1z/unite-rspec'
-on_if = 1
-on_source = 'unite.vim'
-
-[[plugins]]
 repo = 'raw1z/unite-projects'
 depends = 'vimfiler.vim'
 on_if = 1
