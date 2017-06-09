@@ -5,11 +5,6 @@ call denite#custom#option('default', 'prompt', '>')
 call denite#custom#source(
       \ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 
-if has('nvim')
-  call denite#custom#source('file_rec,grep', 'matchers',
-        \ ['matcher_cpsm'])
-endif
-
 " Change sorters.
 call denite#custom#source(
       \ 'file_rec', 'sorters', ['sorter_sublime'])
