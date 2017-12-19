@@ -239,6 +239,7 @@ autocmd FileType toml syntax sync minlines=500
 autocmd BufNewFile,BufRead *.exs set ft=elixir
 autocmd BufNewFile,BufRead .zshrc set ft=zsh
 autocmd BufNewFile,BufRead *.eex set ft=eelixir
+autocmd FileType vue syntax sync fromstart
 "}}}
 " enter terminal pane in insert mod {{{
 autocmd BufEnter term://* startinsert
