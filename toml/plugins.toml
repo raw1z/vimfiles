@@ -182,6 +182,3 @@ repo = 'dietsche/vim-lastplace'
 [[plugins]]
 repo = 'AndrewRadev/splitjoin.vim'
 
-[[plugins]]
-repo = 'briandoll/change-inside-surroundings.vim'
-
