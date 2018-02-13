@@ -81,7 +81,7 @@ fn(${1:args}) -> ${0} end
 endsnippet
 
 snippet & "insert an anonymous function short syntax" !i
-&($0)
+&($1)$0
 endsnippet
 
 snippet doc "insert a function documentation block" !b
@@ -121,9 +121,21 @@ end
 endsnippet
 
 snippet { "Insert a tuple" !i
-{$0}
+{$1}$0
 endsnippet
 
-snippet % "Insert a map" !i
-%{${1:key}: ${0:value}}
+snippet % "Insert a map with symbols as keys" !i
+%{${1:key}: ${2:value}}$0
+endsnippet
+
+snippet %b "Insert a map with binaries as keys" !i
+%{"${1:key}" => ${2:value}}$0
+endsnippet
+
+snippet ok "Insert ok tuple" !i
+{:ok, ${1:value}}$0
+endsnippet
+
+snippet err "Insert error tuple" !i
+{:error, ${1:value}}$0
 endsnippet

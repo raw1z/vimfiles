@@ -7,9 +7,7 @@ hook_add = '''
   nnoremap <silent> <space>f :Denite -mode=normal -buffer-name=files file_rec<cr>
   nnoremap <silent> <space>h :Denite -mode=normal -buffer-name=help help<cr>
   nnoremap <silent> <space>k :Denite -mode=normal -buffer-name=search grep:.<cr>
-  nnoremap <silent> <space>o :Denite -mode=normal -buffer-name=outline unite:outline<cr>
-  nnoremap <silent> <space>p :Denite -mode=normal -buffer-name=projects unite:projects<cr>
-  nnoremap <silent> <space>q :Denite -mode=normal -buffer-name=quickfix unite:quickfix<cr>
+  nnoremap <silent> <space>o :Denite -mode=normal -buffer-name=outline outline<cr>
   nnoremap <silent> <space>t :Denite -mode=normal -buffer-name=tags tag<cr>
 '''
 
@@ -17,28 +15,10 @@ hook_add = '''
 repo = 'Shougo/unite.vim'
 hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
 hook_add = '''
-  nmap <space> [unite]
-  nnoremap [unite] <nop>
-
-  nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
-  nnoremap <silent> [unite]e :<C-u>Unite junkfile/new junkfile -start-insert<CR>
+  nnoremap <silent> <space>m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
+  nnoremap <silent> <space>j :<C-u>Unite junkfile/new junkfile -start-insert<CR>
+  nnoremap <silent> <space>q :<C-u>Unite quickfix<CR>
 '''
-
-[[plugins]]
-repo = 'thinca/vim-unite-history'
-on_if = 1
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-build'
-on_if = 1
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'raw1z/unite-projects'
-depends = 'vimfiler.vim'
-on_if = 1
-on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'osyo-manga/unite-quickfix'
@@ -67,17 +47,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets', 'context_filetype.vim']
-if = "!has('nvim')"
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-
-[[plugins]]
-repo = 'Shougo/neossh.vim'
-on_ft = ['vimfiler', 'vimshell']
-
-[[plugins]]
 repo = 'Shougo/vimfiler.vim'
 depends = 'unite.vim'
 on_map = {n = '<Plug>'}
@@ -88,8 +57,8 @@ hook_add = '''
   nnoremap <space>s :new <bar> VimFilerCurrentDir<CR>
   nnoremap <space>v :vnew <bar> VimFilerCurrentDir<CR>
   nnoremap <space>E :VimFilerBufferDir<CR>
-  nnoremap <space>S :new <bar> VimFilerBufferDir<CR>
-  nnoremap <space>V :vnew <bar> VimFilerBufferDir<CR>
+  nnoremap <space>S :sp <bar> VimFilerBufferDir<CR>
+  nnoremap <space>V :vs <bar> VimFilerBufferDir<CR>
 '''
 
 [[plugins]]
@@ -101,27 +70,11 @@ repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
 [[plugins]]
-repo = 'Shougo/neco-syntax'
-on_source = ['neocomplete.vim', 'deoplete.nvim']
-
-[[plugins]]
-repo = 'Shougo/vinarise.vim'
-on_cmd = 'Vinarise'
-hook_add = 'let g:vinarise_enable_auto_detect = 1'
-
-[[plugins]]
 repo = 'kana/vim-niceblock'
 on_map = {x = '<Plug>'}
 hook_add = '''
   xmap I  <Plug>(niceblock-I)
   xmap A  <Plug>(niceblock-A)
-'''
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-on_map = {n = '<Plug>'}
-hook_source = '''
-  let g:quickrun_no_default_key_mappings = 1
 '''
 
 [[plugins]]
@@ -135,22 +88,6 @@ hook_source = '''
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
   let g:openbrowser_default_search = "duckduckgo"
 '''
-
-[[plugins]]
-repo = 't9md/vim-choosewin'
-on_map = {n = '<Plug>'}
-hook_source = 'source ~/.vim/rc/plugins/choosewin.rc.vim'
-hook_add = '''
-  nmap <space><space>  <Plug>(choosewin)
-'''
-
-[[plugins]]
-repo = 'kylef/apiblueprint.vim'
-on_ft = 'apiblueprint'
-
-[[plugins]]
-repo = 'adimit/prolog.vim'
-on_ft = 'prolog'
 
 [[plugins]]
 repo = 'kana/vim-operator-replace'
