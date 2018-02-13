@@ -16,4 +16,3 @@ repo = 'raw1z/Windows-PowerShell-Syntax-Plugin'
 [[plugins]]
 repo = 'vim-scripts/Vim-R-plugin'
 
-
