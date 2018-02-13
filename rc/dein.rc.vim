@@ -11,7 +11,6 @@ call dein#begin(s:path, [expand('<sfile>')]
 
 call dein#load_toml( "~/.vim/toml/plugins.toml"      , {'lazy' : 0} )
 call dein#load_toml( '~/.vim/toml/lazy.toml'         , {'lazy' : 1} )
-call dein#load_toml( "~/.vim/toml/colorschemes.toml" , {'lazy' : 0} )
 call dein#load_toml( "~/.vim/toml/languages.toml"    , {'lazy' : 0} )
 
 let $DEV_REPO = '~/.vim/dev'
