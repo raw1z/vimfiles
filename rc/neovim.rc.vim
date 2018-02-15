@@ -26,4 +26,5 @@ tnoremap <leader>/ \
 tnoremap <leader>' `
 tnoremap <leader><leader>) }
 tnoremap <leader><leader>( {
+tnoremap <leader>n ~
 " }}}
