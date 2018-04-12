@@ -9,26 +9,17 @@ hook_add = '''
   nnoremap <silent> <space>k :Denite -mode=normal -buffer-name=search grep:.<cr>
   nnoremap <silent> <space>o :Denite -mode=normal -buffer-name=outline outline<cr>
   nnoremap <silent> <space>t :Denite -mode=normal -buffer-name=tags tag<cr>
+  nnoremap <silent> <space>j :Denite -mode=normal -buffer-name=junkfile junkfile<cr>
+  nnoremap <silent> <space>q :Denite -mode=normal -buffer-name=quickfix quickfix<cr>
 '''
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
-hook_add = '''
-  nnoremap <silent> <space>m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
-  nnoremap <silent> <space>j :<C-u>Unite junkfile/new junkfile -start-insert<CR>
-  nnoremap <silent> <space>q :<C-u>Unite quickfix<CR>
-'''
 
 [[plugins]]
-repo = 'osyo-manga/unite-quickfix'
+repo = 'chemzqm/unite-location'
 on_if = 1
-on_source = 'unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
-on_if = 1
-on_source = 'unite.vim'
+on_source = 'denite.vim'
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
@@ -63,7 +54,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/junkfile.vim'
-on_source = 'unite.vim'
+on_source = 'denite.vim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'

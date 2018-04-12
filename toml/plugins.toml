@@ -123,8 +123,8 @@ hook_add = '''
   map <Leader>k <Plug>(easymotion-k)
 '''
 
-# [[plugins]]
-# repo = 'airblade/vim-gitgutter'
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'

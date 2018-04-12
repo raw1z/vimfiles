@@ -1,6 +1,11 @@
 " Change default prompt
 call denite#custom#option('default', 'prompt', '>')
 
+" Configure highlighting
+call denite#custom#option('_', 'highlight_mode_insert', 'CursorLine')
+call denite#custom#option('_', 'highlight_matched_range', 'None')
+call denite#custom#option('_', 'highlight_matched_char', 'None')
+
 " Change matchers.
 call denite#custom#source(
       \ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
