@@ -16,6 +16,7 @@ set foldmethod=manual
 set foldcolumn=1
 set fillchars=vert:\|
 set splitright
+set updatetime=100
 
 if has("nvim")
   set wildignorecase
