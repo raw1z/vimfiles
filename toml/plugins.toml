@@ -124,7 +124,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo = 'mhinz/vim-signify'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'

@@ -250,5 +250,6 @@ autocmd BufLeave term://* stopinsert
 " Plugins configuration"{{{
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
+let g:signify_realtime = 1
 "}}}
 
