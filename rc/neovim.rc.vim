@@ -3,9 +3,7 @@
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175 "}}}
 " enable true color {{{
-if exists("$ITERM_PROFILE")
   set termguicolors
-endif
 "}}}
 " configure python {{{
 let g:python_host_prog = '/usr/local/bin/python2'
