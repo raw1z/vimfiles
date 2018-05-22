@@ -196,3 +196,7 @@ nmap <leader>H :silent ShowCurrentBranchGitHistory<CR>
 " Show current buffer git diff {{{
 nmap <leader>d :silent Gvdiff<CR>
 " }}}
+" push current folder to remote repository {{{
+nmap <leader>p :silent Git push<CR>
+nmap <leader>P :silent Git push -f<CR>
+" }}}
