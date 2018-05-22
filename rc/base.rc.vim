@@ -237,7 +237,7 @@ autocmd BufNewFile,BufRead *.rbx setl iskeyword+=?,!,@,$ "}}}
 autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType toml syntax sync minlines=500
-autocmd FileType elm set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType scss set tabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.exs set ft=elixir
 autocmd BufNewFile,BufRead .zshrc set ft=zsh
 autocmd BufNewFile,BufRead *.eex set ft=eelixir
