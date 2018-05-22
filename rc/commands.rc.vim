@@ -136,6 +136,7 @@ function! s:RestoreSession(...) "{{{
 
   let filename = fnamemodify(filename, ":p")
 
+  execute '%bdelete!'
   execute ':source  ' filename
 
   echom "Restored session from path: " filename
