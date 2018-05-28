@@ -55,6 +55,7 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/junkfile.vim'
 on_source = 'denite.vim'
+on_if = 1
 on_cmd = ['JunkfileOpen']
 
 [[plugins]]
