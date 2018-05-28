@@ -113,6 +113,15 @@ vnorem <leader>N :GGrepVisualSelection<CR>
 
 " }}}
 " manage vim sessions {{{
+function! s:DeleteAllBuffersWithoutWindow() "{{{
+  let [i, n] = [1, bufnr('$')]
+  while i <= n
+    if bufloaded(i) && win_findbuf(i) == []
+      execute i . 'bdelete!'
+    endif
+    let i += 1
+  endwhile
+endfunction "}}}
 function! s:SaveSession(...) "{{{
   let filename = a:1
   if strlen(filename) == 0
@@ -124,6 +133,7 @@ function! s:SaveSession(...) "{{{
   let currentTab = tabpagenr()
   tabfirst
   execute ':tabnext ' currentTab
+  call s:DeleteAllBuffersWithoutWindow()
   execute ':mksession! ' filename
 
   echom "Saved session to path: " filename
@@ -160,6 +170,7 @@ function! s:AutoSaveSession() "{{{
   endif
 endfunction "}}}
 
+command! DeleteAllBuffersWithoutWindow call s:DeleteAllBuffersWithoutWindow()
 command! -nargs=? -complete=file SaveSession call s:SaveSession(<q-args>)
 command! -nargs=? -complete=file RestoreSession call s:RestoreSession(<q-args>)
 nmap <leader><leader>r :silent RestoreSession<CR>
