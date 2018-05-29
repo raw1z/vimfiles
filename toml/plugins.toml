@@ -151,3 +151,6 @@ repo = 'AndrewRadev/splitjoin.vim'
 [[plugins]]
 repo = 'chriskempson/base16-vim'
 
+[[plugins]]
+repo = 'brooth/far.vim'
+
