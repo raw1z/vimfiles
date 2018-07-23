@@ -10,6 +10,7 @@ set ruler
 set showcmd
 
 set nobackup
+set backupcopy=yes
 set foldenable
 set noswapfile
 set foldmethod=manual
