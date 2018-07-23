@@ -8,6 +8,9 @@
 " configure python {{{
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3' "}}}
+" configure node {{{
+let g:node_host_prog = "/usr/local/lib/node_modules/neovim/bin/cli.js"
+" }}}
 " configure terminal {{{
 tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -24,5 +27,5 @@ tnoremap <leader>/ \
 tnoremap <leader>' `
 tnoremap <leader><leader>) }
 tnoremap <leader><leader>( {
-tnoremap <leader>n ~
-" }}}
+tnoremap <leader>n ~ " }}}
+
