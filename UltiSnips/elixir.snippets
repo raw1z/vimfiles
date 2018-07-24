@@ -68,10 +68,18 @@ else
 end
 endsnippet
 
-snippet inspect "inspect an expression result" !b
+snippet insp "inspect an expression result" !b
 IO.puts """
 #############################
 #{inspect $0}
+#############################
+"""
+endsnippet
+
+snippet ap "inspect an expression result with apex" !b
+IO.puts """
+#############################
+#{Apex.ap $0}
 #############################
 """
 endsnippet
