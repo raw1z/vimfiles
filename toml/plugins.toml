@@ -93,12 +93,6 @@ repo = 'AndrewRadev/linediff.vim'
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]
-repo = 'kana/vim-operator-user'
-
-[[plugins]]
-repo = 'kana/vim-textobj-entire'
-
-[[plugins]]
 repo = 'kana/vim-textobj-fold'
 
 [[plugins]]
@@ -126,10 +120,10 @@ repo = 'whatyouhide/vim-textobj-erb'
 repo = 'saaguero/vim-textobj-pastedtext'
 
 [[plugins]]
-repo = 'kana/vim-textobj-lastpat'
+repo = 'vimtaku/vim-textobj-keyvalue'
 
 [[plugins]]
-repo = 'vimtaku/vim-textobj-keyvalue'
+repo = 'kana/vim-operator-user'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
