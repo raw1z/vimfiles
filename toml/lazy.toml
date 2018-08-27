@@ -6,10 +6,11 @@ hook_add = '''
   nnoremap <silent> <space>c :Denite -mode=normal -buffer-name=colorschemes colorscheme<cr>
   nnoremap <silent> <space>f :Denite -mode=normal -buffer-name=files file_rec<cr>
   nnoremap <silent> <space>h :Denite -mode=normal -buffer-name=help help<cr>
+  nnoremap <silent> <space>j :Denite -mode=normal -buffer-name=junkfile junkfile<cr>
   nnoremap <silent> <space>k :Denite -mode=normal -buffer-name=search grep:.<cr>
+  nnoremap <silent> <space>l :Denite -mode=normal -buffer-name=dein dein_log<cr>
   nnoremap <silent> <space>o :Denite -mode=normal -buffer-name=outline outline<cr>
   nnoremap <silent> <space>t :Denite -mode=normal -buffer-name=tags tag<cr>
-  nnoremap <silent> <space>j :Denite -mode=normal -buffer-name=junkfile junkfile<cr>
   nnoremap <silent> <space>q :Denite -mode=normal -buffer-name=quickfix quickfix<cr>
 '''
 
