@@ -119,7 +119,7 @@ call s:set_colorscheme()
 " auto source vim rc files {{{
 if has("autocmd")
   augroup ConfigChangeDetect
-    autocmd BufWritePost init.vim,[_.]vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC
+    autocmd BufWritePost [_.]vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
     autocmd BufWritePost [_.]exrc,exrc source %
     autocmd BufWritePost [_.]vimrc.custom source %
   augroup END
@@ -251,6 +251,6 @@ autocmd BufLeave term://* stopinsert
 " Plugins configuration"{{{
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
-source ~/.vim/rc/plugins/far.rc.vim
+source ~/.vim/rc/plugins/misc.rc.vim
 "}}}
 
