@@ -126,6 +126,9 @@ repo = 'vimtaku/vim-textobj-keyvalue'
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
+repo = 'tyru/operator-camelize.vim'
+
+[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
