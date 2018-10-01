@@ -49,6 +49,9 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,Gemfile.lock,*/log/*,.sass-cach
 set wildignore+=*.pyc,*.pyo " Python
 set wildignore+=*/node_modules/****************" " NodeJS
 
+" use interactive shell
+set shell=zsh\ -i
+
 "}}}
 " vim default keys remap {{{
 map <C-L> <C-]>
