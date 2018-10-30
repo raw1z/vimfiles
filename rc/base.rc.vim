@@ -63,9 +63,6 @@ cnoremap kj <C-c>
 cmap <C-P> <Up>
 cmap <C-N> <Down>
 " }}}
-" ack configuration {{{
-let g:ackprg="ag --nogroup --nocolor --column"
-" }}}
 " jump to next nearest closed fold {{{
 
 function! s:goto_next_closed_fold(dir)
@@ -201,6 +198,8 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 nnoremap <A-o> :only<CR>
+nnoremap <C-j> gT
+nnoremap <C-k> gt
 "}}}
 " easily resize and split windows {{{
 nmap <Up> <C-w>+

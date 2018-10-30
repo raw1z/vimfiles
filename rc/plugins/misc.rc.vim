@@ -1,3 +1,6 @@
+" ack configuration
+let g:ackprg="ag --nogroup --nocolor --column"
+
 " far
 let g:far#source = 'agnvim'
 

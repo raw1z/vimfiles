@@ -17,9 +17,8 @@ tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
 tnoremap <A-l> <C-\><C-n><C-w>l
-tnoremap gt <C-\><C-n>gt
-tnoremap gT <C-\><C-n>gT
-tnoremap gT <C-\><C-n>gT
+tnoremap <C-j> <C-\><C-n>gT
+tnoremap <C-k> <C-\><C-n>gt
 tnoremap <leader>) ]
 tnoremap <leader>( [
 tnoremap <leader>! \|
