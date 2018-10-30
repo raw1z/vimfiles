@@ -52,6 +52,9 @@ set wildignore+=*/node_modules/****************" " NodeJS
 " use interactive shell
 set shell=zsh\ -i
 
+" configure mksession
+set sessionoptions=blank,curdir,folds,help,tabpages,winsize
+
 "}}}
 " vim default keys remap {{{
 map <C-L> <C-]>

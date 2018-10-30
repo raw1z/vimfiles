@@ -113,15 +113,6 @@ vnorem <leader>N :GGrepVisualSelection<CR>
 
 " }}}
 " manage vim sessions {{{
-function! s:DeleteAllBuffersWithoutWindow() "{{{
-  let [i, n] = [1, bufnr('$')]
-  while i <= n
-    if bufloaded(i) && win_findbuf(i) == []
-      execute i . 'bdelete!'
-    endif
-    let i += 1
-  endwhile
-endfunction "}}}
 function! s:SaveSession(...) "{{{
   let filename = a:1
   if strlen(filename) == 0
@@ -133,7 +124,6 @@ function! s:SaveSession(...) "{{{
   let currentTab = tabpagenr()
   tabfirst
   execute ':tabnext ' currentTab
-  call s:DeleteAllBuffersWithoutWindow()
   execute ':mksession! ' filename
 
   echom "Saved session to path: " filename
@@ -169,8 +159,27 @@ function! s:AutoSaveSession() "{{{
     endif
   endif
 endfunction "}}}
+function! s:DeleteInactiveBuffers() " {{{
+  "From tabpagebuflist() help, get a list of all buffers in all tabs
+  let tablist = []
+  for i in range(tabpagenr('$'))
+    call extend(tablist, tabpagebuflist(i + 1))
+  endfor
 
-command! DeleteAllBuffersWithoutWindow call s:DeleteAllBuffersWithoutWindow()
+  "Below originally inspired by Hara Krishna Dara and Keith Roberts
+  "http://tech.groups.yahoo.com/group/vim/message/56425
+  let nWipeouts = 0
+  for i in range(1, bufnr('$'))
+    if bufexists(i) && !getbufvar(i,"&mod") && index(tablist, i) == -1
+      "bufno exists AND isn't modified AND isn't in the list of buffers open in windows and tabs
+      silent exec 'bdelete' i
+      let nWipeouts = nWipeouts + 1
+    endif
+  endfor
+  echomsg nWipeouts . ' buffer(s) wiped out'
+endfunction " }}}
+
+command! DeleteInactiveBuffers call s:DeleteInactiveBuffers()
 command! -nargs=? -complete=file SaveSession call s:SaveSession(<q-args>)
 command! -nargs=? -complete=file RestoreSession call s:RestoreSession(<q-args>)
 nmap <leader><leader>r :silent RestoreSession<CR>
