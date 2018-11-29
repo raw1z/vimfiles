@@ -253,6 +253,9 @@ autocmd FileType vue syntax sync fromstart
 autocmd BufEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 "}}}
+" select last pasted text {{{
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+" }}}
 " Plugins configuration"{{{
 source ~/.vim/rc/plugins/easymotion.rc.vim
 source ~/.vim/rc/plugins/ultisnips.rc.vim
