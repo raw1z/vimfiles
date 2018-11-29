@@ -16,3 +16,6 @@ let g:signify_cursorhold_insert = 0
 " operator-camelize.vim
 map <Leader>c <Plug>(operator-camelize)
 map <Leader>C <Plug>(operator-decamelize)
+
+" emmet
+let g:user_emmet_leader_key='ç'
